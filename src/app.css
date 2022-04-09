@@ -1,0 +1,125 @@
+@import '@fontsource/space-grotesk';
+@import '@fontsource/space-mono';
+
+@media prefers-reduced-motion {
+  * {
+    animation-duration: 0.01s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:root {
+  ---c-a1: hsl(0, 0%, 35%);
+  ---c-a2: hsl(0, 0%, 55%);
+  ---c-b1: hsl(225, 40%, 45%);
+  ---c-b2: hsl(225, 40%, 65%);
+  ---c-bg: hsl(0, 0%, 100%);
+
+  ---readwidth: 34ch;
+
+  ---font: 'Space Grotesk', sans-serif;
+  ---fontx: 'Space Mono', monospace;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #3b3b3b;
+
+  font-size: clamp(1rem, 3vw, 3.5rem);
+  font-family: var(---font);
+  background-color: var(---c-bg);
+  color: var(---c-a1);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+
+  min-height: 100vh;
+}
+
+@supports (scrollbar-color: auto) and (scrollbar-width: thin) and (scrollbar-gutter: stable) {
+  html {
+    scrollbar-gutter: stable;
+    scrollbar-color: var(---c-a1) var(---c-bg);
+    scrollbar-width: thin;
+  }
+}
+
+/* global */
+::selection {
+  background-color: var(---c-a1);
+  color: var(---c-bg);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  position: relative;
+  color: var(---c-b1);
+}
+a:is(:hover, :focus, :active):after {
+  opacity: 0.125;
+}
+a::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 1em;
+  border-radius: 0.125em;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+/* set defaults */
+input,
+button {
+  color: inherit;
+  font: inherit;
+}
+
+svg,
+img,
+canvas {
+  display: block;
+}
+
+pre,
+code {
+  font-size: 0.6rem;
+  white-space: pre-wrap;
+}
+
+ul,
+ol,
+dl {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+article.default {
+  padding: 0 1rem;
+  max-width: var(---readwidth);
+  width: 100%;
+  margin: 12vh 0;
+  flex: 1;
+}
