@@ -12,3 +12,46 @@ export function getAbsoluteRect(element) {
     radius: (rect.width + rect.height) / 4
   };
 }
+
+export class Throttle {
+  callback: Function;
+  timeout: number;
+  delay: number;
+  constructor(callback, delay) {
+    this.callback = callback;
+    this.timeout = null;
+    this.delay = delay;
+  }
+  exec() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+    this.timeout = setTimeout(this.callback, this.delay);
+    return this;
+  }
+  cancel() {
+    if (this.timeout) {
+      clearTimeout(this.timeout);
+    }
+    return this;
+  }
+}
+
+export class LowPassFilter {
+  smoothedValue: number;
+  lastCall: number;
+  constructor() {
+    this.smoothedValue = 0;
+    this.lastCall = performance.now();
+  }
+
+  filter(value: number, strength: number): number {
+    const now = performance.now();
+    const elapsed = now - this.lastCall;
+
+    this.smoothedValue += (elapsed * (value - this.smoothedValue)) / strength;
+
+    this.lastCall = now;
+    return this.smoothedValue;
+  }
+}
