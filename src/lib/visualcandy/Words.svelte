@@ -1,51 +1,16 @@
 <script>
   import { me } from '$lib/content';
+  import { getAbsoluteRect, Throttle } from '$lib/utils';
   import { Engine, Runner, Composite, Bodies } from 'matter-js';
   import { onMount } from 'svelte';
 
+  let frame;
   let wordBox;
   const elements = [];
 
-  function getAbsoluteRect(element) {
-    const rect = element.getBoundingClientRect();
-    return {
-      left: rect.left + window.scrollX,
-      top: rect.top + window.scrollY,
-      right: rect.right + window.scrollX,
-      bottom: rect.bottom + window.scrollY,
-      cx: rect.left + window.scrollX + rect.width / 2,
-      cy: rect.top + window.scrollY + rect.height / 2,
-      width: rect.width,
-      height: rect.height,
-      radius: (rect.width + rect.height) / 4
-    };
-  }
-
-  let engine, runner;
-  onMount(() => {
-    engine = Engine.create({
-      enableSleeping: true,
-      gravity: {
-        x: 0,
-        y: -1
-      },
-      positionIterations: 4
-    });
-    runner = Runner.create();
-
+  function getBodies() {
     const box = getAbsoluteRect(wordBox);
-
-    elements.forEach((el) => {
-      const rect = getAbsoluteRect(el);
-      el['physics'] = Bodies.circle(rect.cx, rect.cy, rect.radius, {
-        isStatic: false
-      });
-      el.referencePos = rect;
-      Composite.add(engine.world, el['physics']);
-    });
-
-    // create bounding box
-    Composite.add(engine.world, [
+    const bodies = [
       Bodies.rectangle(box.cx, box.bottom, box.width, 10, {
         isStatic: true
       }), // bottom
@@ -58,11 +23,45 @@
       Bodies.rectangle(box.cx, box.top, box.width, 10, {
         isStatic: true
       }) // top
-    ]);
+    ];
+
+    // add all balls to the list
+    elements.forEach((el) => {
+      const rect = getAbsoluteRect(el);
+      el['physics'] = Bodies.circle(rect.cx, rect.cy, rect.radius, {
+        isStatic: false
+      });
+      el.referencePos = rect;
+      bodies.push(el['physics']);
+    });
+
+    return bodies;
+  }
+
+  const throttledReCreate = new Throttle(() => {
+    Composite.clear(engine.world, false);
+    Composite.add(engine.world, getBodies());
+  }, 200);
+
+  let engine, runner;
+  onMount(() => {
+    engine = Engine.create({
+      enableSleeping: false,
+      gravity: {
+        x: 0,
+        y: -1
+      },
+      positionIterations: 4
+    });
+    runner = Runner.create();
+
+    // create bounding box
+    Composite.add(engine.world, getBodies());
 
     Runner.run(runner, engine);
 
     function loop() {
+      frame = requestAnimationFrame(loop);
       Engine.update(engine);
 
       if (elements.length && elements[0]?.physics) {
@@ -70,18 +69,19 @@
           const { x, y } = el.physics.position;
           const { referencePos: rp } = el;
 
+          el.style.opacity = 1;
           el.style.transform = `translate(${x - (rp.left + rp.radius)}px, ${
             y - (rp.top + rp.radius)
           }px) rotate(${el.physics.angle}rad)`;
         });
       }
-
-      requestAnimationFrame(loop);
     }
-    requestAnimationFrame(loop);
+    frame = requestAnimationFrame(loop);
 
     return () => {
       Runner.stop(runner);
+      cancelAnimationFrame(frame);
+      throttledReCreate.cancel();
     };
   });
 </script>
@@ -89,11 +89,11 @@
 <svelte:window
   on:resize={() => {
     elements.forEach((el) => {
-      const rect = getAbsoluteRect(el);
-      el.physics.position.x = rect.cx;
-      el.physics.position.y = rect.cy;
-      el.referencePos = rect;
+      el.physics = null;
+      el.style.transform = null;
+      el.style.opacity = 0;
     });
+    throttledReCreate.exec();
   }}
 />
 
@@ -119,6 +119,8 @@
     min-height: 800px;
 
     position: relative;
+
+    background-color: antiquewhite;
   }
 
   li::selection {
@@ -141,5 +143,6 @@
     align-items: center;
 
     user-select: none;
+    transition: opacity 0.1s;
   }
 </style>
