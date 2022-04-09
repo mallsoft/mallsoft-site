@@ -98,7 +98,7 @@
 />
 
 <ul bind:this={wordBox}>
-  {#each me.keywords as word, i}
+  {#each me.keywords.sort((a, b) => b.length - a.length) as word, i}
     <li bind:this={elements[i]}>
       {word}
     </li>
@@ -113,14 +113,11 @@
     align-items: flex-start;
     flex-wrap: wrap;
 
-    gap: 1ch;
     font-size: 1rem;
     margin-top: 0.9rem;
     min-height: 800px;
 
     position: relative;
-
-    background-color: antiquewhite;
   }
 
   li::selection {
