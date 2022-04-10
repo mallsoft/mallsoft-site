@@ -28,10 +28,7 @@
     // add all balls to the list
     elements.forEach((el) => {
       const rect = getAbsoluteRect(el);
-      el['physics'] = Bodies.circle(rect.cx, rect.cy, rect.radius, {
-        isStatic: false
-      });
-
+      el['physics'] = Bodies.circle(rect.cx, rect.cy, rect.radius);
       el.referencePos = rect;
       bodies.push(el['physics']);
     });
@@ -52,14 +49,12 @@
         x: 0,
         y: -1
       },
-      positionIterations: 6
+      positionIterations: 4
     });
     runner = Runner.create();
 
     const mc = MouseConstraint.create(engine, {
-      constraint: {
-        stiffness: 0.1
-      }
+      mouse: Mouse.create(document.body)
     });
 
     Composite.add(engine.world, getBodies());
@@ -87,6 +82,7 @@
 
     return () => {
       Runner.stop(runner);
+      Composite.clear(engine.world, false);
       cancelAnimationFrame(frame);
       throttledReCreate.cancel();
     };
@@ -134,8 +130,8 @@
     color: var(---c-a2);
   }
   li {
-    color: var(---c-a1);
-    border: 1px dashed var(---c-a2);
+    color: var(---c-bg);
+    background-color: var(---c-b2);
 
     border-radius: 100%;
     padding: 1em;
@@ -149,11 +145,11 @@
     align-items: center;
 
     user-select: none;
-    transition: opacity 0.1s, border-color 0.3s;
+    transition: opacity 0.1s, background-color 2s;
   }
 
   li:hover {
-    transition: opacity 0.1s, border-color 0s;
-    border-color: var(---c-b1);
+    transition: opacity 0.1s, background-color 0s;
+    background-color: var(---c-b1);
   }
 </style>

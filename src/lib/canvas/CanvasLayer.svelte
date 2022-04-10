@@ -92,9 +92,4 @@
     background: rgba(0, 0, 0, 0.5);
     color: white;
   }
-
-  :global(html, body) {
-    margin: 0;
-    overflow: hidden;
-  }
 </style>

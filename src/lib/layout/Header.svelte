@@ -12,7 +12,7 @@
     <a aria-current={$page.url.pathname === '/projects' ? 'page' : null} href="projects">
       Projects
     </a>
-    <a href="mailto:{me.email}?subject=Halais!">Contact</a>
+    <a aria-current={$page.url.pathname === '/contact' ? 'page' : null} href="contact">Contact</a>
   </nav>
 </header>
 

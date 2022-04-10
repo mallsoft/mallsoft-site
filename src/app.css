@@ -52,6 +52,7 @@ body {
 ::selection {
   background-color: var(---c-a1);
   color: var(---c-bg);
+  text-shadow: none;
 }
 
 * {

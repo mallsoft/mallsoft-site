@@ -9,7 +9,7 @@
   <nav>
     <a href="about">About</a>
     <a href="projects">Projects</a>
-    <a href="mailto:{me.email}?subject=Halais!">Contact</a>
+    <a href="contact">Contact</a>
   </nav>
 </article>
 
@@ -29,5 +29,10 @@
   }
   p {
     line-height: 1.1;
+  }
+
+  * {
+    text-shadow: 1px 1px 0 var(---c-bg), -1px -1px 0 var(---c-bg), 1px -1px 0 var(---c-bg),
+      -1px 1px 0 var(---c-bg);
   }
 </style>
