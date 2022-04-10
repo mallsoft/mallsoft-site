@@ -1,7 +1,7 @@
 <script>
   import { me } from '$lib/content';
   import { getAbsoluteRect, Throttle } from '$lib/utils';
-  import { Engine, Runner, Composite, Bodies } from 'matter-js';
+  import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse } from 'matter-js';
   import { onMount } from 'svelte';
 
   let frame;
@@ -31,6 +31,7 @@
       el['physics'] = Bodies.circle(rect.cx, rect.cy, rect.radius, {
         isStatic: false
       });
+
       el.referencePos = rect;
       bodies.push(el['physics']);
     });
@@ -46,17 +47,23 @@
   let engine, runner;
   onMount(() => {
     engine = Engine.create({
-      enableSleeping: false,
+      enableSleeping: true,
       gravity: {
         x: 0,
         y: -1
       },
-      positionIterations: 4
+      positionIterations: 6
     });
     runner = Runner.create();
 
-    // create bounding box
+    const mc = MouseConstraint.create(engine, {
+      constraint: {
+        stiffness: 0.1
+      }
+    });
+
     Composite.add(engine.world, getBodies());
+    Composite.add(engine.world, mc);
 
     Runner.run(runner, engine);
 
@@ -107,6 +114,8 @@
 
 <style>
   ul {
+    overflow: hidden;
+
     padding: 5px;
     display: flex;
     justify-content: flex-start;
@@ -125,8 +134,8 @@
     color: var(---c-a2);
   }
   li {
-    color: var(---c-bg);
-    background-color: var(---c-a2);
+    color: var(---c-a1);
+    border: 1px dashed var(---c-a2);
 
     border-radius: 100%;
     padding: 1em;
@@ -140,6 +149,11 @@
     align-items: center;
 
     user-select: none;
-    transition: opacity 0.1s;
+    transition: opacity 0.1s, border-color 0.3s;
+  }
+
+  li:hover {
+    transition: opacity 0.1s, border-color 0s;
+    border-color: var(---c-b1);
   }
 </style>

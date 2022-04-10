@@ -20,11 +20,16 @@ export const me = {
     'GPT3',
     'React',
     'rollup',
-    'Chart.js',
+    "Matter", 
     'Heroku',
-    'sapper',
+    'Sapper',
+    "Making tea",
+    "Humor",
     'figma',
-    'squidex',
+    'Squidex',
+    'Sentry',
+    "Internet",
+    "Walking",
     'graphql',
     'firebase',
     'Affinity Designer',
@@ -41,7 +46,8 @@ export const me = {
     'Vscode',
     'Git',
     'Azure',
-    'Copilot'
+    'Copilot',
+    "SQL"
   ]
 };
 
