@@ -1,4 +1,6 @@
 <script>
+  import { browser } from '$app/env';
+
   import { me } from '$lib/content';
   import { getAbsoluteRect, Throttle } from '$lib/utils';
   import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse } from 'matter-js';
@@ -41,6 +43,37 @@
     Composite.add(engine.world, getBodies());
   }, 200);
 
+  function addMouse(elem) {
+    const mouse = Mouse.create(elem);
+
+    //monkey patch...
+    Mouse._getRelativeMousePosition = function (event, element, pixelRatio) {
+      let touches = event.changedTouches;
+      let x;
+      let y;
+
+      if (touches) {
+        x = touches[0].pageX;
+        y = touches[0].pageY;
+      } else {
+        x = event.pageX;
+        y = event.pageY;
+      }
+
+      return {
+        x: x,
+        y: y
+      };
+    };
+
+    const mc = MouseConstraint.create(engine, {
+      mouse
+    });
+    Composite.add(engine.world, mc);
+  }
+
+  $: if (!!wordBox) addMouse(wordBox);
+
   let engine, runner;
   onMount(() => {
     engine = Engine.create({
@@ -53,12 +86,7 @@
     });
     runner = Runner.create();
 
-    const mc = MouseConstraint.create(engine, {
-      mouse: Mouse.create(document.body)
-    });
-
     Composite.add(engine.world, getBodies());
-    Composite.add(engine.world, mc);
 
     Runner.run(runner, engine);
 
