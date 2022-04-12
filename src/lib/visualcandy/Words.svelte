@@ -41,6 +41,7 @@
   const throttledReCreate = new Throttle(() => {
     Composite.clear(engine.world, false);
     Composite.add(engine.world, getBodies());
+    addMouse();
   }, 200);
 
   function addMouse(elem) {
