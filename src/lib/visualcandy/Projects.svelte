@@ -59,11 +59,11 @@
     font-size: 55%;
     max-width: 90%;
     height: max-content;
-    color: var(---c-bg);
     opacity: 0;
     text-align: center;
     transform: scale(1.2) translateY(-1em);
     transition: opacity 0.25s, transform 0.1s;
+    color: rgb(225, 225, 225);
   }
 
   p > a > img {
@@ -88,6 +88,7 @@
   }
 
   p > a:is(:active, :hover, :focus) > img {
+    color: white;
     filter: blur(3px) brightness(0.4) grayscale(0.5);
     transition: filter 0.2s;
   }

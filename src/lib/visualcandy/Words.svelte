@@ -1,6 +1,4 @@
 <script>
-  import { browser } from '$app/env';
-
   import { me } from '$lib/content';
   import { getAbsoluteRect, Throttle } from '$lib/utils';
   import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse } from 'matter-js';
@@ -70,24 +68,30 @@
     const mc = MouseConstraint.create(engine, {
       mouse
     });
+    // dont capture mouse scroll plez ...
+    mc.mouse.element.removeEventListener('mousewheel', mc.mouse.mousewheel);
+    mc.mouse.element.removeEventListener('DOMMouseScroll', mc.mouse.mousewheel);
+
     Composite.add(engine.world, mc);
   }
 
-  $: if (!!wordBox) addMouse(wordBox);
-
   let engine, runner;
-  onMount(() => {
+  onMount(async () => {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     engine = Engine.create({
       enableSleeping: true,
       gravity: {
         x: 0,
         y: -1
       },
-      positionIterations: 4
+      positionIterations: 2
     });
     runner = Runner.create();
 
-    Composite.add(engine.world, getBodies());
+    throttledReCreate.exec();
 
     Runner.run(runner, engine);
 
@@ -147,11 +151,12 @@
     align-items: flex-start;
     flex-wrap: wrap;
 
-    font-size: 1rem;
     margin-top: 0.9rem;
     min-height: 800px;
 
-    position: relative;
+    font-size: calc(1vmin + 0.4rem);
+
+    border: 2px dashed var(---c-a2);
   }
 
   li::selection {

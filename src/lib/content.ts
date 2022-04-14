@@ -1,6 +1,5 @@
 export const me = {
   email: 'box@melaa.net',
-  phone: '',
   name: 'Hans',
   keywords: [
     'Node',
@@ -18,16 +17,16 @@ export const me = {
     'GPT3',
     'React',
     'rollup',
-    "Matter", 
+    'Coffee',
     'Heroku',
     'Sapper',
-    "Relaxing",
-    "Humor",
+    'Relaxing',
+    'Humor',
     'figma',
     'Squidex',
     'Sentry',
-    "Internet",
-    "Walking",
+    'Internet',
+    'Bouldering',
     'graphql',
     'firebase',
     'Affinity Designer',
@@ -43,9 +42,7 @@ export const me = {
     'Git',
     'Azure',
     'Copilot',
-    "SQL",
-    "🙂",
-
+    'SQL'
   ]
 };
 

@@ -9,9 +9,6 @@
 </article>
 
 <style>
-  h1 {
-    color: var(---c-a2);
-  }
   h2 {
     font-size: 1em;
     line-height: 1.1;

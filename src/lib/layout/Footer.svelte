@@ -1,24 +1,22 @@
 <script>
-  export let degrees = 0;
+  let degrees = 0;
 </script>
 
 <footer>
-  <section>
-    <p>Current temperature in Bergen {degrees}°C</p>
-  </section>
+  <div>
+    <p />
+  </div>
 </footer>
 
 <style>
-  section {
-    padding: 0.5rem;
-    margin: 0 auto;
-    margin-top: 25vh;
-    margin-bottom: auto;
-    max-width: var(---readwidth);
+  footer {
+    background-color: var(---c-a2);
   }
-
+  div {
+    max-width: var(---readwidth);
+    margin: 0 auto;
+  }
   p {
-    font-family: var(---fontx);
-    font-size: 60%;
+    padding: 1rem;
   }
 </style>

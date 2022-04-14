@@ -17,10 +17,6 @@
 </article>
 
 <style>
-  h1 {
-    color: var(---c-a2);
-  }
-
   p {
     line-height: 1.1;
   }

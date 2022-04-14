@@ -2,7 +2,7 @@
   import { browser } from '$app/env';
   import CanvasLayer from '$lib/canvas/CanvasLayer.svelte';
 
-  export let agents = 2;
+  export let agents = 3;
 
   class Agent {
     respawn(width, height) {

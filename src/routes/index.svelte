@@ -1,5 +1,5 @@
 <script>
-  import { me } from '$lib/content';
+  import Blub from '$lib/visualcandy/Blub.svelte';
 </script>
 
 <article class="default">
@@ -13,6 +13,8 @@
   </nav>
 </article>
 
+<Blub />
+
 <style>
   nav {
     margin-top: 0.45em;
@@ -24,15 +26,7 @@
   a + a {
     margin-left: 0.9em;
   }
-  h1 {
-    color: var(---c-a2);
-  }
   p {
     line-height: 1.1;
-  }
-
-  * {
-    text-shadow: 1px 1px 0 var(---c-bg), -1px -1px 0 var(---c-bg), 1px -1px 0 var(---c-bg),
-      -1px 1px 0 var(---c-bg);
   }
 </style>

@@ -5,6 +5,7 @@
 
   import { projectlog } from '$lib/content';
   import { page } from '$app/stores';
+  // import Footer from '$lib/layout/Footer.svelte';
 </script>
 
 <svelte:head>
@@ -22,3 +23,5 @@
 <Main>
   <slot />
 </Main>
+
+<!-- <Footer /> -->

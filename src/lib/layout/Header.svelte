@@ -1,6 +1,7 @@
 <script>
   import { page } from '$app/stores';
-  import { me } from '$lib/content';
+  import { crossfade } from 'svelte/transition';
+  const [s, r] = crossfade({});
 
   $: index = $page.url.pathname === '/';
 </script>
@@ -18,21 +19,19 @@
 
 <style>
   a {
-    transition: opacity 0.3s ease-in, transform 0.2s ease-in;
+    transition: opacity 0.2s, transform 0.2s ease-in-out;
   }
   .index a {
-    transform: translate(0, -0.45em);
+    transform: translate(0, -3em);
     opacity: 0;
   }
 
   header {
-    max-width: 2560px;
     font-size: 75%;
     font-family: var(---fontx);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
     padding: 0.5rem 1rem;
   }
 

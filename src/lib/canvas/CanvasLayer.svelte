@@ -56,21 +56,23 @@
       throttledResize.cancel();
     };
   });
+
+  console.log('asd');
 </script>
 
-<svelte:window bind:innerWidth bind:innerHeight />
+<svelte:window
+  bind:innerWidth
+  bind:innerHeight
+  on:resize={() => {
+    throttledResize.exec();
+  }}
+/>
 
 {#if debug}
   <pre>{JSON.stringify(debug, null, '').replace(/^{+|}$|/g, '')}</pre>
 {/if}
 
-<canvas
-  on:resize={() => {
-    throttledResize.exec();
-  }}
-  aria-hidden="true"
-  bind:this={canvasElement}
-/>
+<canvas aria-hidden="true" bind:this={canvasElement} />
 
 <style>
   canvas {
