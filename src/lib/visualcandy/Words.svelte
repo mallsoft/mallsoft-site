@@ -39,7 +39,7 @@
   const throttledReCreate = new Throttle(() => {
     Composite.clear(engine.world, false);
     Composite.add(engine.world, getBodies());
-    addMouse();
+    addMouse(wordBox);
   }, 200);
 
   function addMouse(elem) {
@@ -68,7 +68,6 @@
     const mc = MouseConstraint.create(engine, {
       mouse
     });
-    // dont capture mouse scroll plez ...
     mc.mouse.element.removeEventListener('mousewheel', mc.mouse.mousewheel);
     mc.mouse.element.removeEventListener('DOMMouseScroll', mc.mouse.mousewheel);
 
@@ -124,6 +123,7 @@
 
 <svelte:window
   on:resize={() => {
+    if (!engine) return;
     elements.forEach((el) => {
       el.physics = null;
       el.style.transform = null;
@@ -152,7 +152,6 @@
     flex-wrap: wrap;
 
     margin-top: 0.9rem;
-    min-height: 800px;
 
     font-size: calc(1vmin + 0.4rem);
 
