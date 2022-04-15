@@ -38,11 +38,10 @@
     const fov = 70;
     const aspect = innerWidth / innerHeight;
     const near = 0.1;
-    const far = 2.45;
+    const far = 2.55;
 
     //  ---------------------------------------------------------------
-    const initial_radius = 1;
-    const geometry = new IcosahedronGeometry(initial_radius, 1);
+    const geometry = new IcosahedronGeometry(1, 1);
 
     const material = new MeshBasicMaterial({
       side: FrontSide,
