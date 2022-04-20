@@ -46,18 +46,12 @@
     const far = 1000;
 
     //  ---------------------------------------------------------------
-    const geometry_detail = Math.min(Math.max(Math.floor(devicePixelRatio), 1), 3);
-    const geometry = new IcosahedronGeometry(1, geometry_detail);
+    const geometry = new IcosahedronGeometry(1, 1);
 
     const material = new MeshPhongMaterial({
       color: getCanvasElementColorsHex('bg'),
       side: FrontSide,
-      flatShading: true,
-      // shininess: 30,
-      specular: getCanvasElementColorsHex('b1')
-      // emissive: getCanvasElementColorsHex('b2'),
-      // emissiveIntensity: 0.1
-      // wireframe: true
+      flatShading: true
     });
 
     const mesh = new Mesh(geometry, material);
@@ -78,13 +72,6 @@
     const light = new HemisphereLight(0xffffff, 0x888888);
     light.position.set(0, 1, 0.1);
     scene.add(light);
-
-    // const pointLight = new PointLight(0xffffff, 5, 100);
-    // pointLight.position.x = 20;
-    // pointLight.position.y = -100;
-    // pointLight.position.z = 50;
-    // scene.add(pointLight);
-    //  ---------------------------------------------------------------
 
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       renderer.render(scene, camera);
