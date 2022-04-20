@@ -4,9 +4,20 @@
   import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse } from 'matter-js';
   import { onMount } from 'svelte';
 
-  let frame;
-  let wordBox;
+  let frame,
+    wordBox,
+    engine,
+    runner,
+    lastY = 0;
   const elements = [];
+
+  function handleScroll() {
+    if (!engine) return;
+    const delta = window.scrollY - lastY;
+    lastY = window.scrollY;
+
+    engine.world.gravity.y = delta > 0 ? 1 : -1;
+  }
 
   function getBodies() {
     const box = getAbsoluteRect(wordBox);
@@ -74,7 +85,6 @@
     Composite.add(engine.world, mc);
   }
 
-  let engine, runner;
   onMount(async () => {
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       return;
@@ -86,9 +96,14 @@
         x: 0,
         y: -1
       },
-      positionIterations: 2
+      positionIterations: 3, // 6
+      velocityIterations: 2, // 4
+      costraintIterations: 2 // 2
     });
+
     runner = Runner.create();
+    // runner.delta = 8;
+    // runner.isFixed = true;
 
     throttledReCreate.exec();
 
