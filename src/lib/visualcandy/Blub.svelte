@@ -10,8 +10,7 @@
     WebGLRenderer,
     PerspectiveCamera,
     Scene,
-    HemisphereLight,
-    PointLight
+    HemisphereLight
   } from 'three';
 
   export let activated = false;
