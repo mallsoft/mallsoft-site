@@ -5,7 +5,7 @@
 <article class="default">
   <h1>Contact</h1>
   <p>
-    <span>email</span>
-    <a href="mailto:{me.email}?subject=Hello {me.name}!">{me.email}</a>
+    <a href="mailto:{me.email}?subject=Hello {me.name}!">mailto:</a>
+    {me.email}
   </p>
 </article>
