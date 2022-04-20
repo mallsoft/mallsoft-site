@@ -4,7 +4,7 @@
 
 <article class="default">
   <h1>Projects</h1>
-  <h2>I've worked on a number of projects, some of which are listed below</h2>
+  <h2>A sample of projects I have worked on</h2>
   <Projects />
 </article>
 
