@@ -4,28 +4,33 @@
   import {
     Color,
     IcosahedronGeometry,
-    MeshBasicMaterial,
+    MeshPhongMaterial,
     FrontSide,
     Mesh,
     WebGLRenderer,
     PerspectiveCamera,
-    Scene
+    Scene,
+    HemisphereLight,
+    PointLight
   } from 'three';
 
-  let innerHeight,
-    innerWidth,
-    _canvas,
-    throttledResize,
-    x = 0,
-    y = 0,
-    isActive = false;
+  export let activated = false;
+
+  let innerHeight, innerWidth, _canvas, throttledResize;
+  let fx = 0; //-1 to 1
+  let fy = 0; //-1 to 1
+  let activePointer = false;
 
   const inactivate = new Throttle(() => {
-    isActive = false;
+    activePointer = false;
   }, 100);
 
   function getColors(elem, attr) {
     return getComputedStyle(elem).getPropertyValue(attr);
+  }
+
+  function getCanvasElementColorsHex(suffix) {
+    return new Color(getColors(_canvas, '---c-' + suffix)).getHex();
   }
 
   onMount(() => {
@@ -38,15 +43,21 @@
     const fov = 70;
     const aspect = innerWidth / innerHeight;
     const near = 0.1;
-    const far = 2.55;
+    const far = 1000;
 
     //  ---------------------------------------------------------------
-    const geometry = new IcosahedronGeometry(1, 1);
+    const geometry_detail = Math.min(Math.max(Math.floor(devicePixelRatio), 1), 3);
+    const geometry = new IcosahedronGeometry(1, geometry_detail);
 
-    const material = new MeshBasicMaterial({
+    const material = new MeshPhongMaterial({
+      color: getCanvasElementColorsHex('bg'),
       side: FrontSide,
-      color: new Color(getColors(_canvas, 'color')).getHex(),
-      wireframe: true
+      flatShading: true,
+      // shininess: 30,
+      specular: getCanvasElementColorsHex('b1')
+      // emissive: getCanvasElementColorsHex('b2'),
+      // emissiveIntensity: 0.1
+      // wireframe: true
     });
 
     const mesh = new Mesh(geometry, material);
@@ -62,6 +73,18 @@
 
     const scene = new Scene();
     scene.add(mesh);
+    //  ---------------lights------------------------------------------------
+
+    const light = new HemisphereLight(0xffffff, 0x888888);
+    light.position.set(0, 1, 0.1);
+    scene.add(light);
+
+    // const pointLight = new PointLight(0xffffff, 5, 100);
+    // pointLight.position.x = 20;
+    // pointLight.position.y = -100;
+    // pointLight.position.z = 50;
+    // scene.add(pointLight);
+    //  ---------------------------------------------------------------
 
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
       renderer.render(scene, camera);
@@ -70,17 +93,21 @@
     }
 
     function animation(time) {
-      const xOffset = y * Math.PI;
-      const yOffset = -x * Math.PI;
-
-      mesh.rotation.x = time / 8000 + xOffset;
-      mesh.rotation.y = time / 8000 + yOffset;
+      mesh.rotation.x = time / 8000 + fy;
+      mesh.rotation.y = time / 8000 + fx;
       mesh.rotation.z = time / 8000;
 
       renderer.render(scene, camera);
     }
 
+    const handleMMThemeChange = (ev) => {
+      material.color.setHex(getCanvasElementColorsHex('bg'));
+    };
+    const mmTheme = matchMedia('(prefers-color-scheme: dark)');
+    mmTheme.addEventListener('change', handleMMThemeChange);
+
     return () => {
+      mmTheme.removeEventListener('change', handleMMThemeChange);
       inactivate.cancel();
       throttledResize.cancel();
       renderer.dispose();
@@ -94,15 +121,14 @@
   on:resize={() => {
     throttledResize.exec();
   }}
-  on:mousemove={(e) => {
-    x = (e.clientX - innerWidth / 2) / (innerWidth / 2);
-    y = (e.clientY - innerHeight / 2) / (innerHeight / 2);
-    isActive = true;
+  on:mousemove={(ev) => {
+    fx = (ev.clientX - innerWidth / 2) / (innerWidth / 2);
+    fy = (ev.clientY - innerHeight / 2) / (innerHeight / 2);
+    activePointer = true;
     inactivate.exec();
   }}
 />
-
-<canvas class:isActive bind:this={_canvas}>
+<canvas class:activePointer bind:this={_canvas}>
   <p>animated 3d figure, Icosahedron</p>
 </canvas>
 
@@ -114,11 +140,5 @@
     z-index: -1;
     top: 0;
     left: 0;
-    opacity: 0.35;
-    transition: opacity 0.5s ease-in-out;
-  }
-
-  .isActive {
-    opacity: 0.6;
   }
 </style>
