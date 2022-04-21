@@ -140,7 +140,7 @@
           }
         });
       }
-    }, 600);
+    }, 1000);
 
     return () => {
       Runner.stop(runner);
