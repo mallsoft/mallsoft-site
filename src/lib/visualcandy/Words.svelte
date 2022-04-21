@@ -1,7 +1,7 @@
 <script>
   import { me } from '$lib/content';
   import { getAbsoluteRect, Throttle } from '$lib/utils';
-  import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse } from 'matter-js';
+  import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse, Body } from 'matter-js';
   import { onMount } from 'svelte';
 
   let frame,
@@ -91,11 +91,11 @@
     }
 
     engine = Engine.create({
-      enableSleeping: true,
       gravity: {
         x: 0,
         y: -1
       },
+      enableSleeping: true,
       positionIterations: 3, // 6
       velocityIterations: 2, // 4
       costraintIterations: 2 // 2
@@ -127,10 +127,28 @@
     }
     frame = requestAnimationFrame(loop);
 
+    const checkEscapee = setInterval(() => {
+      if (elements.length && elements[0]?.physics) {
+        const rect = getAbsoluteRect(wordBox);
+        elements.forEach((el) => {
+          const { x, y } = el.physics.position;
+
+          if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
+            const id = el.physics.id;
+            const { cx, cy } = el.referencePos;
+            const escapedBody = engine.world.bodies.find((b) => b.id === id);
+            Body.setPosition(escapedBody, { x: cx, y: cy });
+            Body.setVelocity(escapedBody, { x: 0, y: 0 });
+          }
+        });
+      }
+    }, 600);
+
     return () => {
       Runner.stop(runner);
       Composite.clear(engine.world, false);
       cancelAnimationFrame(frame);
+      clearInterval(checkEscapee);
       throttledReCreate.cancel();
     };
   });
@@ -165,6 +183,8 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
+
+    min-height: 200px;
 
     margin-top: 0.9rem;
 
