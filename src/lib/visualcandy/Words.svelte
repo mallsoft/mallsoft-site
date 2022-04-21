@@ -96,8 +96,8 @@
         y: -1
       },
       enableSleeping: true,
-      positionIterations: 3, // 6
-      velocityIterations: 2, // 4
+      positionIterations: 4, // 6
+      velocityIterations: 3, // 4
       costraintIterations: 2 // 2
     });
 
@@ -134,11 +134,9 @@
           const { x, y } = el.physics.position;
 
           if (x < rect.left || x > rect.right || y < rect.top || y > rect.bottom) {
-            const id = el.physics.id;
             const { cx, cy } = el.referencePos;
-            const escapedBody = engine.world.bodies.find((b) => b.id === id);
-            Body.setPosition(escapedBody, { x: cx, y: cy });
-            Body.setVelocity(escapedBody, { x: 0, y: 0 });
+            Body.setPosition(el.physics, { x: cx, y: cy });
+            Body.setVelocity(el.physics, { x: 0, y: 0 });
           }
         });
       }
