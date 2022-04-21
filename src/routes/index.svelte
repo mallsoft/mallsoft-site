@@ -1,36 +1,15 @@
-<script>
-  import Blub from '$lib/visualcandy/Blub.svelte';
-
-  let activated = false;
-
-  function handleActivate(ev) {
-    activated = true;
-  }
-
-  function handleDeactivate(ev) {
-    activated = false;
-  }
-</script>
-
 <article class="default">
   <h1>mallsoft•dev</h1>
   <p>a developer based in Bergen<br />— mostly focused on web and UX</p>
 
   <!-- !!! is svelte not acknowledging focusin and focusout the same as focus/blur? -->
   <!-- svelte-ignore a11y-mouse-events-have-key-events -->
-  <nav
-    on:mouseover={handleActivate}
-    on:mouseout={handleDeactivate}
-    on:focusin={handleActivate}
-    on:focusout={handleDeactivate}
-  >
+  <nav>
     <a href="about">About</a>
     <a href="projects">Projects</a>
     <a href="contact">Contact</a>
   </nav>
 </article>
-
-<Blub bind:activated />
 
 <style>
   nav {

@@ -13,7 +13,7 @@
     HemisphereLight
   } from 'three';
 
-  export let activated = false;
+  // export let activated = false;
 
   let innerHeight, innerWidth, _canvas, throttledResize;
   let fx = 0; //-1 to 1
@@ -54,7 +54,7 @@
     });
 
     const mesh = new Mesh(geometry, material);
-    mesh.position.y = -0.8;
+    mesh.position.y = -1.1;
     mesh.position.z = -3;
 
     //  ---------------------------------------------------------------
@@ -81,7 +81,7 @@
     function animation(time) {
       mesh.rotation.x = time / 8000 + fy;
       mesh.rotation.y = time / 8000 + fx;
-      mesh.rotation.z = time / 8000;
+      mesh.rotation.z = Math.sin(time / 3000);
 
       renderer.render(scene, camera);
     }
