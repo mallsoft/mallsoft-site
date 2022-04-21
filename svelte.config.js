@@ -7,6 +7,9 @@ const dev = process.env.NODE_ENV === 'development';
 const config = {
   preprocess: preprocess(),
   kit: {
+    prerender: {
+      default: true
+    },
     adapter: adapter(),
     paths: {
       base: dev ? '' : '/mallsoft-site'
