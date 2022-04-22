@@ -1,3 +1,6 @@
+import { crossfade } from 'svelte/transition';
+export const [s, r] = crossfade({});
+
 export function getAbsoluteRect(element) {
   const rect = element.getBoundingClientRect();
   return {
