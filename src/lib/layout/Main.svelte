@@ -1,8 +1,3 @@
-<script>
-  // import { page, navigating } from '$app/stores';
-  // $: console.log($page, '-->', $navigating);
-</script>
-
 <main>
   <slot />
 </main>
