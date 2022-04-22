@@ -4,8 +4,9 @@
   import '../app.css';
 
   import { projectlog } from '$lib/content';
-  import { page } from '$app/stores';
-  // import Footer from '$lib/layout/Footer.svelte';
+  import { page, navigating } from '$app/stores';
+
+  // $: console.log($page, '-->', $navigating), console.clear();
 </script>
 
 <svelte:head>
@@ -13,15 +14,17 @@
   <meta name="description" content="mallsoft homepage" />
   <link rel="icon" href="favicon.png" />
 
+  <meta name="theme-color" content="#6b6b6b" />
+
   {#each projectlog as { image }}
     <link rel="preload" href={image} as="image" />
   {/each}
 </svelte:head>
 
-<Header />
+{#key $navigating}
+  <Header />
 
-<Main>
-  <slot />
-</Main>
-
-<!-- <Footer /> -->
+  <Main>
+    <slot />
+  </Main>
+{/key}
