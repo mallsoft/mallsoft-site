@@ -2,8 +2,6 @@
   <h1>mallsoft•dev</h1>
   <p>a developer based in Bergen<br />— mostly focused on web and UX</p>
 
-  <!-- !!! is svelte not acknowledging focusin and focusout the same as focus/blur? -->
-  <!-- svelte-ignore a11y-mouse-events-have-key-events -->
   <nav>
     <a href="about">About</a>
     <a href="projects">Projects</a>
