@@ -4,9 +4,6 @@
   import '../app.css';
 
   import { projectlog } from '$lib/content';
-  import { page, navigating } from '$app/stores';
-
-  // $: console.log($page, '-->', $navigating), console.clear();
 </script>
 
 <svelte:head>
@@ -21,10 +18,8 @@
   {/each}
 </svelte:head>
 
-{#key $navigating}
-  <Header />
+<Header />
 
-  <Main>
-    <slot />
-  </Main>
-{/key}
+<Main>
+  <slot />
+</Main>
