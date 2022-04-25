@@ -4,6 +4,10 @@
   import '../app.css';
 
   import { projectlog } from '$lib/content';
+  import Announcer from '$lib/Announcements/Announcer.svelte';
+  import { messages } from '$lib/Announcements/messages';
+
+  let memes = 0;
 </script>
 
 <svelte:head>
@@ -23,3 +27,15 @@
 <Main>
   <slot />
 </Main>
+
+<Announcer />
+
+<!-- TEST -->
+<svelte:window
+  on:keypress={(ev) => {
+    if (ev.key === 'a') {
+      ev.preventDefault();
+      messages.add('test!', 'test!!!!!' + ++memes);
+    }
+  }}
+/>
