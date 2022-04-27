@@ -31,12 +31,6 @@ export const achievements = [
     name: 'Ball pit',
     description: 'Play with my balls',
     icon: '⚽'
-  },
-  {
-    id: 'firefox',
-    name: 'On fire',
-    description: 'Use Firefox. Smart!',
-    icon: '🔥'
   }
 ];
 
