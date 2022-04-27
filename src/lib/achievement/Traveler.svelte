@@ -4,7 +4,7 @@
 
   function handleMove(ev) {
     $travel++;
-    if ($travel >= 1000) {
+    if ($travel >= 3000) {
       const { id, icon, name, description } = achievements.find(
         (achievement) => achievement.id === 'traveler'
       );
