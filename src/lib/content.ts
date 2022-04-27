@@ -1,7 +1,7 @@
 export const me = {
   email: 'box@melaa.net',
   name: 'Hans',
-  github: 'https://github.com/mallsoft',
+  github: '/mallsoft',
   keywords: [
     'Node',
     'Express',
