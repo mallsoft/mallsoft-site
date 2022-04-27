@@ -4,6 +4,8 @@
   import '../app.css';
 
   import { projectlog } from '$lib/content';
+  import Announcer from '$lib/announcement/Announcer.svelte';
+  import Achievements from '$lib/achievement/Achievements.svelte';
 </script>
 
 <svelte:head>
@@ -23,3 +25,6 @@
 <Main>
   <slot />
 </Main>
+
+<Announcer />
+<Achievements />
