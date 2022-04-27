@@ -8,7 +8,6 @@
 
   function routeChange(pathname) {
     if (!browser) return;
-    console.log('routeChange', pathname);
 
     if ($visits[pathname] !== undefined) {
       $visits[pathname]++;
