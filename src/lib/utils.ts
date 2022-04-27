@@ -1,3 +1,4 @@
+import { browser } from '$app/env';
 import { crossfade } from 'svelte/transition';
 export const [s, r] = crossfade({});
 
@@ -14,6 +15,17 @@ export function getAbsoluteRect(element) {
     height: rect.height,
     radius: (rect.width + rect.height) / 4
   };
+}
+
+export function saveLocal(key, value) {
+  if (!browser) return;
+  localStorage.setItem(key, btoa(JSON.stringify(value)));
+}
+
+export function loadLocal(key) {
+  if (!browser) return;
+  const value = localStorage.getItem(key);
+  return value ? JSON.parse(atob(value)) : null;
 }
 
 export class Throttle {

@@ -4,10 +4,8 @@
   import '../app.css';
 
   import { projectlog } from '$lib/content';
-  import Announcer from '$lib/Announcements/Announcer.svelte';
-  import { messages } from '$lib/Announcements/messages';
-
-  let memes = 0;
+  import Announcer from '$lib/announcement/Announcer.svelte';
+  import Achievements from '$lib/achievement/Achievements.svelte';
 </script>
 
 <svelte:head>
@@ -29,13 +27,4 @@
 </Main>
 
 <Announcer />
-
-<!-- TEST -->
-<svelte:window
-  on:keypress={(ev) => {
-    if (ev.key === 'a') {
-      ev.preventDefault();
-      messages.add('test!', 'test!!!!!' + ++memes);
-    }
-  }}
-/>
+<Achievements />

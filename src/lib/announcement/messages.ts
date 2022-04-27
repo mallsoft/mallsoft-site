@@ -5,10 +5,10 @@ function createAnnouncementsStore(maxLength = 4) {
   return {
     set,
     subscribe,
-    add: (title, description, ttl = 2500) =>
+    add: (icon, title, description, ttl = 3000) =>
       update((m) => {
         m.length >= maxLength && m.shift();
-        return [...m, { title, description, ttl: ttl + Date.now() }];
+        return [...m, { icon, title, description, ttl: ttl + Date.now() }];
       }),
     clearOld: () => update((m) => (m.length ? m.filter((m) => m.ttl > Date.now()) : [])),
     remove: (msg) => update((m) => (m.length ? m.filter((x) => x !== msg) : []))
