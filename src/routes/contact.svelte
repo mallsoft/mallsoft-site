@@ -1,11 +1,6 @@
 <script>
-  // import { messages } from '$lib/announcement/messages';
   import { me } from '$lib/content';
-
-  // function copyToClip(value) {
-  //   navigator.clipboard.writeText(value);
-  //   messages.add('✂', 'Copy that!', `(${value}) copied to clipboard`, 1300);
-  // }
+  import Unlocked from '$lib/visualcandy/unlocked.svelte';
 </script>
 
 <article class="default">
@@ -17,6 +12,8 @@
     <a href="https://github.com{me.github}">github:</a><span>{me.github}</span>
   </p>
 </article>
+
+<Unlocked />
 
 <style>
   span {
