@@ -34,6 +34,13 @@ export const achievements = [
   }
 ];
 
+const defaultState = {
+  unlocked: [],
+  travel: 0,
+  clicks: 0,
+  visits: { '/about': 0, '/projects': 0, '/contact': 0 }
+};
+
 const store_key = '_achievements';
 
 export function saveAll() {
@@ -57,7 +64,14 @@ export function loadAll() {
   }
 }
 
-export const unlocked = writable([]);
-export const travel = writable(0);
-export const clicks = writable(0);
-export const visits = writable({ '/about': 0, '/projects': 0, '/contact': 0 });
+export function resetAll() {
+  unlocked.set(defaultState.unlocked);
+  travel.set(defaultState.travel);
+  clicks.set(defaultState.clicks);
+  visits.set(defaultState.visits);
+}
+
+export const unlocked = writable(defaultState.unlocked);
+export const travel = writable(defaultState.travel);
+export const clicks = writable(defaultState.clicks);
+export const visits = writable(defaultState.visits);
