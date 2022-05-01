@@ -29,7 +29,7 @@ export const achievements = [
   {
     id: 'physics',
     name: 'Ball pit',
-    description: 'Play with my balls',
+    description: 'Play around with physics',
     icon: '⚽'
   }
 ];
