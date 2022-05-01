@@ -2,13 +2,22 @@
   import { page } from '$app/stores';
   import { messages } from '$lib/announcement/messages';
   import { onMount } from 'svelte';
-  import { achievements, loadAll, saveAll, unlocked } from './achievementStores';
+  import { achievements, loadAll, resetAll, saveAll, unlocked } from './achievementStores';
   import Clicker from './Clicker.svelte';
   import Duediligence from './Duediligence.svelte';
   import Physics from './Physics.svelte';
   import Traveler from './Traveler.svelte';
 
-  $: onMount(() => {
+  function clearAchievements() {
+    resetAll();
+    saveAll();
+    messages.add('', 'Achievements cleared', '', 1000);
+  }
+
+  onMount(() => {
+    // @ts-ignore - add achievement clearing to the global window scope ...
+    window.clearAchievements = clearAchievements;
+
     loadAll();
     if (!$unlocked.length) {
       const { id, icon, name, description } = achievements.find(

@@ -1,5 +1,7 @@
 import { browser } from '$app/env';
 import { crossfade } from 'svelte/transition';
+import { messages } from '$lib/announcement/messages';
+
 export const [s, r] = crossfade({});
 
 export function getAbsoluteRect(element) {
@@ -15,6 +17,13 @@ export function getAbsoluteRect(element) {
     height: rect.height,
     radius: (rect.width + rect.height) / 4
   };
+}
+
+export function toClipboard(text, announce = true) {
+  navigator.clipboard.writeText(text);
+  if (announce) {
+    messages.add('✂', 'Copy that!', `(${text}) copied to clipboard`, 1300);
+  }
 }
 
 export function saveLocal(key, value) {

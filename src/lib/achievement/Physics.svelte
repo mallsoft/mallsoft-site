@@ -26,7 +26,7 @@
       currentTargetIsBall = false;
       plays++;
     }
-    if (plays > 4) {
+    if (plays === 3) {
       const { id, icon, name, description } = achievements.find(
         (achievement) => achievement.id === 'physics'
       );
@@ -36,4 +36,4 @@
   }
 </script>
 
-<svelte:window on:mousedown={handleDown} on:mouseup={handleUp} on:mousemove={handleMove} />
+<svelte:window on:pointerdown={handleDown} on:pointerup={handleUp} on:pointermove={handleMove} />
