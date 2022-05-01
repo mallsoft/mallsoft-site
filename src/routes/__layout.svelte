@@ -6,6 +6,9 @@
   import { projectlog } from '$lib/content';
   import Announcer from '$lib/announcement/Announcer.svelte';
   import Achievements from '$lib/achievement/Achievements.svelte';
+  import { dev } from '$app/env';
+
+  if (!dev) console.log('%c🧐', 'font-size: 20em;');
 </script>
 
 <svelte:head>
