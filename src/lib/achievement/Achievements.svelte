@@ -6,6 +6,7 @@
   import Clicker from './Clicker.svelte';
   import Duediligence from './Duediligence.svelte';
   import Physics from './Physics.svelte';
+  import Responsive from './Responsive.svelte';
   import Traveler from './Traveler.svelte';
 
   function clearAchievements() {
@@ -50,4 +51,8 @@
 
 {#if !$unlocked?.includes('physics') && $page.url.pathname === '/about'}
   <Physics />
+{/if}
+
+{#if !$unlocked?.includes('responsive')}
+  <Responsive />
 {/if}
