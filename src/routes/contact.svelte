@@ -1,6 +1,6 @@
 <script>
   import { me } from '$lib/content';
-  import Unlocked from '$lib/visualcandy/unlocked.svelte';
+  import Unlocked from '$lib/visualcandy/Unlocked.svelte';
 </script>
 
 <article class="default">
@@ -12,12 +12,25 @@
     <a href="https://github.com{me.github}">github:</a><span>{me.github}</span>
   </p>
 </article>
-
-<Unlocked />
+<div>
+  <a href="/achievements">Achievements</a>
+</div>
 
 <style>
   span {
     margin-left: 0.5em;
     user-select: all;
+  }
+
+  div {
+    width: 100%;
+    max-width: var(---readwidth);
+  }
+  div a {
+    font-size: smaller;
+    color: var(---c-a2);
+  }
+  div a:hover {
+    color: var(---c-b1);
   }
 </style>
