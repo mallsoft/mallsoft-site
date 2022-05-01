@@ -23,6 +23,10 @@
 {/if}
 
 <style>
+  ul,
+  p {
+    font-size: smaller;
+  }
   ul {
     margin: 1em 0;
   }

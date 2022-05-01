@@ -31,6 +31,12 @@ export const achievements = [
     name: 'Ball pit',
     description: 'Play around with physics',
     icon: '⚽'
+  },
+  {
+    id: 'responsive',
+    name: 'Responsible',
+    description: 'Check responsiveness',
+    icon: '💻'
   }
 ];
 
