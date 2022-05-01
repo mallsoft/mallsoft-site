@@ -4,7 +4,8 @@
 
   function handleMove(ev) {
     $travel++;
-    if ($travel >= 3000) {
+    console.log('travel', $travel);
+    if ($travel >= 5000) {
       const { id, icon, name, description } = achievements.find(
         (achievement) => achievement.id === 'traveler'
       );
@@ -15,4 +16,4 @@
   }
 </script>
 
-<svelte:window on:mousemove={handleMove} />
+<svelte:window on:pointermove={handleMove} />
