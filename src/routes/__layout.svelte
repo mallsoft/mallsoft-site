@@ -34,7 +34,7 @@ If you havent already, you should try running lighthouse on this site!`,
     console.groupEnd();
     console.groupCollapsed('Repository');
     console.info(
-      `%cSource code for this site: [${me.repoUrl}](mallsoft-site)
+      `%cSource code for this site: ${me.repoUrl}
 
 Feel free to make an issue if you find any broken bits or have any suggestions.`,
       styleStr
