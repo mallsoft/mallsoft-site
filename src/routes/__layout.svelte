@@ -3,7 +3,7 @@
   import Header from '$lib/layout/Header.svelte';
   import '../app.css';
 
-  import { me, projectlog } from '$lib/content';
+  import { me } from '$lib/content';
   import Announcer from '$lib/announcement/Announcer.svelte';
   import Achievements from '$lib/achievement/Achievements.svelte';
   import { browser, dev } from '$app/env';
@@ -61,10 +61,6 @@ Feel free to make an issue if you find any broken bits or have any suggestions.`
   <link rel="icon" href="favicon.png" />
 
   <meta name="theme-color" content="#6b6b6b" />
-
-  {#each projectlog as { image }}
-    <link rel="preload" href={image} as="image" />
-  {/each}
 </svelte:head>
 
 <Header />

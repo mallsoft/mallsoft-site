@@ -7,13 +7,25 @@
 </script>
 
 <header class:index>
-  <a aria-current={$page.url.pathname === '/' ? 'page' : null} href=".">mallsoft•dev</a>
+  <a sveltekit:prefetch aria-current={$page.url.pathname === '/' ? 'page' : null} href="."
+    >mallsoft•dev</a
+  >
   <nav>
-    <a aria-current={$page.url.pathname === '/about' ? 'page' : null} href="about">About</a>
-    <a aria-current={$page.url.pathname === '/projects' ? 'page' : null} href="projects">
-      Projects
-    </a>
-    <a aria-current={$page.url.pathname === '/contact' ? 'page' : null} href="contact">Contact</a>
+    <a
+      sveltekit:prefetch
+      aria-current={$page.url.pathname === '/about' ? 'page' : null}
+      href="about">About</a
+    >
+    <a
+      sveltekit:prefetch
+      aria-current={$page.url.pathname === '/projects' ? 'page' : null}
+      href="projects">Projects</a
+    >
+    <a
+      sveltekit:prefetch
+      aria-current={$page.url.pathname === '/contact' ? 'page' : null}
+      href="contact">Contact</a
+    >
   </nav>
 </header>
 
