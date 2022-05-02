@@ -9,36 +9,19 @@
   import { browser, dev } from '$app/env';
 
   if (!dev && browser) {
-    const styleStr = `
-    display: block;
-    border-radius: 0.5em;
-    line-height: 1.6;
-    font-size: 1.5em; 
-    padding: 1.5em 2em;
-    margin: 1em;
-    background-color: hsl(240, 10%, 15%);
-    color: hsl(240, 10%, 90%);
-    border: 1px solid hsl(240, 10%, 30%);
-    `;
+    const styleStrings = [`font-size: 2em;`, `font-size: 1.2em;`];
 
-    console.log('%c🧐 Hi there!', 'font-size: 2em;');
-    console.groupCollapsed('About');
     console.info(
-      `%cThis page exists because I needed a homepage and a place to experiment.
-It's hosted on Netlify and built with svelte/svelteKit.
+      `
+%c🧐 Hi there!
+%cThis page exists because I needed a homepage and a place to experiment,
+it's hosted on Netlify and built with svelte/svelteKit.
 
-If you havent already, you should try running lighthouse on this site!`,
-      styleStr
+Repo: ${me.repoUrl}
+Feel free to make an issue if you find any broken bits or have any suggestions.
+ `,
+      ...styleStrings
     );
-    console.groupEnd();
-    console.groupCollapsed('Repository');
-    console.info(
-      `%cSource code for this site: ${me.repoUrl}
-
-Feel free to make an issue if you find any broken bits or have any suggestions.`,
-      styleStr
-    );
-    console.groupEnd();
   }
 </script>
 
