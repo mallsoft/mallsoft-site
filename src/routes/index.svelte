@@ -3,9 +3,9 @@
   <p>a developer based in Bergen<br />— mostly focused on web and UX</p>
 
   <nav>
-    <a href="about">About</a>
-    <a href="projects">Projects</a>
-    <a href="contact">Contact</a>
+    <a href="about" sveltekit:prefetch>About</a>
+    <a href="projects" sveltekit:prefetch>Projects</a>
+    <a href="contact" sveltekit:prefetch>Contact</a>
   </nav>
 </article>
 

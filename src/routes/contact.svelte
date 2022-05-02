@@ -27,7 +27,7 @@
     max-width: var(---readwidth);
   }
   div a {
-    font-size: smaller;
+    font-size: 0.6em;
     color: var(---c-a2);
   }
   div a:hover {
