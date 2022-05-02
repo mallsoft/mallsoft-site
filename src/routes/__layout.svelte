@@ -24,9 +24,8 @@
     console.log('%c🧐 Hi there!', 'font-size: 2em;');
     console.groupCollapsed('About');
     console.info(
-      `%cThis page exists because I wanted a site that runs "in production", 
-and that could act as a platform for experimentation.
-It is hosted on Netlify and buit with svelte/svelteKit.
+      `%cThis page exists because I needed a homepage and a place to experiment.
+It's hosted on Netlify and built with svelte/svelteKit.
 
 If you havent already, you should try running lighthouse on this site!`,
       styleStr
