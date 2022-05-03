@@ -4,20 +4,8 @@
   import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse, Body } from 'matter-js';
   import { onMount } from 'svelte';
 
-  let frame,
-    wordBox,
-    engine,
-    runner,
-    lastY = 0;
+  let frame, wordBox, engine, runner;
   const elements = [];
-
-  function handleScroll() {
-    if (!engine) return;
-    const delta = window.scrollY - lastY;
-    lastY = window.scrollY;
-
-    engine.world.gravity.y = delta > 0 ? 1 : -1;
-  }
 
   function getBodies() {
     const box = getAbsoluteRect(wordBox);
@@ -163,10 +151,14 @@
     throttledReCreate.exec();
   }}
 />
-
 <ul bind:this={wordBox}>
   {#each me.keywords.sort((a, b) => b.length - a.length) as word, i}
-    <li bind:this={elements[i]}>
+    <li
+      bind:this={elements[i]}
+      on:pointerdown={() => {
+        Body.setAngle(elements[i].physics, 0);
+      }}
+    >
       {word}
     </li>
   {/each}
@@ -196,13 +188,16 @@
     color: var(---c-a2);
   }
   li {
-    color: var(---c-bg);
     background-color: var(---c-b2);
+    color: var(---c-bg);
 
     border-radius: 100%;
     padding: 1em;
 
     text-align: center;
+    letter-spacing: 0.1em;
+    font-weight: bold;
+
     width: min-content;
     aspect-ratio: 1/1;
 
@@ -211,11 +206,10 @@
     align-items: center;
 
     user-select: none;
-    transition: opacity 0.1s, background-color 2s;
+    transition: transform 0.05s, background-color 0.1s;
   }
 
   li:hover {
-    transition: opacity 0.1s, background-color 0s;
     background-color: var(---c-b1);
   }
 </style>
