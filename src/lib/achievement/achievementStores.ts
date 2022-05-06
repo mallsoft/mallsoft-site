@@ -11,7 +11,7 @@ export const achievements = [
   {
     id: 'traveler',
     name: 'Traveler',
-    description: 'Move mouse 5000px on page',
+    description: 'Move mouse 100 million pixels on the site',
     icon: '🚗'
   },
   {
