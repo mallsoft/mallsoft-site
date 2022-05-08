@@ -19,3 +19,17 @@
 {#if dev}
   <pre>{message}</pre>
 {/if}
+{#if status !== 404}
+  <img src="error.webp" alt="bleerp cat" />
+{/if}
+
+<style>
+  img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+    max-width: 50vw;
+    max-height: 50vh;
+  }
+</style>
