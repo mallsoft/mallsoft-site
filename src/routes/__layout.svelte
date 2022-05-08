@@ -13,6 +13,7 @@
   onMount(() => {
     prefetch('/projects');
     prefetch('/about');
+    prefetch('/contact');
   });
 </script>
 
