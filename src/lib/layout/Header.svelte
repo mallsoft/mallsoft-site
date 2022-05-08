@@ -30,11 +30,11 @@
 </header>
 
 <style>
-  a {
-    transition: opacity 0.2s, transform 0.2s ease-in-out;
+  header {
+    transition: opacity 0.15s, transform 0.1s ease-out;
   }
-  .index a {
-    transform: translate(0, -3em);
+  header:not(:hover).index {
+    transform: translate(0, -110%);
     opacity: 0;
   }
 
