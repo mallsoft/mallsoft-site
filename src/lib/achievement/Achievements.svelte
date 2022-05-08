@@ -20,14 +20,17 @@
     window.clearAchievements = clearAchievements;
 
     loadAll();
-    if (!$unlocked.length) {
-      const { id, icon, name, description } = achievements.find(
-        (achievement) => achievement.id === 'first'
-      );
 
-      $unlocked = [id];
-      messages.add(icon, 'Achievement! "' + name + '"', description);
-    }
+    // disable first visit achievement
+
+    // if (!$unlocked.length) {
+    //   const { id, icon, name, description } = achievements.find(
+    //     (achievement) => achievement.id === 'first'
+    //   );
+
+    //   $unlocked = [id];
+    //   messages.add(icon, 'Achievement! "' + name + '"', description);
+    // }
 
     const saver = setInterval(saveAll, 1000);
 
