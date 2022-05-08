@@ -1,3 +1,23 @@
+<script context="module">
+  import { browser } from '$app/env';
+  import { projectlog } from '$lib/content';
+  export async function load() {
+    if (browser) {
+      await Promise.all(
+        projectlog.map(({ image }) => {
+          return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve();
+            img.onerror = (e) => reject(e);
+            img.src = image;
+          });
+        })
+      );
+    }
+    return { status: 200 };
+  }
+</script>
+
 <script>
   import Projects from '$lib/visualcandy/Projects.svelte';
 </script>
