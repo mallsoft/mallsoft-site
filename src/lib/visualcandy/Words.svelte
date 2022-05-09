@@ -206,10 +206,14 @@
     align-items: center;
 
     user-select: none;
+    cursor: grab;
     transition: transform 0.05s, background-color 0.1s;
   }
 
   li:hover {
     background-color: var(---c-b1);
+  }
+  li:active {
+    cursor: grabbing;
   }
 </style>
