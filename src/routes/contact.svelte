@@ -1,6 +1,5 @@
 <script>
   import { me } from '$lib/content';
-  import Unlocked from '$lib/visualcandy/Unlocked.svelte';
 </script>
 
 <article class="default">

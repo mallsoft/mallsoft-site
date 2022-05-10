@@ -25,11 +25,11 @@ Feel free to make an issue if you find any broken bits or have any suggestions.
   <meta property="og:url" content="https://mallsoft.dev/" />
   <meta property="og:description" content="mallsoft • dev - developer and designer" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="/opengraph.jpg" />
+  <meta property="og:image" content="/meta/opengraph.jpg" />
 
   <meta name="twitter:title" content="mallsoft" />
   <meta name="twitter:description" content="mallsoft • dev - developer and designer" />
-  <meta name="twitter:image" content="/opengraph.jpg" />
+  <meta name="twitter:image" content="/meta/opengraph.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <title>mallsoft</title>
