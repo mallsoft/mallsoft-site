@@ -4,7 +4,7 @@
 
   onMount(() => {
     const name = generateName();
-    const socket = new WebSocket('ws://localhost:8080', 'spagetti');
+    const socket = new WebSocket('ws://localhost:8080/ws', 'spagetti');
 
     socket.onerror = (event) => {
       console.log('error: ', event);
