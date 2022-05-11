@@ -36,7 +36,6 @@
   "dependencies": {
     "@fontsource/space-grotesk": "^4.5.5",
     "@fontsource/space-mono": "^4.5.5",
-    "@lukeed/uuid": "^2.0.0",
-    "cookie": "^0.4.1"
+    "sockjs-client": "^1.6.0"
   }
 }

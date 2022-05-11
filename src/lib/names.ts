@@ -1,0 +1,96 @@
+export const names: string[] = [
+  'alligator',
+  'ant',
+  'bear',
+  'bee',
+  'bird',
+  'camel',
+  'cat',
+  'chicken',
+  'cow',
+  'crocodile',
+  'deer',
+  'dog',
+  'dolphin',
+  'duck',
+  'eagle',
+  'elephant',
+  'fish',
+  'fox',
+  'frog',
+  'giraffe',
+  'goat',
+  'gorilla',
+  'hamster',
+  'horse',
+  'kangaroo',
+  'kitten',
+  'lion',
+  'lizard',
+  'monkey',
+  'octopus',
+  'owl',
+  'pig',
+  'puppy',
+  'rabbit',
+  'rat',
+  'rhino',
+  'seal',
+  'shark',
+  'sheep',
+  'snake',
+  'spider',
+  'squirrel',
+  'tiger',
+  'turtle',
+  'wolf',
+  'zebra'
+];
+
+export const colors: string[] = [
+  'red',
+  'orange',
+  'yellow',
+  'green',
+  'blue',
+  'indigo',
+  'violet',
+  'gray',
+  'brown',
+  'pink',
+  'purple',
+  'magenta',
+  'cyan',
+  'turquoise'
+];
+
+export const adjectives: string[] = [
+  'adorable',
+  'adventurous',
+  'aggressive',
+  'agile',
+  'alert',
+  'ambitious',
+  'amusing',
+  'angry',
+  'annoying',
+  'anxious',
+  'arrogant',
+  'ashamed',
+  'attractive',
+  'average',
+  'awesome',
+  'awful',
+  'bad',
+  'beautiful',
+  'bewildered',
+  'big',
+  'bitter'
+];
+
+export const generateName = (): string => {
+  const animal = names[Math.floor(Math.random() * names.length)];
+  const color = colors[Math.floor(Math.random() * colors.length)];
+  const adjective = adjectives[Math.floor(Math.random() * adjectives.length)];
+  return `${adjective} ${color} ${animal}`;
+};
