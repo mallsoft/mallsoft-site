@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import { messages } from '$lib/announcement/messages';
   import { onMount } from 'svelte';
-  import { achievements, loadAll, resetAll, saveAll, unlocked } from './achievementStores';
+  import { loadAll, resetAll, saveAll, unlocked } from './achievementStores';
   import Clicker from './Clicker.svelte';
   import Duediligence from './Duediligence.svelte';
   import Physics from './Physics.svelte';
@@ -20,17 +20,6 @@
     window.clearAchievements = clearAchievements;
 
     loadAll();
-
-    // disable first visit achievement
-
-    // if (!$unlocked.length) {
-    //   const { id, icon, name, description } = achievements.find(
-    //     (achievement) => achievement.id === 'first'
-    //   );
-
-    //   $unlocked = [id];
-    //   messages.add(icon, 'Achievement! "' + name + '"', description);
-    // }
 
     const saver = setInterval(saveAll, 1000);
 
