@@ -14,7 +14,15 @@
     };
 
     socket.onmessage = (event) => {
-      console.log('in: ', event.data);
+      // console.log('in: ', event.data);
+      const validMessage = new RegExp('^[0-9]{1,4},[0-9]{1,4}/[a-z]{0,20}$');
+      if (!event.data.match(validMessage)) {
+        console.log('invalid message');
+        return;
+      }
+      const [x, y, path] = event.data.split(/,|\//);
+
+      console.log('x: ', x, 'y: ', y, 'path: ', path ? path : 'index');
     };
 
     return socket;
@@ -42,7 +50,7 @@
       setTimeout(() => {
         waiting = false;
         sendUpdate(event.clientX, event.clientY);
-      }, 300);
+      }, 50);
     }
   }
 </script>
