@@ -11,7 +11,7 @@
     I like creating pragmatic and functional <b>story first</b> solutions
   </p>
   <section>
-    <h2>Things I know</h2>
+    <h2>Tricks of my trade</h2>
     <Words />
   </section>
 </article>
