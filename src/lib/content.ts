@@ -107,7 +107,7 @@ export const projectlog = [
   },
   {
     title: 'Melaa.net',
-    description: 'Early website for me in vanilla js, html and css',
+    description: 'Early website for me in vanilla js, html, css and a touch of php',
     link: 'https://melaa.net/',
     image: 'projectimage/melaanet.webp',
     alt: 'melaa.net faximile'
