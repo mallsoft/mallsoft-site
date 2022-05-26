@@ -18,7 +18,6 @@
   });
 </script>
 
-<Wscord />
 <Meta />
 
 <FullscreenLoader />
@@ -30,3 +29,5 @@
 
 <Announcer />
 <Achievements />
+
+<Wscord />
