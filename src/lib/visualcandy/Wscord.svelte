@@ -1,5 +1,6 @@
 <script>
   import { dev } from '$app/env';
+  import { onMount } from 'svelte';
 
   let ws;
   let cursors = [];
@@ -46,7 +47,7 @@
     };
 
     socket.onmessage = (event) => {
-      const validIncomingMessage = /^[a-z]{2,20},[0-9]{1,6},[0-9]{1,6}$/;
+      const validIncomingMessage = /^[a-z]{2,20}#[0-9]{1,3},[0-9]{1,6},[0-9]{1,6}$/;
       if (!event.data.match(validIncomingMessage)) {
         console.error('invalid message');
         if (dev) {
@@ -117,15 +118,27 @@
   function handleMouseMove(ev) {
     posUpdate(ev.clientX, ev.clientY);
   }
+
+  onMount(() => {
+    if (!ws) {
+      ws = loadSocket();
+    }
+
+    return () => {
+      ws.close();
+      cursors = [];
+    };
+  });
 </script>
 
 <svelte:window on:mousemove={handleMouseMove} />
-{#if cursors.length}
+{#if cursors.length > 1}
   <ul aria-hidden="true">
     {#each cursors as { name, x, y, alive }}
+      {@const [n, id] = name.split('#')}
       {#if alive}
-        <li style:--rx="{x}px" style:--ry="{y}px">
-          {name}
+        <li style:--rx="{x}px" style:--ry="{y}px" style:--hue={Math.random() * 360}>
+          <span>{n}</span>
         </li>
       {/if}
     {/each}
@@ -151,8 +164,40 @@
 
     transition: top 0.1s, left 0.1s;
 
-    font-size: 0.6em;
+    transform: translate(0.6em, calc(-100% - 0.6em));
 
-    transform: translate(0.25em, calc(-100% - 0.25em));
+    font-size: 0.5em;
+    color: var(---c-a2);
+
+    animation: fadein 0.7s;
+  }
+
+  li > span {
+    opacity: 0.3;
+  }
+
+  li::after {
+    content: '';
+    position: absolute;
+    top: 1.45em;
+    left: -1em;
+    width: 0.8em;
+    height: 0.8em;
+
+    border-radius: 100px;
+
+    opacity: 0.5;
+
+    background: var(---c-a2);
+    border: 2px solid hsl(var(--hue), 100%, 50%);
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>

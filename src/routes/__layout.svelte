@@ -9,7 +9,6 @@
   import FullscreenLoader from '$lib/layout/FullscreenLoader.svelte';
   import { prefetch } from '$app/navigation';
   import { onMount } from 'svelte';
-  import Wscord from '$lib/Wscord.svelte';
 
   onMount(() => {
     prefetch('/projects');
@@ -29,5 +28,3 @@
 
 <Announcer />
 <Achievements />
-
-<Wscord />
