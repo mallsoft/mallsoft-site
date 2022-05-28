@@ -1,3 +1,7 @@
+<script>
+  import Wscord from '$lib/visualcandy/Wscord.svelte';
+</script>
+
 <article class="default">
   <h1>mallsoft•dev</h1>
   <p>a developer based in Bergen<br />— mostly focused on web and UX</p>
@@ -8,6 +12,8 @@
     <a href="contact" sveltekit:prefetch>Contact</a>
   </nav>
 </article>
+
+<Wscord />
 
 <style>
   nav {
