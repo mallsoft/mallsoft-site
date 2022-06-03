@@ -183,14 +183,7 @@
     border: 2px dashed var(---c-a2);
   }
 
-  li::selection {
-    background: var(---c-bg);
-    color: var(---c-a2);
-  }
   li {
-    background-color: var(---c-b2);
-    color: var(---c-bg);
-
     border-radius: 100%;
     padding: 1em;
 
@@ -207,11 +200,15 @@
 
     user-select: none;
     cursor: grab;
-    transition: transform 0.05s, background-color 0.1s;
+
+    transition: transform 0.05s, background-color 0.2s;
+
+    background-color: var(---c-a1);
+    color: var(---c-bg);
   }
 
   li:hover {
-    background-color: var(---c-b1);
+    background-color: var(---c-b2);
   }
   li:active {
     cursor: grabbing;
