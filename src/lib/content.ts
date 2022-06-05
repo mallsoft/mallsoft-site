@@ -50,7 +50,7 @@ export const me = {
 
 export const projectlog = [
   {
-    title: 'Gallery',
+    title: 'Sunniva.gallery',
     description: 'A gallery site for Sunniva Tvedt artwork',
     link: 'https://sunniva.gallery',
     image: 'projectimage/Sunnivagallery.webp',
