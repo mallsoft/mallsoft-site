@@ -19,7 +19,7 @@
 </script>
 
 <script>
-  import Projects from '$lib/visualcandy/projects/Projects.svelte';
+  import Projects from '$lib/visualcandy/Projects.svelte';
 </script>
 
 <article class="default">
