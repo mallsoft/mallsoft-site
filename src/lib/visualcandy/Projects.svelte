@@ -2,107 +2,123 @@
   import { projectlog } from '$lib/content';
 </script>
 
-<div>
-  <ul>
-    {#each projectlog as { title, description, image, link, alt }}
-      <li>
-        <a href={link} target="_blank">
-          <img src={image} {alt} />
-        </a>
-      </li>
-    {/each}
-  </ul>
-</div>
+<p>
+  {#each projectlog as { title, description, image, link }}
+    <a href={link} target="_blank">
+      <img src={image} alt={title} />
+      <span>{description}</span>
+    </a>
+  {/each}
+</p>
+
+<svg clip-rule="evenodd" width="0" height="0" style="position: absolute;" aria-hidden="true">
+  <clipPath id="squircle" clipPathUnits="objectBoundingBox">
+    <path
+      transform="scale(0.01)"
+      d="M6 6c7-8 81-8 88 0 8 7 8 81 0 88-7 8-81 8-88 0-8-7-8-81 0-88Z"
+    />
+  </clipPath>
+</svg>
 
 <style>
-  div {
+  p {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1rem;
+    margin-top: 0.9em;
+  }
+
+  p > a {
+    --blur: 7px;
+    --blur2: 0.4px;
+    --color: rgba(0, 0, 0, 0.25);
+    --color2: rgba(255, 255, 255, 0.3);
+    filter: drop-shadow(2px 2px var(--blur2) var(--color2))
+      drop-shadow(-2px -2px var(--blur2) var(--color2))
+      drop-shadow(5px 5px var(--blur) var(--color));
+
+    outline: none;
+    transition: filter 0.2s;
+
     display: flex;
-
-    margin: 0 auto;
-    margin-top: 1em;
-
-    --s: calc(14vw - 10px);
-    --m: 8px;
-    --f: calc(1.732 * var(--s) + 4 * var(--m));
-
-    max-width: calc((var(--s) + var(--m)) * 4.5);
+    align-items: center;
+    justify-content: center;
   }
 
-  ul {
-    font-size: 0;
+  p > a > span {
+    font-style: italic;
+    position: absolute;
+    display: block;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    font-size: 55%;
+    max-width: 90%;
+    height: max-content;
+    opacity: 0;
+    text-align: center;
+    transform: scale(1.2) translateY(-1em);
+    transition: opacity 0.25s, transform 0.1s;
+    color: rgb(225, 225, 225);
   }
 
-  ul::before {
-    content: '';
-    width: calc(var(--s) / 2 + var(--m));
-    float: left;
-    height: 120%;
-
-    margin-top: -30px;
-    shape-outside: repeating-linear-gradient(transparent 0 calc(var(--f) - 3px), #000 0 var(--f));
-
-    /* background: repeating-linear-gradient(red 0 calc(var(--f) - 1px), #000 0 var(--f)); */
-  }
-
-  li {
-    display: inline-block;
-
-    overflow: hidden;
-
-    width: var(--s);
-    height: calc(var(--s) * 1.1547);
-    font-size: initial;
-    clip-path: polygon(0% 25%, 0% 75%, 50% 100%, 100% 75%, 100% 25%, 50% 0%);
-
-    margin: var(--m);
-    margin-bottom: calc((var(--m) - var(--s)) * 0.2762);
-  }
-
-  @media (max-width: 640px) {
-    div {
-      --s: 80px;
-    }
-  }
-
-  @media (max-width: 340px) {
-    ul {
-      display: flex;
-      flex-flow: row wrap;
-      gap: 3vw;
-      align-items: center;
-      justify-content: center;
-    }
-    ul::before {
-      display: none;
-    }
-    li {
-      display: block;
-      clip-path: none;
-      width: 35vw;
-      height: 35vw;
-      margin: 0;
-    }
-  }
-
-  a::after {
-    display: none;
-  }
-
-  img {
+  p > a > img {
+    clip-path: url(#squircle);
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
+    aspect-ratio: 1/1;
 
-    filter: grayscale(0.5) opacity(0.8) contrast(1.1);
+    transition: filter 0.1s;
 
-    transition: transform 0.3s, filter 0.4s;
+    color: var(---c-bg);
+    background-color: var(---c-a1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 0.6em;
+    word-wrap: break-word;
   }
 
-  a:is(:hover, :active, :focus-within) > img {
-    transform: scale(1.1);
-    filter: unset;
+  p > a:is(:active, :hover, :focus) {
+    --color2: rgba(0, 0, 0, 0.125);
+  }
 
-    transition: transform 0.2s, filter 0.1s;
+  p > a:is(:active, :hover, :focus) > img {
+    color: white;
+    filter: blur(3px) brightness(0.4) grayscale(0.5);
+    transition: filter 0.2s;
+  }
+
+  p > a:is(:active, :hover, :focus) > span {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  p > a::after {
+    opacity: 1;
+    clip-path: url(#squircle);
+    width: 96%;
+    height: 96%;
+    background: linear-gradient(-155deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 15%),
+      linear-gradient(25deg, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 9%);
+    opacity: 1;
+    transition: opacity 0.25s;
+  }
+  p > a:is(:active, :hover, :focus)::after {
+    opacity: 0.3;
+  }
+
+  @media (hover: none) {
+    p > a > img {
+      filter: blur(3px) brightness(0.4) grayscale(0.5);
+    }
+    p > a > span {
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 </style>
