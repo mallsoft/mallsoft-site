@@ -21,25 +21,14 @@
     line-height: 1.1;
   }
   p + p {
-    margin-top: 0.45em;
+    margin-top: 0.4em;
     position: relative;
   }
-  p + p::after {
-    content: '';
-    position: absolute;
-    top: -0.45em;
-    left: 30%;
-    right: 0;
-    bottom: 0;
-    height: 60%;
-    background: var(---c-a2);
-    opacity: 0.1;
-    z-index: -1;
-    padding: 1em;
-  }
+
   section {
-    margin-top: 1.8em;
+    margin-top: 1em;
   }
+
   h2 {
     font-size: 1.25em;
     font-weight: normal;
