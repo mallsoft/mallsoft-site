@@ -142,7 +142,7 @@ footer {
   max-width: var(---readwidth);
   width: 100%;
   margin-top: 12vh;
-  margin-bottom: 18vh;
+  margin-bottom: 10vh;
   flex: 1;
 }
 .default > h1 {

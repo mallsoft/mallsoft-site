@@ -24,6 +24,7 @@
   div {
     width: 100%;
     max-width: var(---readwidth);
+    padding: 0 1rem;
   }
   div a {
     font-size: 0.6em;

@@ -45,23 +45,20 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
+    flex-wrap: wrap;
   }
 
   header > a {
     display: flex;
     align-items: center;
+    margin-right: 1em;
   }
 
   nav {
     display: flex;
     align-items: center;
     justify-content: end;
-    flex-wrap: wrap;
-    margin-left: auto;
-  }
-
-  nav a + a {
-    margin-left: 1em;
+    gap: 1em;
   }
 
   a[aria-current='page'] {
