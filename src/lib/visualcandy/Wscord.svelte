@@ -132,7 +132,7 @@
 </script>
 
 <svelte:window on:mousemove={handleMouseMove} />
-{#if cursors.length > 1}
+{#if cursors.length}
   <ul aria-hidden="true">
     {#each cursors as { name, x, y, alive }}
       {@const [n, id] = name.split('#')}
@@ -161,12 +161,12 @@
     display: block;
     top: var(--ry);
     left: var(--rx);
+    font-size: 0.8rem;
 
     transition: top 0.1s, left 0.1s;
 
-    transform: translate(0.6em, calc(-100% - 0.6em));
+    transform: translate(0.6em, calc(-100%));
 
-    font-size: 0.5em;
     color: var(---c-a2);
 
     animation: fadein 0.7s;
@@ -179,7 +179,7 @@
   li::after {
     content: '';
     position: absolute;
-    top: 1.45em;
+    top: 1em;
     left: -1em;
     width: 0.8em;
     height: 0.8em;
