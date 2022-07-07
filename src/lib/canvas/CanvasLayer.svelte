@@ -90,7 +90,6 @@
     bottom: 0;
     left: 0;
     font-size: 16px;
-    font-family: var(--fontx);
     background: rgba(0, 0, 0, 0.5);
     color: white;
   }

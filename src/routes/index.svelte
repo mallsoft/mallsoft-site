@@ -18,15 +18,11 @@
 <style>
   nav {
     margin-top: 0.45em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
   }
 
-  a {
-    font-family: var(---fontx);
-    font-size: 80%;
-  }
-  a + a {
-    margin-left: 0.9em;
-  }
   p {
     line-height: 1.1;
   }

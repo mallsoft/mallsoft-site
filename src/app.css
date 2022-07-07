@@ -1,5 +1,4 @@
 @import '@fontsource/space-grotesk';
-@import '@fontsource/space-mono';
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -21,7 +20,6 @@
   ---readwidth: 34ch;
 
   ---font: 'Space Grotesk', sans-serif;
-  ---fontx: 'Space Mono', monospace;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -149,5 +147,5 @@ footer {
   font-size: 2.2em;
   color: var(---c-a2);
   width: max-content;
-  margin-bottom: 0.3em;
+  margin-bottom: 0.1em;
 }

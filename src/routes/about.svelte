@@ -26,7 +26,7 @@
   }
 
   section {
-    margin-top: 1em;
+    margin-top: 1.5em;
   }
 
   h2 {

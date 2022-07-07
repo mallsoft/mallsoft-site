@@ -40,7 +40,6 @@
 
   header {
     font-size: 75%;
-    font-family: var(---fontx);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -64,5 +63,9 @@
   a[aria-current='page'] {
     text-decoration: none;
     color: var(---c-b2);
+  }
+
+  a {
+    letter-spacing: 0.08em;
   }
 </style>
