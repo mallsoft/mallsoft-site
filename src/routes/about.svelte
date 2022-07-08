@@ -32,6 +32,7 @@
   h2 {
     font-size: 1.25em;
     font-weight: normal;
+    color: var(---c-a2);
     max-width: var(---readwidth);
   }
 </style>

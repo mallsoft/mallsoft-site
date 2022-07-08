@@ -180,7 +180,7 @@
 
     font-size: calc(1vmin + 0.4rem);
 
-    border: 2px dashed var(---c-a2);
+    border: 4px dashed var(---c-a2);
   }
 
   li {
@@ -188,7 +188,7 @@
     padding: 1em;
 
     text-align: center;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     font-weight: bold;
 
     width: min-content;
@@ -203,7 +203,7 @@
 
     transition: transform 0.05s, background-color 0.2s;
 
-    background-color: var(---c-a1);
+    background-color: var(---c-b1);
     color: var(---c-bg);
   }
 

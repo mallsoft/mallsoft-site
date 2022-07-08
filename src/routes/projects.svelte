@@ -24,7 +24,7 @@
 
 <article class="default">
   <h1>Projects</h1>
-  <h2>a sample of sites I have worked on</h2>
+  <h2>a sample of earlier work</h2>
   <Projects />
 </article>
 
