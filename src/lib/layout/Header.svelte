@@ -68,4 +68,13 @@
   a {
     letter-spacing: 0.08em;
   }
+
+  @media (max-width: 600px) {
+    header {
+      padding-top: 2em;
+    }
+    a {
+      padding-bottom: 1em;
+    }
+  }
 </style>
