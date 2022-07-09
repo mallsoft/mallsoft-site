@@ -3,10 +3,10 @@
 </script>
 
 <p>
-  {#each projectlog as { title, description, image, link }}
+  {#each projectlog as { title, image, link, alt }}
     <a href={link} target="_blank">
-      <img src={image} alt={title} />
-      <span>{description}</span>
+      <img src={image} {alt} />
+      <span>{title}</span>
     </a>
   {/each}
 </p>
