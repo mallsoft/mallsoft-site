@@ -9,6 +9,9 @@
       <span>{title}</span>
     </a>
   {/each}
+  {#each Array((3 - (projectlog.length % 3)) % 3) as _}
+    <span aria-label="placeholder" aria-hidden="true" />
+  {/each}
 </p>
 
 <svg clip-rule="evenodd" width="0" height="0" style="position: absolute;" aria-hidden="true">
@@ -27,6 +30,9 @@
 
     gap: 1rem;
     margin-top: 0.9em;
+
+    padding: 0.5em;
+    border: 4px dashed var(---c-a2);
   }
 
   p > a {
@@ -120,5 +126,15 @@
       transform: scale(1);
       opacity: 1;
     }
+  }
+
+  p > span {
+    clip-path: url(#squircle);
+    width: 96%;
+    height: 96%;
+    background-color: var(---c-a2);
+    opacity: 0.1;
+    pointer-events: none;
+    user-select: none;
   }
 </style>
