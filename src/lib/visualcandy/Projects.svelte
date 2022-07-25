@@ -130,8 +130,8 @@
 
   p > span {
     clip-path: url(#squircle);
-    width: 96%;
-    height: 96%;
+    width: 100%;
+    height: 100%;
     background-color: var(---c-a2);
     opacity: 0.1;
     pointer-events: none;
