@@ -31,10 +31,10 @@
     });
 
     // add bounding box lines
-    lines.push(new Line(new Vec(0, 0), new Vec(innerWidth, 0)));
-    lines.push(new Line(new Vec(innerWidth, 0), new Vec(innerWidth, innerHeight)));
-    lines.push(new Line(new Vec(innerWidth, innerHeight), new Vec(0, innerHeight)));
-    lines.push(new Line(new Vec(0, innerHeight), new Vec(0, 0)));
+    lines.push(new Line(new Vec(5, 5), new Vec(innerWidth - 5, 5)));
+    lines.push(new Line(new Vec(innerWidth - 5, 5), new Vec(innerWidth - 5, innerHeight - 5)));
+    lines.push(new Line(new Vec(innerWidth - 5, innerHeight - 5), new Vec(5, innerHeight - 5)));
+    lines.push(new Line(new Vec(5, innerHeight - 5), new Vec(5, 5)));
   }, 100);
 
   onMount(() => {
@@ -59,12 +59,11 @@
 
       if (!lines || !pointer) return;
 
-      const color = window.matchMedia('(prefers-color-scheme: dark)').matches
-        ? 'hsla(20, 100%, 50%, 0.6)'
-        : 'hsla(20, 100%, 60%, 0.8)';
+      // get root element variable ---c-c1
+      const color = getComputedStyle(document.documentElement).getPropertyValue('---c-c1');
 
       ctx.strokeStyle = color;
-      ctx.lineWidth = 2;
+      ctx.lineWidth = 1;
       ctx.setLineDash([16, 4]);
 
       const rays = [];
