@@ -47,13 +47,17 @@ export class Throttle {
     this.delay = delay;
   }
   exec() {
+    this.callback();
+    return this;
+  }
+  call() {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }
     this.timeout = setTimeout(this.callback, this.delay);
     return this;
   }
-  cancel() {
+  clear() {
     if (this.timeout) {
       clearTimeout(this.timeout);
     }

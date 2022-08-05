@@ -28,7 +28,7 @@
 
   onMount(() => {
     return () => {
-      handleResize.cancel();
+      handleResize.clear();
     };
   });
 </script>

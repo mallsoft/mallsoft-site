@@ -53,18 +53,16 @@
 
     return () => {
       cancelAnimationFrame(frame);
-      throttledResize.cancel();
+      throttledResize.clear();
     };
   });
-
-  console.log('asd');
 </script>
 
 <svelte:window
   bind:innerWidth
   bind:innerHeight
   on:resize={() => {
-    throttledResize.exec();
+    throttledResize.call();
   }}
 />
 

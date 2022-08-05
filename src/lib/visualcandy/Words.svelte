@@ -135,7 +135,7 @@
       Composite.clear(engine.world, false);
       cancelAnimationFrame(frame);
       clearInterval(checkEscapee);
-      throttledReCreate.cancel();
+      throttledReCreate.clear();
     };
   });
 </script>
@@ -148,7 +148,7 @@
       el.style.transform = null;
       el.style.opacity = 0;
     });
-    throttledReCreate.exec();
+    throttledReCreate.call();
   }}
 />
 <ul bind:this={wordBox}>
