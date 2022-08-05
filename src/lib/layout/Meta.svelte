@@ -3,17 +3,25 @@
   import { browser, dev } from '$app/env';
 
   if (!dev && browser) {
-    const styleStrings = [`font-size: 2em;`, `font-size: 1.2em;`];
+    const styleStrings = [
+      `font-size: 2em;`,
+      `font-size: 1.4em; color: #8ada55;`,
+      `font-size: 1.2em; color: gray;`
+    ];
 
     console.info(
       `
+
 %c🧐 Hi there!
+
 %cThis page exists because I needed a homepage and a place to experiment,
 it's hosted on Netlify and built with svelte/svelteKit.
 
+%c
 Repo: ${me.repoUrl}
 Feel free to make an issue if you find any broken bits or have any suggestions.
- `,
+ 
+`,
       ...styleStrings
     );
   }
@@ -36,5 +44,5 @@ Feel free to make an issue if you find any broken bits or have any suggestions.
   <meta name="description" content="mallsoft • dev - developer and designer" />
   <link rel="icon" href="favicon.png" />
 
-  <meta name="theme-color" content="#6b6b6b" />
+  <meta name="theme-color" content="#0c0c0d" />
 </svelte:head>
