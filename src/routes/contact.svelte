@@ -1,4 +1,5 @@
 <script>
+  import GRay from '$lib/canvas/GRay.svelte';
   import { me } from '$lib/content';
 </script>
 
@@ -14,6 +15,8 @@
 <div>
   <a href="/achievements">Achievements</a>
 </div>
+
+<GRay />
 
 <style>
   span {
