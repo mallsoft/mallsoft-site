@@ -128,6 +128,14 @@
       pointer.y = clientY;
     }
   }}
+  on:touchmove={({ touches }) => {
+    if (!pointer) {
+      pointer = new Vec(touches[0].clientX, touches[0].clientY);
+    } else {
+      pointer.x = touches[0].clientX;
+      pointer.y = touches[0].clientY;
+    }
+  }}
   on:mouseout={() => {
     pointer = null;
   }}
