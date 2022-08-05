@@ -63,8 +63,8 @@
       const color = getComputedStyle(document.documentElement).getPropertyValue('---c-c1');
 
       ctx.strokeStyle = color;
-      ctx.lineWidth = 1;
-      ctx.setLineDash([16, 4]);
+      ctx.lineWidth = 2;
+      ctx.setLineDash([8, 2]);
 
       const rays = [];
       for (const line of lines) {
