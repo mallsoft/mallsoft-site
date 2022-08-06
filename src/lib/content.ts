@@ -52,63 +52,58 @@ export const me = {
 
 export const projectlog = [
   {
-    title: 'Sunniva.gallery',
-    link: 'https://sunniva.gallery',
-    image: 'projectimage/Sunnivagallery.webp',
-    alt: 'sunniva.gallery thumbnail'
+    title: 'Powermap (poc)',
+    description: 'A web application showing the cost per kwh of the different zones in Norway',
+    link: 'https://powermap.netlify.app/'
+  },
+  {
+    title: 'Sunniva gallery',
+    description: 'A gallery of Sunnivas art',
+    link: 'https://sunniva.gallery'
   },
   {
     title: 'Wove',
-    link: 'https://www.wove.no/',
-    image: 'projectimage/Wove.webp',
-    alt: 'wove.no thumbnail'
+    description: 'Website for a marketing agency',
+    link: 'https://www.wove.no/'
   },
   {
     title: 'Nicode',
-    link: 'https://nicode.dev/',
-    image: 'projectimage/Nicode.webp',
-    alt: 'lysaskroken.no thumbnail'
+    description: 'Nicode consultancy landing page',
+    link: 'https://nicode.dev/'
   },
   {
     title: 'Lyll',
-    link: 'https://lyll.io/',
-    image: 'projectimage/lyll.webp',
-    alt: 'lyll.io thumbnail'
+    description: 'Lyll adverticement platform landing page',
+    link: 'https://lyll.io/'
   },
   {
     title: 'Nygardsportalen',
-    link: 'https://www.nygardsportalen.no/',
-    image: 'projectimage/Nygardsportalen.webp',
-    alt: 'nygardsportalen.no thumbnail'
+    description: 'Website for the Nygardsportalen building project',
+    link: 'https://www.nygardsportalen.no/'
   },
   {
     title: 'Lysaskroken',
-    link: 'https://www.lysaskroken.no/',
-    image: 'projectimage/Lysaskroken.webp',
-    alt: 'lysaskroken.no thumbnail'
+    description: 'Website for the Lysaskroken building project',
+    link: 'https://www.lysaskroken.no/'
   },
   {
     title: 'Smestadaasen',
-    link: 'https://smestadaasen.no/',
-    image: 'projectimage/Smestadaasen.webp',
-    alt: 'smestadaasen.no thumbnail'
+    description: 'Website for the Smestadaasen building project',
+    link: 'https://smestadaasen.no/'
   },
   {
     title: 'Åstveitvågen Park',
-    link: 'https://www.astveitvagenpark.no/',
-    image: 'projectimage/Aastveitvagenpark.webp',
-    alt: 'astveitvagenpark.no thumbnail'
+    description: 'Website for the Åstveitvågen Park building project',
+    link: 'https://www.astveitvagenpark.no/'
   },
   {
     title: 'Thriving Ventures',
-    link: 'https://thrivingventures.com/',
-    image: 'projectimage/Thrivingventures.webp',
-    alt: 'thrivingventures.com thumbnail'
+    description: 'Saas company landing page',
+    link: 'https://thrivingventures.com/'
   },
   {
     title: 'Melaa.net',
-    link: 'https://melaa.net/',
-    image: 'projectimage/melaanet.webp',
-    alt: 'melaa.net thumbnail'
+    description: 'A previous website of mine',
+    link: 'https://melaa.net/'
   }
 ];
