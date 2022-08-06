@@ -15,7 +15,7 @@
   ---c-a2: hsl(240, 15%, 55%);
   ---c-b1: hsl(240, 80%, 60%);
   ---c-b2: hsl(240, 70%, 50%);
-  ---c-c1: hsla(25, 100%, 50%);
+  ---c-c1: hsl(25, 100%, 50%);
   ---c-bg: hsl(240, 10%, 95%);
 
   ---readwidth: 34ch;
@@ -29,7 +29,7 @@
     ---c-a2: hsl(240, 15%, 45%);
     ---c-b1: hsl(225, 100%, 70%);
     ---c-b2: hsl(225, 100%, 60%);
-    ---c-c1: hsla(20, 100%, 35%);
+    ---c-c1: hsl(20, 70%, 50%);
     ---c-bg: hsl(240, 5%, 5%);
   }
 }
@@ -142,6 +142,13 @@ h6 {
   font-weight: normal;
 }
 
+p {
+  line-height: 1.1;
+}
+p + p {
+  margin-top: 0.4em;
+}
+
 .default {
   padding: 0 1rem;
   max-width: var(---readwidth);
@@ -157,8 +164,25 @@ h6 {
   margin-bottom: 0.1em;
 }
 
+.default > section {
+  margin-top: 1.5em;
+}
+
+.default > section > h2 {
+  font-size: 1.25em;
+  font-weight: normal;
+  color: var(---c-a2);
+  max-width: var(---readwidth);
+}
+
 @media (max-width: 600px) {
   .default {
     margin-top: 8vh;
   }
+}
+
+.box {
+  margin: 0.9rem 0;
+  padding: 5px;
+  border: 4px dashed var(---c-a2);
 }
