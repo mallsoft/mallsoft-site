@@ -4,7 +4,7 @@
 </script>
 
 <article class="default">
-  <h1>Contact</h1>
+  <h1>Action</h1>
   <p>
     <a href="mailto:{me.email}?subject=Hello {me.name}!">mailto:</a><span>{me.email}</span>
   </p>

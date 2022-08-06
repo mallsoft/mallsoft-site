@@ -15,24 +15,3 @@
     <Words />
   </section>
 </article>
-
-<style>
-  p {
-    line-height: 1.1;
-  }
-  p + p {
-    margin-top: 0.4em;
-    position: relative;
-  }
-
-  section {
-    margin-top: 1.5em;
-  }
-
-  h2 {
-    font-size: 1.25em;
-    font-weight: normal;
-    color: var(---c-a2);
-    max-width: var(---readwidth);
-  }
-</style>
