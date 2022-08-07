@@ -6,7 +6,7 @@
 
 <div class="box">
   {#if current}
-    <div class="frame">
+    <div class="frame" aria-label="page preview">
       <button on:click={() => (current = null)}>back</button>
       <h1>{current.title}</h1>
 
@@ -43,7 +43,9 @@
           <h3>
             {title}
           </h3>
-          <span>{description}</span>
+          <p>
+            {description}
+          </p>
         </li>
       {/each}
     </ul>
@@ -88,12 +90,22 @@
     grid-row: 2;
     grid-column: span 2;
 
-    border: 2px solid var(---c-b1);
+    border: 3px solid var(---c-b1);
 
     box-shadow: inset 0 0 1px 1px var(---c-bg);
 
     position: relative;
   }
+
+  .frame div::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+  }
+
   .frame div iframe {
     pointer-events: none;
 
@@ -101,7 +113,7 @@
     height: 100%;
     opacity: 0.8;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
 
     background: repeating-conic-gradient(#eeeeee 0% 25%, #ffffff 0% 50%) 50% / 20px 20px;
 
@@ -112,14 +124,15 @@
     padding: 5px 10px;
     margin: 0;
     font-size: 0.6em;
-    color: var(---c-a1);
+    color: var(---c-a2);
     background: var(---c-bg);
-    border-bottom: 2px solid var(---c-b1);
+    border-bottom: 3px solid var(---c-b1);
 
     display: flex;
     justify-content: space-between;
 
     position: absolute;
+    z-index: 3;
     top: 0;
     left: 0;
     width: 100%;
@@ -132,7 +145,7 @@
 
   li {
     font-size: 0.8em;
-    padding: 10px 20px;
+    padding: 20px;
 
     cursor: pointer;
 
@@ -157,5 +170,11 @@
     color: var(---c-a2);
 
     transition: color 0.2s;
+
+    line-height: 1.15;
+  }
+
+  li p {
+    line-height: 1.5;
   }
 </style>
