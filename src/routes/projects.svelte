@@ -1,38 +1,41 @@
-<script context="module">
-  import { browser } from '$app/env';
-  import { projectlog } from '$lib/content';
-  export async function load() {
-    if (browser) {
-      await Promise.all(
-        projectlog.map(({ image }) => {
-          return new Promise((resolve, reject) => {
-            const img = new Image();
-            img.onload = () => resolve();
-            img.onerror = (e) => reject(e);
-            img.src = image;
-          });
-        })
-      );
-    }
-    return { status: 200 };
-  }
-</script>
-
 <script>
   import Projects from '$lib/visualcandy/Projects.svelte';
 </script>
 
 <article class="default">
-  <h1>Projects</h1>
-  <h2>a sample of earlier work</h2>
-  <Projects />
+  <h1>Creating</h1>
+  <p>empathic design through observation and the consideration of all audiences</p>
+  <p>
+    I like creating pragmatic and functional <b>story first</b> solutions
+  </p>
+  <section>
+    <h2>Works</h2>
+    <Projects />
+  </section>
 </article>
 
 <style>
-  h2 {
-    font-size: 1em;
-    line-height: 1.1;
-    font-weight: normal;
-    max-width: var(---readwidth);
+  h1 {
+    position: relative;
+  }
+  h1::after {
+    content: '';
+    color: var(---c-c1);
+    animation: dots 3s 0.2s infinite;
+  }
+
+  @keyframes dots {
+    0% {
+      content: '';
+    }
+    33% {
+      content: '.';
+    }
+    66% {
+      content: '..';
+    }
+    100% {
+      content: '...';
+    }
   }
 </style>
