@@ -1,72 +1,161 @@
 <script>
   import { projectlog } from '$lib/content';
+
+  let current = null;
 </script>
 
-<ul class="box">
-  {#each projectlog as { title, description, link }}
-    <li>
-      <h3>
-        {title}
-      </h3>
-      <p>
-        {description}
-      </p>
-      <a href={link} target="_blank">visit</a>
-    </li>
-  {/each}
-</ul>
+<div class="box">
+  {#if current}
+    <div class="frame">
+      <button on:click={() => (current = null)}>back</button>
+      <h1>{current.title}</h1>
+
+      <div>
+        <p>
+          {current.link}
+          <a href={current.link}>Visit</a>
+        </p>
+        <iframe
+          frameborder="0"
+          scrolling="no"
+          tabindex="-1"
+          on:click|preventDefault
+          src={current.link}
+          title={current.title}
+        />
+      </div>
+    </div>
+  {:else}
+    <ul>
+      {#each projectlog as { title, description, link }}
+        <li
+          role="button"
+          tabindex="0"
+          on:click={() => {
+            current = { title, link };
+          }}
+          on:keypress={(ev) => {
+            if (ev.key === 'Enter') {
+              current = { title, link };
+            }
+          }}
+        >
+          <h3>
+            {title}
+          </h3>
+          <span>{description}</span>
+        </li>
+      {/each}
+    </ul>
+  {/if}
+</div>
 
 <style>
+  .frame {
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+
+  .frame h1 {
+    background: var(---c-bg);
+    color: var(---c-a1);
+    font-size: 1em;
+    margin-bottom: 0.2em;
+
+    align-self: center;
+    justify-self: center;
+
+    grid-column: 2;
+  }
+
+  .frame button {
+    background: var(---c-b1);
+    color: var(---c-bg);
+    border: none;
+    cursor: pointer;
+    padding: 5px 20px;
+
+    grid-column: 1;
+  }
+
+  .frame button::before {
+    content: '← ';
+  }
+  .frame div {
+    width: 100%;
+    min-height: 100vh;
+
+    grid-row: 2;
+    grid-column: span 2;
+
+    border: 2px solid var(---c-b1);
+
+    box-shadow: inset 0 0 1px 1px var(---c-bg);
+
+    position: relative;
+  }
+  .frame div iframe {
+    pointer-events: none;
+
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    position: absolute;
+    z-index: -1;
+
+    background: repeating-conic-gradient(#eeeeee 0% 25%, #ffffff 0% 50%) 50% / 20px 20px;
+
+    filter: grayscale(1);
+  }
+
+  .frame div p {
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 0.6em;
+    color: var(---c-a1);
+    background: var(---c-bg);
+    border-bottom: 2px solid var(---c-b1);
+
+    display: flex;
+    justify-content: space-between;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
   }
+
   li {
-    display: grid;
-    gap: 0.1em;
-
-    justify-content: space-between;
-
     font-size: 0.8em;
-    margin: 10px 20px;
+    padding: 10px 20px;
+
+    cursor: pointer;
+
+    transition: transform 0.4s;
   }
 
-  li a {
-    text-decoration: none;
+  li:is(:hover, :focus-within) {
+    transition: transform 0.1s;
+    transform: scale(1.02);
   }
 
-  li a::after {
-    display: none;
+  li:is(:hover, :focus-within) h3 {
+    color: var(---c-b1);
+    transition: color 0.1s;
+
+    position: relative;
   }
 
   h3 {
-    font-size: 1em;
+    font-size: 2em;
     font-weight: bold;
-  }
-  p {
-    font-size: 0.7em;
-    max-width: var(---readwidth);
-  }
+    color: var(---c-a2);
 
-  h3 {
-    grid-row: 1;
-  }
-
-  p {
-    grid-row: 2;
-  }
-
-  a {
-    grid-row: 1 / span 2;
-    align-self: end;
-  }
-
-  @media (max-width: 699px) {
-    p {
-      font-size: 0.9em;
-    }
-    a {
-      grid-row: 3;
-    }
+    transition: color 0.2s;
   }
 </style>

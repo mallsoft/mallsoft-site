@@ -21,7 +21,7 @@
   h1::after {
     content: '';
     color: var(---c-c1);
-    animation: dots 4s 1s infinite;
+    animation: dots 3s 0.2s infinite;
   }
 
   @keyframes dots {
