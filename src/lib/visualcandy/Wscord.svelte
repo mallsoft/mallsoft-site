@@ -137,7 +137,7 @@
     {#each cursors as { name, x, y, alive }}
       {@const [n, id] = name.split('#')}
       {#if alive}
-        <li style:--rx="{x}px" style:--ry="{y}px" style:--hue={Math.random() * 360}>
+        <li style:--rx="{x}px" style:--ry="{y}px">
           <span>{n}</span>
         </li>
       {/if}
@@ -173,23 +173,23 @@
   }
 
   li > span {
-    opacity: 0.3;
+    position: absolute;
+    top: 0;
+    left: 1em;
+    opacity: 0.5;
   }
 
   li::after {
     content: '';
     position: absolute;
-    top: 1em;
-    left: -1em;
-    width: 0.8em;
-    height: 0.8em;
+    top: -1em;
+    left: -1.5em;
+    width: 2em;
+    height: 2em;
 
     border-radius: 100px;
 
-    opacity: 0.5;
-
-    background: var(---c-a2);
-    border: 2px solid hsl(var(--hue), 100%, 50%);
+    border: 0.2em solid var(---c-c1);
   }
 
   @keyframes fadein {
