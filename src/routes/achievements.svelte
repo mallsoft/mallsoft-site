@@ -1,5 +1,5 @@
 <script>
-  import Unlocked from '$lib/visualcandy/Unlocked.svelte';
+  import Unlocked from '$lib/contents/Unlocked.svelte';
 </script>
 
 <article class="default">

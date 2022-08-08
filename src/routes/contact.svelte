@@ -1,5 +1,5 @@
 <script>
-  import GRay from '$lib/canvas/GRay.svelte';
+  import GRay from '$lib/visuals/GRay.svelte';
   import { me } from '$lib/content';
 </script>
 

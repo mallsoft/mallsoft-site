@@ -1,5 +1,5 @@
 <script>
-  import Wscord from '$lib/visualcandy/Wscord.svelte';
+  import Wscord from '$lib/contents/Wscord.svelte';
 </script>
 
 <article class="default">

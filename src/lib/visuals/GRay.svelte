@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Throttle } from '$lib/utils';
   import { onMount } from 'svelte';
-  import { Line, Ray, Vec } from '$lib/canvas/casting';
+  import { Line, Ray, Vec } from '$lib/visuals/casting';
   let canvasElement: HTMLCanvasElement;
   let innerWidth, innerHeight;
 

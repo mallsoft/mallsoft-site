@@ -1,5 +1,5 @@
 <script>
-  import Projects from '$lib/visualcandy/Projects.svelte';
+  import Projects from '$lib/contents/Projects.svelte';
 </script>
 
 <article class="default">

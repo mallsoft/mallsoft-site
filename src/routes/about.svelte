@@ -1,5 +1,5 @@
 <script>
-  import Words from '$lib/visualcandy/Words.svelte';
+  import Words from '$lib/contents/Words.svelte';
 </script>
 
 <article class="default">
