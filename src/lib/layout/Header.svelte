@@ -31,7 +31,7 @@
 
 <style>
   header {
-    transition: opacity 0.15s, transform 0.1s ease-out;
+    transition: opacity 0.4s ease-out, transform 0.3s ease-out;
   }
   header:not(:hover).index {
     transform: translate(0, -110%);
