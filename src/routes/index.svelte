@@ -17,13 +17,9 @@
 
 <style>
   nav {
-    margin-top: 0.45em;
+    margin-top: 1.2em;
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
-  }
-
-  p {
-    line-height: 1.1;
+    gap: 1.2em;
   }
 </style>

@@ -45,6 +45,7 @@
     align-items: center;
     padding: 0.5rem 1rem;
     flex-wrap: wrap;
+    gap: 0.5em;
   }
 
   header > a {
@@ -71,10 +72,10 @@
 
   @media (max-width: 600px) {
     header {
-      padding-top: 2em;
+      padding-top: 0.8em;
     }
     a {
-      padding-bottom: 1em;
+      padding: 0.5em;
     }
   }
 </style>
