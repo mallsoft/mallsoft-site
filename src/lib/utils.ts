@@ -2,6 +2,14 @@ import { browser } from '$app/env';
 import { crossfade } from 'svelte/transition';
 import { messages } from '$lib/announcement/messages';
 
+export function getLeafNodes() {
+  const nodes = document.querySelectorAll('body *:not(.svelte-announcer)');
+  const leafNodes = Array.from(nodes).filter(
+    ({ childNodes }) => childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE
+  );
+  return leafNodes;
+}
+
 export const [s, r] = crossfade({});
 
 export function getAbsoluteRect(element) {
@@ -82,13 +90,4 @@ export class LowPassFilter {
     this.lastCall = now;
     return this.smoothedValue;
   }
-}
-
-export function mulberry32(a) {
-  return function () {
-    var t = (a += 0x6d2b79f5);
-    t = Math.imul(t ^ (t >>> 15), t | 1);
-    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-  };
 }
