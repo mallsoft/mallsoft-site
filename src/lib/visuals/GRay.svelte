@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Throttle } from '$lib/utils';
+  import { Throttle, getLeafNodes } from '$lib/utils';
   import { onMount } from 'svelte';
   import { Line, Ray, Vec } from '$lib/visuals/casting';
   let canvasElement: HTMLCanvasElement;
@@ -7,14 +7,6 @@
 
   let pointer: Vec = null;
   let lines: Line[];
-
-  function getLeafNodes() {
-    const nodes = document.querySelectorAll('body *:not(.svelte-announcer)');
-    const leafNodes = Array.from(nodes).filter(
-      ({ childNodes }) => childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE
-    );
-    return leafNodes;
-  }
 
   const throttledResize = new Throttle(() => {
     canvasElement.width = innerWidth;
@@ -38,7 +30,9 @@
   }, 100);
 
   onMount(() => {
-    throttledResize.exec();
+    const firstLoad = setTimeout(() => {
+      throttledResize.exec();
+    }, 500);
 
     const observer = new MutationObserver(() => {
       throttledResize.call();
@@ -106,6 +100,7 @@
     })();
 
     return () => {
+      clearTimeout(firstLoad);
       cancelAnimationFrame(frame);
       throttledResize.clear();
       observer.disconnect();
@@ -150,5 +145,16 @@
     width: 100%;
     height: 100%;
     box-sizing: border-box;
+
+    animation: fadein 0.53s backwards ease-in-out;
+  }
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 </style>
