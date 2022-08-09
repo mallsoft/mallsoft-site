@@ -17,7 +17,7 @@
 
 <style>
   nav {
-    margin-top: 1.2em;
+    margin-top: 1em;
     display: flex;
     flex-wrap: wrap;
     gap: 1.2em;
