@@ -4,9 +4,14 @@ import { messages } from '$lib/announcement/messages';
 
 export function getLeafNodes() {
   const nodes = document.querySelectorAll('body *:not(.svelte-announcer)');
-  const leafNodes = Array.from(nodes).filter(
-    ({ childNodes }) => childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE
-  );
+  const leafNodes = Array.from(nodes).filter(({ childNodes }) => {
+    return (
+      (childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE) || // contains single [ #text ]
+      [...childNodes]
+        .filter(({ nodeName }) => nodeName !== 'BR') // contains multiple [ #text, br, #text ], remove br tags
+        .every(({ nodeType }) => nodeType === Node.TEXT_NODE) // all is [ #text ]
+    );
+  });
   return leafNodes;
 }
 
