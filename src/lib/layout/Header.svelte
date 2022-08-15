@@ -1,7 +1,5 @@
 <script>
   import { page } from '$app/stores';
-  import { crossfade } from 'svelte/transition';
-  const [s, r] = crossfade({});
 
   $: index = $page.url.pathname === '/';
 </script>
