@@ -47,7 +47,7 @@
 </script>
 
 {#if show}
-  <div>
+  <div class="aksel">
     <svg
       class:walking
       class:left
@@ -60,6 +60,7 @@
       height={size}
       style:--x="{$birdx}px"
     >
+      <desc>Aksel the seagull.</desc>
       <g class="feet" fill="#ffda36" stroke="#737373" stroke-width="5">
         <path d="M125 270c-3 0-5-2-5-5v-45a5 5 0 0 1 10 0v30h20a10 10 0 0 1 0 20h-25 0Z" />
         <path d="M145 270c-3 0-5-2-5-5v-45a5 5 0 0 1 10 0v30h20a10 10 0 0 1 0 20h-25 0Z" />
