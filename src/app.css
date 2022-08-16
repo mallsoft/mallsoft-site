@@ -46,6 +46,8 @@ body {
   margin: 0 auto;
 
   min-height: 100vh;
+  height: 100%;
+  position: relative;
 }
 
 @supports (scrollbar-color: auto) and (scrollbar-width: thin) and (scrollbar-gutter: stable) {
