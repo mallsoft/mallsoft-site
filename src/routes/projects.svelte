@@ -1,5 +1,6 @@
 <script>
   import Projects from '$lib/contents/Projects.svelte';
+  import Aksel from '$lib/visuals/Aksel.svelte';
 </script>
 
 <article class="default">
@@ -13,6 +14,8 @@
     <Projects />
   </section>
 </article>
+
+<Aksel />
 
 <style>
   h1 {
