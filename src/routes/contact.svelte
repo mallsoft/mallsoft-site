@@ -1,39 +1,51 @@
 <script>
   import GRay from '$lib/visuals/GRay.svelte';
   import { me } from '$lib/content';
+  import { unlocked } from '$lib/achievement/achievementStores';
 </script>
 
 <article class="default">
   <h1>Action</h1>
-  <p>
+  <address>
     <a href="mailto:{me.email}?subject=Hello {me.name}!">mailto:</a><span>{me.email}</span>
-  </p>
-  <p>
     <a href="https://github.com{me.github}">github:</a><span>{me.github}</span>
-  </p>
+  </address>
+
+  {#if $unlocked.length}
+    <a class="achievements" href="/achievements">Achievements</a>
+  {/if}
 </article>
-<div>
-  <a href="/achievements">Achievements</a>
-</div>
 
 <GRay />
 
 <style>
+  address {
+    font-style: normal;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 0.2em 0;
+  }
+
   span {
     margin-left: 0.5em;
     user-select: all;
+    width: max-content;
   }
 
-  div {
-    width: 100%;
-    max-width: var(---readwidth);
-    padding: 0 1rem;
+  article {
+    display: flex;
+    flex-direction: column;
   }
-  div a {
-    font-size: 0.6em;
+
+  a.achievements {
+    font-size: 0.5em;
     color: var(---c-a2);
+
+    margin-top: auto;
+    margin-left: auto;
+    width: max-content;
   }
-  div a:hover {
+  a.achievements:hover {
     color: var(---c-b1);
   }
 </style>
