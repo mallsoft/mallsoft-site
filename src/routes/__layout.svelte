@@ -6,7 +6,8 @@
   import Header from '$lib/layout/Header.svelte';
   import Announcer from '$lib/announcement/Announcer.svelte';
   import Achievements from '$lib/achievement/Achievements.svelte';
-  import FullscreenLoader from '$lib/layout/FullscreenLoader.svelte';
+  import Loader from '$lib/layout/Loader.svelte';
+
   import { prefetch } from '$app/navigation';
   import { onMount } from 'svelte';
 
@@ -19,9 +20,9 @@
 
 <Meta />
 
-<FullscreenLoader />
-<Header />
+<Loader />
 
+<Header />
 <Main>
   <slot />
 </Main>
