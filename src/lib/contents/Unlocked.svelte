@@ -7,7 +7,7 @@
     {#each achievements as { id, name, description, icon }}
       {@const u = $unlocked.includes(id)}
       <li class:unlocked={u}>
-        <span>{icon}</span>
+        <span>{icon || '❔'}</span>
         <h3>{name}</h3>
         <p>{u ? description : '???'}</p>
       </li>

@@ -47,8 +47,9 @@
 </script>
 
 {#if show}
-  <div class="aksel">
+  <div>
     <svg
+      data-name="likeswaffels"
       class:walking
       class:left
       xml:space="preserve"
@@ -123,16 +124,16 @@
     overflow: hidden;
     pointer-events: none;
   }
-  svg * {
-    transform-box: fill-box;
-  }
   svg {
     position: relative;
     left: var(--x);
+    pointer-events: visibleFill;
 
     transition: transform 0.2s;
   }
-
+  svg * {
+    transform-box: fill-box;
+  }
   .left {
     transform: scaleX(-1);
   }

@@ -3,6 +3,12 @@ import { loadLocal, saveLocal } from '$lib/utils';
 
 export const achievements = [
   {
+    id: 'aksel',
+    name: 'Aksel',
+    description: 'Say hello to Aksel the seagull',
+    icon: '🥚'
+  },
+  {
     id: 'traveler',
     name: 'Traveler',
     description: 'Move mouse 100 million pixels on the site',

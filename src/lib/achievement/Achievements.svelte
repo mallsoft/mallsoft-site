@@ -5,6 +5,7 @@
   import { loadAll, resetAll, saveAll, unlocked } from './achievementStores';
   import Clicker from './Clicker.svelte';
   import Duediligence from './Duediligence.svelte';
+  import GreetAksel from './GreetAksel.svelte';
   import Physics from './Physics.svelte';
   import Responsive from './Responsive.svelte';
   import Traveler from './Traveler.svelte';
@@ -47,4 +48,8 @@
 
 {#if !$unlocked?.includes('responsive')}
   <Responsive />
+{/if}
+
+{#if !$unlocked?.includes('aksel') && $page.url.pathname === '/projects'}
+  <GreetAksel />
 {/if}
