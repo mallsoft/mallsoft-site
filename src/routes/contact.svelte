@@ -40,12 +40,28 @@
   a.achievements {
     font-size: 0.5em;
     color: var(---c-a2);
+    text-decoration: none;
 
     margin-top: auto;
     margin-left: auto;
     width: max-content;
   }
-  a.achievements:hover {
+  a.achievements:is(:hover, :focus) {
     color: var(---c-b1);
+    text-decoration: underline;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      color: var(---c-a2);
+    }
+    50% {
+      color: var(---c-b1);
+      transform: scale(1.1);
+    }
+    100% {
+      color: var(---c-a2);
+    }
   }
 </style>
