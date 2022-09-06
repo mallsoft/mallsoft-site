@@ -10,6 +10,7 @@
 
   import { prefetch } from '$app/navigation';
   import { onMount } from 'svelte';
+  import { isLocalStorageAvailable } from '$lib/utils';
 
   onMount(() => {
     prefetch('/projects');
@@ -28,4 +29,7 @@
 </Main>
 
 <Announcer />
-<Achievements />
+
+{#if isLocalStorageAvailable()}
+  <Achievements />
+{/if}

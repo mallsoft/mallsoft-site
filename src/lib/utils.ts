@@ -96,3 +96,15 @@ export class LowPassFilter {
     return this.smoothedValue;
   }
 }
+
+export function isLocalStorageAvailable() {
+  if (!browser) return false;
+  const kv = 'TEST___TESTY___TEST_plznoconflict';
+  try {
+    localStorage.setItem(kv, 'spagetti!');
+    localStorage.removeItem(kv);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
