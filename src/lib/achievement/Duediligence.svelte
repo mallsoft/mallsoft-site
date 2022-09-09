@@ -2,7 +2,7 @@
   import { messages } from '$lib/announcement/messages';
   import { visits, unlocked, achievements } from './achievementStores';
   import { page } from '$app/stores';
-  import { browser } from '$app/env';
+  import { browser } from '$app/environment';
 
   $: routeChange($page.url.pathname);
 

@@ -1,6 +1,6 @@
 <script>
   import { me } from '$lib/content';
-  import { browser, dev } from '$app/env';
+  import { browser, dev } from '$app/environment';
 
   if (!dev && browser) {
     const styleStrings = [

@@ -1,4 +1,4 @@
-import { browser } from '$app/env';
+import { browser } from '$app/environment';
 import { crossfade } from 'svelte/transition';
 import { messages } from '$lib/announcement/messages';
 
