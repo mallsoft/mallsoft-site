@@ -7,7 +7,7 @@
   <p>
     a developer based in Bergen<br />— mostly focused on web and UX
   </p>
-  <p>
+  <p class="diff-add">
     I like creating pragmatic and functional <b>story first</b> solutions
   </p>
   <section>

@@ -10,6 +10,14 @@
     <a href="mailto:{me.email}?subject=Hello {me.name}!">mailto:</a><span>{me.email}</span>
     <a href="https://github.com{me.github}">github:</a><span>{me.github}</span>
   </address>
+  <p class="diff-remove">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit bla bla bla call to action / something
+    about me being available for work...
+  </p>
+  <p class="diff-add">
+    Hi there, i am glad you made it this far! If you have any questions or just liked the site, let
+    me know!
+  </p>
 
   {#if $unlocked.length}
     <a class="achievements" href="/achievements">Achievements</a>

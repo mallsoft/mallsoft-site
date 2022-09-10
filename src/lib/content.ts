@@ -103,7 +103,7 @@ export const projectlog = [
   },
   {
     title: 'Melaa.net',
-    description: 'A previous website of mine',
+    description: 'A previous website of mine, slightly broken',
     link: 'https://melaa.net/'
   }
 ];

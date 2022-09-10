@@ -1,5 +1,6 @@
 <script>
   import Wscord from '$lib/contents/Wscord.svelte';
+  import Aksel from '$lib/visuals/Aksel.svelte';
 </script>
 
 <article class="default">
@@ -12,6 +13,8 @@
     <a href="contact" sveltekit:prefetch>Contact</a>
   </nav>
 </article>
+
+<Aksel />
 
 <Wscord />
 

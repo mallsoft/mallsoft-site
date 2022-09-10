@@ -1,11 +1,10 @@
 <script>
   import Projects from '$lib/contents/Projects.svelte';
-  import Aksel from '$lib/visuals/Aksel.svelte';
 </script>
 
 <article class="default">
   <h1>Creating</h1>
-  <p>empathic design through observation and the consideration of all audiences</p>
+  <p class="diff-add">empathic design through observation and the consideration of all audiences</p>
   <p>
     I like creating pragmatic and functional <b>story first</b> solutions
   </p>
@@ -14,8 +13,6 @@
     <Projects />
   </section>
 </article>
-
-<Aksel />
 
 <style>
   h1 {

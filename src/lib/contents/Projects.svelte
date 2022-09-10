@@ -27,8 +27,9 @@
     </div>
   {:else}
     <ul>
-      {#each projectlog as { title, description, link }}
+      {#each projectlog as { title, description, link }, i}
         <li
+          class:diff-remove={projectlog.length - 1 === i}
           role="button"
           tabindex="0"
           on:click={() => {

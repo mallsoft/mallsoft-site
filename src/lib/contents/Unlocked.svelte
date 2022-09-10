@@ -4,9 +4,9 @@
 
 {#if $unlocked && $unlocked.length}
   <ul>
-    {#each achievements as { id, name, description, icon }}
+    {#each achievements as { id, name, description, icon }, i}
       {@const u = $unlocked.includes(id)}
-      <li class:unlocked={u}>
+      <li class:unlocked={u} class:diff-add={!i}>
         <span>{icon || '❔'}</span>
         <h3>{name}</h3>
         <p>{u ? description : '???'}</p>
@@ -40,9 +40,11 @@
       'icon description'
       / 2em 1fr;
     gap: 0 0.5em;
+  }
 
-    filter: grayscale(1) opacity(0.5) brightness(0.5);
+  li > * {
     transition: filter 0.2s;
+    filter: grayscale(1) opacity(0.5) brightness(0.5);
   }
 
   span {
@@ -63,7 +65,7 @@
     align-self: center;
   }
 
-  .unlocked {
+  .unlocked > * {
     filter: unset;
   }
 </style>
