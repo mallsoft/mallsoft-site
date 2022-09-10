@@ -15,7 +15,7 @@
     about me being available for work...
   </p>
   <p class="diff-add">
-    Hi there, i am glad you made it this far! If you have any questions or just liked the site, let
+    Hi there, I am glad you made it this far! If you have any questions or just liked the site, let
     me know!
   </p>
 
