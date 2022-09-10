@@ -49,10 +49,11 @@
     font-size: 0.5em;
     color: var(---c-a2);
     text-decoration: none;
-
-    margin-top: auto;
     margin-left: auto;
-    width: max-content;
+
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
   }
   a.achievements:is(:hover, :focus) {
     color: var(---c-b1);
