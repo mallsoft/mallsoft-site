@@ -133,6 +133,9 @@
   on:mouseout={() => {
     pointer = null;
   }}
+  on:scroll={() => {
+    throttledResize.call();
+  }}
 />
 <canvas aria-hidden="true" bind:this={canvasElement} />
 
