@@ -1,4 +1,5 @@
 <script lang="ts">
+  import '@fontsource/space-grotesk';
   import '../app.css';
 
   import Meta from '$lib/layout/Meta.svelte';

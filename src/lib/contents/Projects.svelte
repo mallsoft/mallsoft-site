@@ -1,5 +1,5 @@
 <script>
-  import { projectlog } from '$lib/content';
+  import { me } from '$lib/content';
 
   let current = null;
 </script>
@@ -27,9 +27,9 @@
     </div>
   {:else}
     <ul>
-      {#each projectlog as { title, description, link }, i}
+      {#each me.projects as { title, description, link }, i}
         <li
-          class:diff-remove={projectlog.length - 1 === i}
+          class:diff-remove={me.projects.length - 1 === i}
           role="button"
           tabindex="0"
           on:click={() => {

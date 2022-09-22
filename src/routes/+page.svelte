@@ -1,4 +1,5 @@
 <script>
+  import { navRoutes } from '$lib/content';
   import Wscord from '$lib/contents/Wscord.svelte';
   import Aksel from '$lib/visuals/Aksel.svelte';
 </script>
@@ -8,9 +9,9 @@
   <p>a developer based in Bergen<br />— mostly focused on web and UX</p>
 
   <nav>
-    <a href="about" sveltekit:prefetch>About</a>
-    <a href="projects" sveltekit:prefetch>Projects</a>
-    <a href="contact" sveltekit:prefetch>Contact</a>
+    {#each navRoutes as { href, name }}
+      <a {href}>{name}</a>
+    {/each}
   </nav>
 </article>
 

@@ -1,29 +1,16 @@
 <script>
   import { page } from '$app/stores';
+  import { navRoutes } from '$lib/content';
 
   $: index = $page.url.pathname === '/';
 </script>
 
 <header class:index>
-  <a sveltekit:prefetch aria-current={$page.url.pathname === '/' ? 'page' : null} href="."
-    >mallsoft•dev</a
-  >
+  <a aria-current={$page.url.pathname === '/' ? 'page' : null} href=".">mallsoft•dev</a>
   <nav>
-    <a
-      sveltekit:prefetch
-      aria-current={$page.url.pathname === '/about' ? 'page' : null}
-      href="about">About</a
-    >
-    <a
-      sveltekit:prefetch
-      aria-current={$page.url.pathname === '/projects' ? 'page' : null}
-      href="projects">Projects</a
-    >
-    <a
-      sveltekit:prefetch
-      aria-current={$page.url.pathname === '/contact' ? 'page' : null}
-      href="contact">Contact</a
-    >
+    {#each navRoutes as { href, name }}
+      <a aria-current={$page.url.pathname === href ? 'page' : null} {href}>{name}</a>
+    {/each}
   </nav>
 </header>
 

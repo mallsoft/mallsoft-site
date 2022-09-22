@@ -1,5 +1,3 @@
-@import '@fontsource/space-grotesk';
-
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-duration: 0.01s !important;
@@ -45,7 +43,6 @@ body {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin: 0 auto;
 
   min-height: 100vh;
