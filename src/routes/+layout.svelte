@@ -4,7 +4,7 @@
 
   import Meta from '$lib/layout/Meta.svelte';
   import Main from '$lib/layout/Main.svelte';
-  import Header from '$lib/layout/Header.svelte';
+  import Navbar from '$lib/layout/Navbar.svelte';
   import Announcer from '$lib/announcement/Announcer.svelte';
   import Achievements from '$lib/achievement/Achievements.svelte';
   import Loader from '$lib/layout/Loader.svelte';
@@ -24,7 +24,8 @@
 
 <Loader />
 
-<Header />
+<Navbar />
+
 <Main>
   <slot />
 </Main>

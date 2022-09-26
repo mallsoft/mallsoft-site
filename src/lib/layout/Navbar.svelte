@@ -5,45 +5,34 @@
   $: index = $page.url.pathname === '/';
 </script>
 
-<header class:index>
-  <a aria-current={$page.url.pathname === '/' ? 'page' : null} href=".">mallsoft•dev</a>
-  <nav>
-    {#each navRoutes as { href, name }}
-      <a aria-current={$page.url.pathname === href ? 'page' : null} {href}>{name}</a>
-    {/each}
-  </nav>
-</header>
+<nav class:index>
+  <a aria-current={$page.url.pathname === '/' ? 'page' : null} href=".">mallsoft</a>
+  {#each navRoutes as { href, name }}
+    <a aria-current={$page.url.pathname === href ? 'page' : null} {href}>
+      {name}
+    </a>
+  {/each}
+</nav>
 
 <style>
-  header {
+  nav {
     transition: opacity 0.4s ease-out, transform 0.3s ease-out;
   }
-  header:not(:hover).index {
+  nav:not(:hover).index {
     transform: translate(0, -110%);
     opacity: 0;
   }
-
-  header {
+  nav {
     font-size: 75%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding: 0.5rem 1rem;
     flex-wrap: wrap;
-    gap: 0.5em;
-  }
-
-  header > a {
-    display: flex;
-    align-items: center;
-    margin-right: 1em;
-  }
-
-  nav {
-    display: flex;
-    align-items: center;
     justify-content: end;
     gap: 1em;
+  }
+  a:first-of-type {
+    margin-right: auto;
   }
 
   a[aria-current='page'] {
@@ -55,12 +44,12 @@
     letter-spacing: 0.08em;
   }
 
-  @media (max-width: 600px) {
-    header {
+  @media (max-width: 600px) and (min-width: 350px) {
+    nav {
       padding-top: 0.8em;
     }
     a {
-      padding: 0.5em;
+      padding: 0.4em;
     }
   }
 </style>
