@@ -50,6 +50,6 @@
   <Responsive />
 {/if}
 
-{#if !$unlocked?.includes('aksel') && $page.url.pathname === '/projects'}
+{#if !$unlocked?.includes('aksel') && $page.url.pathname === '/'}
   <GreetAksel />
 {/if}
