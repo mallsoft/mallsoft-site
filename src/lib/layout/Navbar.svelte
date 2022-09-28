@@ -18,7 +18,7 @@
   nav {
     transition: opacity 0.4s ease-out, transform 0.3s ease-out;
   }
-  nav:not(:hover).index {
+  nav:not(:is(:hover, :focus-within)).index {
     transform: translate(0, -110%);
     opacity: 0;
   }
