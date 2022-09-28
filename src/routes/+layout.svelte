@@ -9,15 +9,7 @@
   import Achievements from '$lib/achievement/Achievements.svelte';
   import Loader from '$lib/layout/Loader.svelte';
 
-  import { prefetch } from '$app/navigation';
-  import { onMount } from 'svelte';
   import { isLocalStorageAvailable } from '$lib/utils';
-
-  onMount(() => {
-    prefetch('/projects');
-    prefetch('/about');
-    prefetch('/contact');
-  });
 </script>
 
 <Meta />
