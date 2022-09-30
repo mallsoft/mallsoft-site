@@ -61,8 +61,8 @@ export const me = {
       link: 'https://powermap.netlify.app/'
     },
     {
-      title: 'Sunniva gallery',
-      description: 'A gallery of Sunnivas art',
+      title: 'Artist gallery',
+      description: 'Portfolio of artwork by Sunniva',
       link: 'https://sunniva.gallery'
     },
     {

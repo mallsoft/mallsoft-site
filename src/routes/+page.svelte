@@ -15,7 +15,7 @@
 
 <article class="default">
   <h1>mallsoft•dev</h1>
-  <p>a developer based in Bergen<br />— mostly focused on web and UX</p>
+  <p>A developer based in Bergen<br />— mostly focused on web and UX</p>
 
   <nav>
     {#each navRoutes as { href, name }, i}
