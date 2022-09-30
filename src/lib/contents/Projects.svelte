@@ -150,12 +150,13 @@
 
     cursor: pointer;
 
-    transition: transform 0.4s;
+    border-right: 1px dashed transparent;
+    transition: border-color 0.6s;
   }
 
   li:is(:hover, :focus-within) {
-    transition: transform 0.1s;
-    transform: scale(1.02);
+    border-color: var(---c-c1);
+    transition: border-color 0.3s;
   }
 
   li:is(:hover, :focus-within) h3 {

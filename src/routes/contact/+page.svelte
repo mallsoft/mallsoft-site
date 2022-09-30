@@ -12,11 +12,11 @@
   </address>
   <p class="diff-remove">
     Lorem, ipsum dolor sit amet consectetur adipisicing elit bla bla bla call to action / something
-    about me being available for work...
+    about being available for work...
   </p>
   <p class="diff-add">
-    Hi there, I am glad you made it this far! If you have any questions or just liked the site, let
-    me know!
+    If you think we should have a chat... well then you have already clicked the "mailto" thing up
+    there right?
   </p>
 
   {#if $unlocked.length}
