@@ -16,8 +16,8 @@
     display: flex;
     flex-direction: column;
 
-    margin: 1em 0;
-    gap: 1em;
+    margin: 0.4em 0;
+    gap: 0.8em;
 
     font-size: 0.9em;
   }
@@ -32,5 +32,9 @@
   h3 {
     color: var(---c-a2);
     font-size: 80%;
+  }
+
+  p {
+    max-width: var(---readwidth);
   }
 </style>

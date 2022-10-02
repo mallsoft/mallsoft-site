@@ -9,7 +9,7 @@
     Ideas with inclusive and functional <strong>story first</strong> solutions
   </p>
   <section>
-    <h2>Works</h2>
+    <h2>For<span>;</span></h2>
     <Works />
   </section>
 </article>
@@ -23,8 +23,8 @@
     color: var(---c-c1);
     animation: dots 3s 0.2s infinite;
   }
-  h2::after {
-    content: '.';
+
+  h2 span {
     color: var(---c-c1);
   }
 

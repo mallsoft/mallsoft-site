@@ -70,4 +70,11 @@
       color: var(---c-a2);
     }
   }
+
+  p:first-of-type {
+    margin-top: 0.8em;
+  }
+  p:last-of-type {
+    margin-bottom: 0.8em;
+  }
 </style>

@@ -61,15 +61,15 @@ export const me = {
     },
     {
       who: 'Nurofy',
-      what: 'Development and design of the front end application, as well as authentication and user management'
+      what: 'Design and development of the front end application, as well as authentication and user management'
     },
     {
       who: 'University of Bergen',
-      what: 'Frontend developement for a prototype programming auiz application'
+      what: 'Frontend development for a prototype programming quiz application'
     },
     {
       who: 'Thriving Ventures',
-      what: 'Landing page and logo developement for a saas gaming company'
+      what: 'Landing page and logo development for a saas gaming company'
     }
   ]
 };

@@ -11,19 +11,36 @@
       localStorage.setItem('hasWiggled', 'yeah!');
     }
   });
+
+  let current = null;
 </script>
 
 <article class="default">
-  <h1>mallsoft•dev</h1>
+  <h1>
+    {#each navRoutes as _, i}
+      <span class:active={i === current}>.</span>
+    {/each}
+  </h1>
   <p>A developer based in Bergen<br />— mostly focused on web and UX</p>
 
   <nav>
     {#each navRoutes as { href, name }, i}
-      {#if i === 0}
-        <a {href} class:wiggle>{name}</a>
-      {:else}
-        <a {href}>{name}</a>
-      {/if}
+      <a
+        on:mouseover={() => {
+          current = i;
+        }}
+        on:focus={() => {
+          current = i;
+        }}
+        on:mouseout={() => {
+          current = null;
+        }}
+        on:blur={() => {
+          current = null;
+        }}
+        {href}
+        class:wiggle={wiggle && i === 0}>{name}</a
+      >
     {/each}
   </nav>
 </article>
@@ -33,6 +50,16 @@
 <Wscord />
 
 <style>
+  h1 span {
+    display: inline-block;
+    transition: color 0.2s, transform 0.6s;
+  }
+  h1 span.active {
+    transition: color 0.2s, transform 0.2s;
+    color: var(---c-c1);
+    transform: translateY(-0.25ch);
+  }
+
   nav {
     margin-top: 1em;
     display: flex;
