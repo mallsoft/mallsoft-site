@@ -16,8 +16,8 @@
   ---c-c1: hsl(25, 100%, 50%);
   ---c-bg: hsl(240, 10%, 95%);
 
-  ---err: rgba(255, 10, 10);
-  ---ok: rgba(10, 255, 10);
+  ---err: hsl(0, 100%, 50%);
+  ---ok: hsl(120, 100%, 50%);
 
   ---readwidth: 34ch;
 
@@ -28,10 +28,13 @@
   :root {
     ---c-a1: hsl(240, 15%, 80%);
     ---c-a2: hsl(240, 15%, 45%);
-    ---c-b1: hsl(225, 100%, 70%);
-    ---c-b2: hsl(225, 100%, 60%);
+    ---c-b1: hsl(215, 100%, 60%);
+    ---c-b2: hsl(215, 100%, 50%);
     ---c-c1: hsl(20, 70%, 50%);
-    ---c-bg: hsl(240, 5%, 5%);
+    ---c-bg: hsl(225, 5%, 10%);
+
+    ---err: hsl(0, 60%, 55%);
+    ---ok: hsl(120, 60%, 55%);
   }
 }
 
@@ -192,7 +195,7 @@ p + p,
 .box {
   margin: 0.9rem 0;
   padding: 5px;
-  border: 4px dashed var(---c-a2);
+  border: 2px dashed var(---c-a2);
 }
 
 .diff-add,
@@ -244,7 +247,7 @@ p + p,
 
 .diff-remove::after {
   content: '-';
-  border-right: 2px solid var(---err);
+  border-right: 2px dashed var(---err);
 }
 
 .diff-add::before {
