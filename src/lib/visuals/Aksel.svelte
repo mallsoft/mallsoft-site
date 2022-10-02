@@ -7,7 +7,7 @@
   let mx = null;
   let innerWidth;
 
-  let size = 64;
+  let size = 96;
 
   const birdx = spring(0, { damping: 0.08, stiffness: 0.003, precision: 1 });
 
