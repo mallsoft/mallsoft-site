@@ -54,61 +54,22 @@ export const me = {
     'Copilot',
     'SQL'
   ],
-  projects: [
+  work: [
     {
-      title: 'Powermap (poc)',
-      description: 'A web application showing the cost per kwh of the different zones in Norway',
-      link: 'https://powermap.netlify.app/'
+      who: 'Nicode',
+      what: 'Developed prototypes, sites and landing pages for both Nicode, Lyll and Wove'
     },
     {
-      title: 'Artist gallery',
-      description: 'Portfolio of artwork by Sunniva',
-      link: 'https://sunniva.gallery'
+      who: 'Nurofy',
+      what: 'Development and design of the front end application, as well as authentication and user management'
     },
     {
-      title: 'Wove',
-      description: 'Website for a marketing agency',
-      link: 'https://www.wove.no/'
+      who: 'University of Bergen',
+      what: 'Frontend developement for a prototype programming auiz application'
     },
     {
-      title: 'Nicode',
-      description: 'Nicode consultancy landing page',
-      link: 'https://nicode.dev/'
-    },
-    {
-      title: 'Lyll',
-      description: 'Lyll adverticement platform landing page',
-      link: 'https://lyll.io/'
-    },
-    {
-      title: 'Nygardsportalen',
-      description: 'Website for the Nygardsportalen building project',
-      link: 'https://www.nygardsportalen.no/'
-    },
-    {
-      title: 'Lysaskroken',
-      description: 'Website for the Lysaskroken building project',
-      link: 'https://www.lysaskroken.no/'
-    },
-    {
-      title: 'Smestadaasen',
-      description: 'Website for the Smestadaasen building project',
-      link: 'https://smestadaasen.no/'
-    },
-    {
-      title: 'Åstveitvågen Park',
-      description: 'Website for the Åstveitvågen Park building project',
-      link: 'https://www.astveitvagenpark.no/'
-    },
-    {
-      title: 'Thriving Ventures',
-      description: 'Saas company landing page',
-      link: 'https://thrivingventures.com/'
-    },
-    {
-      title: 'Melaa.net',
-      description: 'A slightly dated personal website',
-      link: 'https://melaa.net/'
+      who: 'Thriving Ventures',
+      what: 'Landing page and logo developement for a saas gaming company'
     }
   ]
 };

@@ -8,7 +8,7 @@
     A developer based in Bergen<br />— mostly focused on web and UX
   </p>
   <p class="diff-add">
-    Exploring ideas with honest and functional <strong>story first</strong> solutions
+    Ideas with inclusive and functional <strong>story first</strong> solutions
   </p>
   <section>
     <h2>Tricks of my trade</h2>

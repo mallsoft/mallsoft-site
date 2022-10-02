@@ -151,7 +151,7 @@
     throttledReCreate.call();
   }}
 />
-<ul bind:this={wordBox} class="box">
+<ul bind:this={wordBox}>
   {#each me.keywords.sort((a, b) => b.length - a.length) as word, i}
     <li
       bind:this={elements[i]}
@@ -166,6 +166,10 @@
 
 <style>
   ul {
+    margin: 0.9rem 0;
+    padding: 5px;
+    border: 2px dashed var(---c-a2);
+
     overflow: hidden;
 
     display: flex;
