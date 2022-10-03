@@ -40,7 +40,6 @@ Feel free to make an issue if you find any broken bits or have any suggestions.
   <meta name="twitter:image" content="/meta/opengraph.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <title>mallsoft•dev</title>
   <meta name="description" content="mallsoft • dev - developer and designer" />
   <link rel="icon" href="favicon.png" />
 

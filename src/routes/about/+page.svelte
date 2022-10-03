@@ -2,6 +2,10 @@
   import Words from '$lib/contents/Words.svelte';
 </script>
 
+<svelte:head>
+  <title>mallsoft•dev - About</title>
+</svelte:head>
+
 <article class="default">
   <h1>I'm Hans</h1>
   <p>

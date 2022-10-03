@@ -2,6 +2,10 @@
   import Works from '$lib/contents/Works.svelte';
 </script>
 
+<svelte:head>
+  <title>mallsoft•dev - Projects</title>
+</svelte:head>
+
 <article class="default">
   <h1>Creating</h1>
   <p class="diff-add">Empathic design through observation and the consideration of all audiences</p>

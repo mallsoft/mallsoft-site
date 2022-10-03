@@ -4,6 +4,10 @@
   import { unlocked } from '$lib/achievement/achievementStores';
 </script>
 
+<svelte:head>
+  <title>mallsoft•dev - Contact</title>
+</svelte:head>
+
 <article class="default">
   <h1>Action</h1>
   <address>

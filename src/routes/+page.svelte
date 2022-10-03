@@ -15,6 +15,10 @@
   let current = null;
 </script>
 
+<svelte:head>
+  <title>mallsoft•dev</title>
+</svelte:head>
+
 <article class="default">
   <h1>
     {#each navRoutes as _, i}
