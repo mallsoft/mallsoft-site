@@ -135,10 +135,10 @@
 {#if cursors.length}
   <ul aria-hidden="true">
     {#each cursors as { name, x, y, alive }}
-      {@const [n, id] = name.split('#')}
+      <!-- {@const [n, id] = name.split('#')} -->
       {#if alive}
         <li style:--rx="{x}px" style:--ry="{y}px">
-          <span>{n}</span>
+          <!-- <span>{n}</span> -->
         </li>
       {/if}
     {/each}
