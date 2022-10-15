@@ -151,18 +151,22 @@
     throttledReCreate.call();
   }}
 />
-<ul bind:this={wordBox}>
-  {#each me.keywords.sort((a, b) => b.length - a.length) as word, i}
-    <li
-      bind:this={elements[i]}
-      on:pointerdown={() => {
-        Body.setAngle(elements[i].physics, 0);
-      }}
-    >
-      {word}
-    </li>
-  {/each}
-</ul>
+
+<section>
+  <h2>Some of the words I know</h2>
+  <ul bind:this={wordBox}>
+    {#each me.keywords.sort((a, b) => b.length - a.length) as word, i}
+      <li
+        bind:this={elements[i]}
+        on:pointerdown={() => {
+          Body.setAngle(elements[i].physics, 0);
+        }}
+      >
+        {word}
+      </li>
+    {/each}
+  </ul>
+</section>
 
 <style>
   ul {

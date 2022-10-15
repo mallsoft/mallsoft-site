@@ -1,6 +1,6 @@
 <script>
   import { Throttle } from '$lib/utils';
-  import { messages } from '$lib/announcement/messages';
+  import { messages } from '$lib/components/announcement/messages';
   import { unlocked, achievements } from './achievementStores';
   import { onMount } from 'svelte';
 

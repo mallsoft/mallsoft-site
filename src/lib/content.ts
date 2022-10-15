@@ -1,6 +1,6 @@
 export const navRoutes = [
   { href: '/about', name: 'About' },
-  { href: '/projects', name: 'Projects' },
+  { href: '/stuff', name: 'Stuff' },
   { href: '/contact', name: 'Contact' }
 ];
 
@@ -57,19 +57,19 @@ export const me = {
   work: [
     {
       who: 'Nicode',
-      what: 'Developed prototypes, sites and landing pages for both Nicode, Lyll and Wove'
+      what: 'Prototypes, sites and landing pages for both Nicode, Lyll and Wove'
     },
     {
       who: 'Nurofy',
-      what: 'Design and development of the front end application, as well as authentication and user management'
+      what: 'Design, prototype, application developement and oauth stuff'
     },
     {
       who: 'University of Bergen',
-      what: 'Frontend development for a prototype programming quiz application'
+      what: 'Frontend for a prototype programming quiz application'
     },
     {
       who: 'Thriving Ventures',
-      what: 'Landing page and logo development for a saas gaming company'
+      what: 'Landing page and logo for a saas gaming company'
     }
   ]
 };

@@ -1,6 +1,6 @@
 <script>
   import { page } from '$app/stores';
-  import { messages } from '$lib/announcement/messages';
+  import { messages } from '$lib/components/announcement/messages';
   import { onMount } from 'svelte';
   import { loadAll, resetAll, saveAll, unlocked } from './achievementStores';
   import Clicker from './Clicker.svelte';

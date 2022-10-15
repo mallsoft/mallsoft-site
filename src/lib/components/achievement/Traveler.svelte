@@ -1,5 +1,5 @@
 <script>
-  import { messages } from '$lib/announcement/messages';
+  import { messages } from '$lib/components/announcement/messages';
   import { travel, unlocked, achievements } from './achievementStores';
 
   let old = {

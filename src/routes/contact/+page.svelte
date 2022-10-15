@@ -1,7 +1,7 @@
 <script>
-  import GRay from '$lib/visuals/GRay.svelte';
+  import GRay from '$lib/components/visuals/GRay.svelte';
   import { me } from '$lib/content';
-  import { unlocked } from '$lib/achievement/achievementStores';
+  import { unlocked } from '$lib/components/achievement/achievementStores';
 </script>
 
 <svelte:head>

@@ -2,14 +2,17 @@
   import { me } from '$lib/content';
 </script>
 
-<ol>
-  {#each me.work as { who, what }}
-    <li>
-      <h3>{who}</h3>
-      <p>{what}</p>
-    </li>
-  {/each}
-</ol>
+<section>
+  <h2>For<span>;</span></h2>
+  <ol>
+    {#each me.work as { who, what }}
+      <li>
+        <h3>{who}</h3>
+        <p>{what}</p>
+      </li>
+    {/each}
+  </ol>
+</section>
 
 <style>
   ol {
@@ -29,6 +32,9 @@
     gap: 0.25em;
   }
 
+  h2 span {
+    color: var(---c-c1);
+  }
   h3 {
     color: var(---c-a2);
     font-size: 80%;

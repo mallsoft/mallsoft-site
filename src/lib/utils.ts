@@ -1,6 +1,6 @@
 import { browser } from '$app/environment';
 import { crossfade } from 'svelte/transition';
-import { messages } from '$lib/announcement/messages';
+import { messages } from '$lib/components/announcement/messages';
 
 export function getLeafNodes() {
   const nodes = document.querySelectorAll('body :not(:is( body > *), canvas)');

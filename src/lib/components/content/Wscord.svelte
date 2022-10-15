@@ -172,12 +172,12 @@
     animation: fadein 0.7s;
   }
 
-  li > span {
+  /* li > span {
     position: absolute;
     top: 0;
     left: 1em;
     opacity: 0.5;
-  }
+  } */
 
   li::after {
     content: '';

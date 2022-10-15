@@ -1,7 +1,7 @@
 <script>
   import { navRoutes } from '$lib/content';
-  import Wscord from '$lib/contents/Wscord.svelte';
-  import Aksel from '$lib/visuals/Aksel.svelte';
+  import Wscord from '$lib/components/content/Wscord.svelte';
+  import Aksel from '$lib/components/visuals/Aksel.svelte';
   import { onMount } from 'svelte';
 
   let wiggle = false;

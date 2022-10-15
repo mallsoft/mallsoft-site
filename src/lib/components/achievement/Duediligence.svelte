@@ -1,5 +1,5 @@
 <script>
-  import { messages } from '$lib/announcement/messages';
+  import { messages } from '$lib/components/announcement/messages';
   import { visits, unlocked, achievements } from './achievementStores';
   import { page } from '$app/stores';
   import { browser } from '$app/environment';

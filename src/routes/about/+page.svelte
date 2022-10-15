@@ -1,5 +1,5 @@
 <script>
-  import Words from '$lib/contents/Words.svelte';
+  import Words from '$lib/components/content/Words.svelte';
 </script>
 
 <svelte:head>
@@ -11,11 +11,11 @@
   <p>
     A developer based in Bergen<br />— mostly focused on web and UX
   </p>
+  <p class="diff-remove">I like creating cool and functional stuff...</p>
+
   <p class="diff-add">
-    Ideas with inclusive and functional <strong>story first</strong> solutions
+    Ideas with inclusive and accessible <strong>story first</strong> solutions
   </p>
-  <section>
-    <h2>Tricks of my trade</h2>
-    <Words />
-  </section>
+
+  <Words />
 </article>

@@ -18,6 +18,7 @@
 
   ---err: hsl(0, 100%, 50%);
   ---ok: hsl(120, 100%, 50%);
+  ---warn: hsl(60, 100%, 50%);
 
   ---readwidth: 34ch;
 
@@ -35,6 +36,7 @@
 
     ---err: hsl(0, 60%, 55%);
     ---ok: hsl(120, 60%, 55%);
+    ---warn: hsl(60, 60%, 55%);
   }
 }
 
@@ -149,7 +151,15 @@ h6 {
   font-weight: normal;
   line-height: 0.9;
 }
-
+h2 {
+  font-size: 1.25em;
+  color: var(---c-a2);
+  max-width: var(---readwidth);
+}
+article section {
+  margin-top: 1.8em;
+  margin-bottom: 2.2em;
+}
 p {
   line-height: 1.1;
 }
@@ -174,17 +184,6 @@ p + p,
   margin-bottom: 0.14em;
 }
 
-.default > section {
-  margin-top: 1.8em;
-}
-
-.default > section > h2 {
-  font-size: 1.25em;
-  font-weight: normal;
-  color: var(---c-a2);
-  max-width: var(---readwidth);
-}
-
 @media (max-width: 600px) {
   .default {
     margin-top: 6vh;
@@ -193,11 +192,13 @@ p + p,
 }
 
 .diff-add,
+.diff-modify,
 .diff-remove {
   position: relative;
 }
 
 .diff-add::after,
+.diff-modify::after,
 .diff-remove::after {
   position: absolute;
   top: -0.2em;
@@ -212,6 +213,7 @@ p + p,
 }
 
 .diff-add::before,
+.diff-modify::before,
 .diff-remove::before {
   position: absolute;
   z-index: -1;
@@ -225,10 +227,12 @@ p + p,
 
 @media (prefers-color-scheme: dark) {
   .diff-add::before,
+  .diff-modify::before,
   .diff-remove::before {
     opacity: 0.1;
   }
   .diff-add::after,
+  .diff-modify::after,
   .diff-remove::after {
     opacity: 0.6;
   }
@@ -238,7 +242,10 @@ p + p,
   content: '+';
   border-right: 2px solid var(---ok);
 }
-
+.diff-modify::after {
+  content: '*';
+  border-right: 2px solid var(---warn);
+}
 .diff-remove::after {
   content: '-';
   border-right: 2px dashed var(---err);
@@ -247,7 +254,9 @@ p + p,
 .diff-add::before {
   background-color: var(---ok);
 }
-
+.diff-modify::before {
+  background-color: var(---warn);
+}
 .diff-remove::before {
   background-color: var(---err);
 }

@@ -1,5 +1,5 @@
 <script>
-  import { unlocked, achievements } from '$lib/achievement/achievementStores';
+  import { unlocked, achievements } from '$lib/components/achievement/achievementStores';
 </script>
 
 {#if $unlocked && $unlocked.length}

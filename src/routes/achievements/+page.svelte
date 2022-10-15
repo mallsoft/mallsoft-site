@@ -1,5 +1,5 @@
 <script>
-  import Unlocked from '$lib/contents/Unlocked.svelte';
+  import Unlocked from '$lib/components/content/Unlocked.svelte';
 </script>
 
 <svelte:head>

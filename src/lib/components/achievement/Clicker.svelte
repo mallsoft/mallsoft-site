@@ -1,5 +1,5 @@
 <script>
-  import { messages } from '$lib/announcement/messages';
+  import { messages } from '$lib/components/announcement/messages';
   import { clicks, unlocked, achievements } from './achievementStores';
 
   function handleClick(ev) {

@@ -1,5 +1,5 @@
 <script>
-  import Works from '$lib/contents/Works.svelte';
+  import Works from '$lib/components/content/Works.svelte';
 </script>
 
 <svelte:head>
@@ -8,14 +8,16 @@
 
 <article class="default">
   <h1>Creating</h1>
-  <p class="diff-add">Empathic design through observation and the consideration of all audiences</p>
-  <p>
-    Ideas with inclusive and functional <strong>story first</strong> solutions
+  <p class="diff-modify">
+    Empathic design through observation and the consideration of all audiences
   </p>
-  <section>
-    <h2>For<span>;</span></h2>
-    <Works />
-  </section>
+  <p>
+    Ideas with inclusive and accessible <strong>story first</strong> solutions
+  </p>
+  <Works />
+  <p class="diff-remove">
+    Less is more and... bad software has probably killed more people than sharks
+  </p>
 </article>
 
 <style>
@@ -26,10 +28,6 @@
     content: '';
     color: var(---c-c1);
     animation: dots 3s 0.2s infinite;
-  }
-
-  h2 span {
-    color: var(---c-c1);
   }
 
   @keyframes dots {

@@ -1,6 +1,6 @@
 <script>
   import { achievements, unlocked } from './achievementStores';
-  import { messages } from '$lib/announcement/messages';
+  import { messages } from '$lib/components/announcement/messages';
 
   let greetEvents = 0;
   function handleOver(ev) {
