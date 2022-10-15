@@ -61,7 +61,7 @@ export const me = {
     },
     {
       who: 'Nurofy',
-      what: 'Design, prototype, application developement and oauth stuff'
+      what: 'Design, prototype, application development and oauth stuff'
     },
     {
       who: 'University of Bergen',
