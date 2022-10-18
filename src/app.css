@@ -6,9 +6,9 @@
   ---c-c1: hsl(25, 100%, 50%);
   ---c-bg: hsl(240, 10%, 95%);
 
-  ---err: hsl(0, 100%, 50%);
-  ---ok: hsl(120, 100%, 50%);
-  ---warn: hsl(60, 100%, 50%);
+  ---err: hsl(0, 90%, 60%);
+  ---ok: hsl(120, 90%, 60%);
+  ---warn: hsl(50, 90%, 60%);
 
   ---readwidth: 34ch;
 
@@ -17,21 +17,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    ---c-a1: hsl(240, 15%, 80%);
-    ---c-a2: hsl(240, 15%, 45%);
-    ---c-b1: hsl(215, 100%, 60%);
-    ---c-b2: hsl(215, 100%, 50%);
+    ---c-a1: hsl(240, 15%, 85%);
+    ---c-a2: hsl(240, 10%, 50%);
+    ---c-b1: hsl(215, 80%, 60%);
+    ---c-b2: hsl(215, 80%, 50%);
     ---c-c1: hsl(20, 70%, 50%);
-    ---c-bg: hsl(225, 5%, 10%);
+    ---c-bg: hsl(225, 5%, 13%);
 
-    ---err: hsl(0, 60%, 55%);
-    ---ok: hsl(120, 60%, 55%);
-    ---warn: hsl(60, 60%, 55%);
+    ---err: hsl(0, 60%, 65%);
+    ---ok: hsl(120, 60%, 65%);
+    ---warn: hsl(60, 60%, 65%);
   }
 }
 
 body {
-  font-size: clamp(1.15rem, 3.6vw, 3.6rem);
+  font-size: clamp(1.2rem, 4vw, 4.2rem);
   font-family: var(---font, sans-serif);
   background-color: var(---c-bg, #ebebeb);
   color: var(---c-a1, #646464);
@@ -162,8 +162,7 @@ p + p,
   padding: 0 1rem;
   max-width: var(---readwidth);
   width: 100%;
-  margin-top: 9vh;
-  margin-bottom: 9vh;
+  margin: 11vh auto;
   flex: 1;
 }
 .default > h1 {
@@ -172,6 +171,14 @@ p + p,
   color: var(---c-a2);
   width: max-content;
   margin-bottom: 0.14em;
+
+  animation: h1in 0.3s backwards;
+}
+
+@keyframes h1in {
+  from {
+    transform: translateX(-0.25ch);
+  }
 }
 
 @media (max-width: 600px) {
