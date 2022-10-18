@@ -62,6 +62,7 @@
       style:--x="{$birdx}px"
     >
       <desc>Aksel the seagull.</desc>
+
       <g class="feet" fill="#ffda36" stroke="#737373" stroke-width="5">
         <path d="M125 270c-3 0-5-2-5-5v-45a5 5 0 0 1 10 0v30h20a10 10 0 0 1 0 20h-25 0Z" />
         <path d="M145 270c-3 0-5-2-5-5v-45a5 5 0 0 1 10 0v30h20a10 10 0 0 1 0 20h-25 0Z" />
@@ -94,6 +95,23 @@
           d="M130 120h100V70a50 50 0 0 0-100 0v50Z"
         />
         <path class="eye" fill="#737373" d="M200 85V65a5 5 0 0 1 10 0v20a5 5 0 0 1-10 0Z" />
+        {#if new Date().getMonth() === 11}
+          <path
+            fill="#f94144"
+            stroke="#737373"
+            stroke-width="5"
+            d="M130 70s20-40 70-50c0 0-100-43.97-130 60 0 0 30-40 60-10Z"
+          />
+          <path
+            fill="#fff"
+            stroke="#737373"
+            stroke-linecap="butt"
+            stroke-miterlimit="2"
+            stroke-width="5"
+            d="M136.094 72.989s18.683-37.736 65.139-46.314c3.683-.681 6.122-4.224 5.442-7.908-.681-3.683-4.224-6.122-7.908-5.442-53.544 9.888-74.861 53.686-74.861 53.686-1.65 3.363-.259 7.433 3.105 9.083 3.363 1.65 7.433.259 9.083-3.105Z"
+          />
+          <circle cx="70" cy="80" r="10" fill="#fff" stroke="#737373" stroke-width="5" />
+        {/if}
       </g>
       <g class="smallwing">
         <path fill="#c3c3c3" stroke="#737373" stroke-width="5" d="M90 120h140a70 70 0 0 1-140 0Z" />
