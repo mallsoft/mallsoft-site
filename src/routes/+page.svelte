@@ -2,6 +2,8 @@
   import { navRoutes } from '$lib/content';
   import Wscord from '$lib/components/content/Wscord.svelte';
   import Aksel from '$lib/components/visuals/Aksel.svelte';
+  import Snowy from '$lib/components/visuals/Snowy.svelte';
+
   import { onMount } from 'svelte';
 
   let wiggle = false;
@@ -50,6 +52,10 @@
 </article>
 
 <Aksel />
+
+{#if new Date().getMonth() === 11}
+  <Snowy />
+{/if}
 
 <Wscord />
 

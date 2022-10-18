@@ -8,10 +8,8 @@
   import Announcer from '$lib/components/announcement/Announcer.svelte';
   import Achievements from '$lib/components/achievement/Achievements.svelte';
   import Loader from '$lib/components/layout/Loader.svelte';
-  import Snowy from '$lib/components/visuals/Snowy.svelte';
 
   import { isLocalStorageAvailable } from '$lib/utils';
-  import { page } from '$app/stores';
 </script>
 
 <Meta />
@@ -23,10 +21,6 @@
 <Main>
   <slot />
 </Main>
-
-{#if new Date().getMonth() === 11 && $page.url.pathname === '/'}
-  <Snowy />
-{/if}
 
 <Announcer />
 
