@@ -1,13 +1,3 @@
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01s !important;
-    animation-iteration-count: 1 !important;
-    transition: none !important;
-    transition-duration: 0.01s !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 :root {
   ---c-a1: hsl(240, 15%, 30%);
   ---c-a2: hsl(240, 15%, 55%);
