@@ -1,6 +1,7 @@
 <script>
   import { spring } from 'svelte/motion';
   import { onMount } from 'svelte';
+  import { slide } from 'svelte/transition';
   let show = false;
   let walking = false;
   let left = false;
@@ -49,6 +50,7 @@
 {#if show}
   <div>
     <svg
+      in:slide
       data-name="likeswaffels"
       class:walking
       class:left
