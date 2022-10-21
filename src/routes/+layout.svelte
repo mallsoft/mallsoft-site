@@ -14,13 +14,13 @@
 
 <Meta />
 
-<Loader />
-
 <Navbar />
 
 <Main>
   <slot />
 </Main>
+
+<Loader />
 
 <Announcer />
 
