@@ -189,9 +189,17 @@
 
     border-radius: 100px;
 
-    border: 0.2em solid var(---c-c1);
+    background-color: var(---c-bg);
+    filter: blur(3px);
+    box-shadow: 5px 5px 4px 2px var(---c-a2);
   }
 
+  @media (prefers-color-scheme: dark) {
+    li::after {
+      filter: brightness(0.8) blur(4px);
+      box-shadow: 5px 5px 0 2px var(---c-a2);
+    }
+  }
   @keyframes fadein {
     from {
       opacity: 0;
