@@ -1,8 +1,8 @@
 <script>
   import { navRoutes } from '$lib/content';
   import Wscord from '$lib/components/content/Wscord.svelte';
-  import Aksel from '$lib/components/visuals/Aksel.svelte';
   import Snowy from '$lib/components/visuals/Snowy.svelte';
+  import Aksel from 'aksel';
 
   import { onMount } from 'svelte';
 
