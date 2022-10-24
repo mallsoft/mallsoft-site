@@ -1,0 +1,63 @@
+{
+  "short_name": "mallsoft",
+  "name": "mallsoft.dev",
+  "start_url": "/",
+  "icons": [
+    {
+      "src": "meta/m512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "meta/m256.png",
+      "type": "image/png",
+      "sizes": "256x256"
+    },
+    {
+      "src": "meta/m128.png",
+      "type": "image/png",
+      "sizes": "128x128"
+    },
+    {
+      "src": "meta/m192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "meta/m64.png",
+      "type": "image/png",
+      "sizes": "64x64"
+    },
+    {
+      "src": "meta/m32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
+      "src": "meta/maskable_icon_x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "meta/maskable_icon_x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "background_color": "#666",
+  "display": "standalone",
+  "scope": "/",
+  "theme_color": "#666",
+  "shortcuts": [
+    {
+      "name": "mallsoft.dev contact",
+      "short_name": "Contact",
+      "description": "Stuff you need to get in touch",
+      "url": "/contact",
+      "icons": [{ "src": "meta/m192.png", "sizes": "192x192" }]
+    }
+  ],
+  "description": "Personal page for mallsoft"
+}

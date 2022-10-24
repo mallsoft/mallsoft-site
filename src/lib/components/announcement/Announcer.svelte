@@ -50,8 +50,6 @@
 
     font-size: min(2rem, 8vw);
 
-    margin: 10px 0;
-
     color: var(---c-bg);
   }
   article {
@@ -59,9 +57,8 @@
     grid-template-columns: auto 1fr;
     max-width: var(---readwidth);
 
-    margin: 1rem;
     font-weight: bold;
-    padding: 0.5em;
+    padding: 0.8em 0.5em;
     position: relative;
 
     width: 100%;
@@ -95,7 +92,7 @@
     justify-content: center;
     align-items: center;
     font-size: min(1.85em, 10vw);
-    margin-right: 0.1em;
+    margin-right: 0.25em;
     line-height: 1.5;
   }
 
@@ -103,6 +100,9 @@
     article {
       grid-auto-flow: column;
       grid-template-rows: auto 1fr;
+    }
+    .icon {
+      margin-bottom: 0.5em;
     }
   }
 </style>

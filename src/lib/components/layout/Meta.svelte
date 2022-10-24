@@ -1,33 +1,43 @@
 <script>
   import { me } from '$lib/content';
-  import { browser, dev } from '$app/environment';
+  import { dev } from '$app/environment';
+  import { onMount } from 'svelte';
 
-  if (!dev && browser) {
-    const styleStrings = [
-      `font-size: 2em;`,
-      `font-size: 1.4em; color: #8ada55;`,
-      `font-size: 1.2em; color: gray;`
-    ];
+  onMount(() => {
+    if (!dev) {
+      const styleStrings = [
+        `font-size: 2em;`,
+        `font-size: 1.6em;`,
+        `font-size: .8em;font-style: italic;`,
+        `font-size: 1.2em;`
+      ];
 
-    console.info(
-      `
+      console.info(
+        `
+
 
 %c🧐 Hi there!
 
 %cThis page exists because I needed a homepage and a place to experiment,
-it's hosted on Netlify and built with svelte/svelteKit.
-
+built with svelte/svelteKit and _was_ hosted on Netlify👎, but moved to fly.io👌.
+%c...because somepeople don't consider waiting for 1.5s for servers to respond as "fast"...
 %c
 Repo: ${me.repoUrl}
 Feel free to make an issue if you find any broken bits or have any suggestions.
- 
+
+
 `,
-      ...styleStrings
-    );
-  }
+        ...styleStrings
+      );
+    }
+  });
 </script>
 
 <svelte:head>
+  <link rel="manifest" href="manifest.json" crossorigin="use-credentials" />
+  <link rel="apple-touch-icon" href="meta/apple_t_192.png" />
+  <link rel="icon" href="favicon.png" />
+
   <meta property="og:title" content="mallsoft" />
   <meta property="og:site_name" content="mallsoft.dev" />
   <meta property="og:url" content="https://mallsoft.dev/" />
@@ -41,7 +51,6 @@ Feel free to make an issue if you find any broken bits or have any suggestions.
   <meta name="twitter:card" content="summary_large_image" />
 
   <meta name="description" content="mallsoft • dev - developer and designer" />
-  <link rel="icon" href="favicon.png" />
 
-  <meta name="theme-color" content="#0c0c0d" />
+  <meta name="theme-color" content="#196ee6" />
 </svelte:head>
