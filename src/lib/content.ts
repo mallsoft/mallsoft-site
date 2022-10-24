@@ -52,7 +52,8 @@ export const me = {
     'Git',
     'Azure',
     'Copilot',
-    'SQL'
+    'SQL',
+    '💾'
   ],
   work: [
     {

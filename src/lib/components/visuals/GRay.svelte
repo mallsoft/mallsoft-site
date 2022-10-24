@@ -142,7 +142,7 @@
 <style>
   canvas {
     position: fixed;
-    z-index: -1;
+    pointer-events: none;
     top: 0;
     left: 0;
     width: 100%;

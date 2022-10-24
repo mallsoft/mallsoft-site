@@ -22,7 +22,7 @@
     ---c-b1: hsl(215, 80%, 60%);
     ---c-b2: hsl(215, 80%, 50%);
     ---c-c1: hsl(20, 70%, 50%);
-    ---c-bg: hsl(225, 5%, 13%);
+    ---c-bg: hsl(225, 6%, 13%);
 
     ---err: hsl(0, 60%, 65%);
     ---ok: hsl(120, 60%, 65%);
@@ -159,11 +159,16 @@ p + p,
 }
 
 .default {
-  padding: 0 1rem;
+  position: relative;
+  padding: 1em;
   max-width: var(---readwidth);
   width: 100%;
-  margin: 11vh auto;
+  margin: 8vh auto;
   flex: 1;
+  background-color: var(---c-bg);
+  border-radius: 12px;
+
+  backdrop-filter: blur(10px);
 }
 .default > h1 {
   font-size: 2.4em;
@@ -185,6 +190,8 @@ p + p,
   .default {
     margin-top: 6vh;
     margin-bottom: 6vh;
+
+    border-radius: 0;
   }
 }
 
@@ -192,6 +199,7 @@ p + p,
 .diff-modify,
 .diff-remove {
   position: relative;
+  z-index: 1;
 }
 
 .diff-add::after,

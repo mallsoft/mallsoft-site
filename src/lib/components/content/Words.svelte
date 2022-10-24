@@ -153,7 +153,7 @@
 />
 
 <section>
-  <h2>Some of the words I know</h2>
+  <h2>Some words I know</h2>
   <ul bind:this={wordBox}>
     {#each me.keywords.sort((a, b) => b.length - a.length) as word, i}
       <li
