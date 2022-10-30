@@ -1,5 +1,12 @@
 <script>
   import { unlocked, achievements } from '$lib/components/achievement/achievementStores';
+  import { loadLocal, saveLocal } from '$lib/utils';
+  import { onMount } from 'svelte';
+
+  let doesntLikeAward = false;
+  onMount(() => {
+    doesntLikeAward = loadLocal('asdasdasd');
+  });
 </script>
 
 {#if $unlocked && $unlocked.length}
@@ -15,7 +22,14 @@
   </ul>
   <p>
     {#if $unlocked.length === achievements.length}
-      Woah! You unlocked all the achievements! <em>You are a true master of the universe!</em>
+      You unlocked the achievements.<br /><em
+        >"Here's your award" <span
+          on:click={() => {
+            doesntLikeAward = true;
+            saveLocal('asdasdasd', true);
+          }}>{doesntLikeAward ? '🥈 ...yeah' : '🥇'}</span
+        >
+      </em>
     {:else}
       Unlocked {$unlocked.length} of {achievements.length} achievements.
     {/if}
@@ -47,7 +61,7 @@
     filter: grayscale(1) opacity(0.5) brightness(0.5);
   }
 
-  span {
+  li span {
     grid-area: icon;
     align-self: center;
     justify-self: center;

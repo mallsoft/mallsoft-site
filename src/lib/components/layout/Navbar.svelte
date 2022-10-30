@@ -42,14 +42,21 @@
 
   a {
     letter-spacing: 0.08em;
+
+    background-color: var(---c-bg);
+    border-radius: 6px;
+    padding: 3px 6px;
   }
 
-  @media (max-width: 600px) and (min-width: 350px) {
+  @media (max-width: 600px) {
     nav {
       padding-top: 0.8em;
+      padding-left: 0.4em;
+      padding-right: 0.4em;
+      gap: 0.8em;
     }
     a {
-      padding: 0.4em;
+      padding: 0.2em;
     }
   }
 </style>
