@@ -5,7 +5,6 @@
   let canvasElement: HTMLCanvasElement;
   let innerWidth, innerHeight;
   let frame = null;
-  let pointer = null;
   let flakes: SnowFlake[] = [];
 
   const throttledResize = new Throttle(() => {
@@ -14,6 +13,7 @@
 
     flakes = [];
     const count = Math.max(10, Math.min(300, (innerHeight * innerWidth) / 6000));
+    // const count = 6;
     for (let i = count; i > 0; i--) {
       flakes.push(new SnowFlake(1 + Math.random() * 3));
     }
@@ -29,8 +29,8 @@
       ctx.fill();
     }
     update(f, i) {
-      this.x += Math.sin(i + f / 1200) * 0.1 + Math.sin(i + f / 200) * 0.05;
-      this.y += Math.sin(i + f / 1000) * 0.05 + this.r / 40 + 0.1;
+      this.x += (Math.sin(i + f / 1000) + Math.sin(i + f / 300)) * 0.1;
+      this.y += Math.sin(i + f / 1000) * 0.1 + this.r * 0.08;
 
       // magic numbers are just padding
       if (this.y > innerHeight + 50) this.y = -50;
@@ -83,7 +83,7 @@
 
     animation: fadein 3s backwards ease-in-out;
 
-    filter: drop-shadow(3px 3px 3px var(---c-a2)) opacity(0.5);
+    filter: blur(1px) drop-shadow(7px 7px 3px var(---c-a2)) brightness(1.4);
   }
   @media (prefers-color-scheme: dark) {
     canvas {
