@@ -5,10 +5,12 @@
   let canvasElement: HTMLCanvasElement;
   let innerWidth, innerHeight;
 
+  let scrolling = false;
   let pointer: Vec = null;
   let lines: Line[];
 
   const throttledResize = new Throttle(() => {
+    scrolling = false;
     canvasElement.width = innerWidth;
     canvasElement.height = innerHeight;
 
@@ -134,14 +136,16 @@
     pointer = null;
   }}
   on:scroll={() => {
+    scrolling = true;
     throttledResize.call();
   }}
 />
-<canvas aria-hidden="true" bind:this={canvasElement} />
+<canvas aria-hidden="true" bind:this={canvasElement} class:scrolling />
 
 <style>
   canvas {
     position: fixed;
+    z-index: 2;
     pointer-events: none;
     top: 0;
     left: 0;
@@ -150,6 +154,8 @@
     box-sizing: border-box;
 
     animation: fadein 0.53s backwards ease-in-out;
+
+    transition: opacity 0.2s;
   }
 
   @keyframes fadein {
@@ -159,5 +165,9 @@
     to {
       opacity: 1;
     }
+  }
+
+  .scrolling {
+    opacity: 0.2;
   }
 </style>
