@@ -196,13 +196,14 @@ p + p,
 .diff-modify,
 .diff-remove {
   position: relative;
-  z-index: 1;
+  z-index: -1;
 }
 
 .diff-add::after,
 .diff-modify::after,
 .diff-remove::after {
   position: absolute;
+  z-index: -1;
   top: -0.2em;
   bottom: 0;
   right: calc(100% + 0.2em);
