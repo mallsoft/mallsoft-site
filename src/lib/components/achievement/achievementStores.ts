@@ -11,7 +11,7 @@ export const achievements = [
   {
     id: 'traveler',
     name: 'Traveler',
-    description: 'Move mouse 100 million pixels on the site',
+    description: 'Move mouse 10 million pixels on the site',
     icon: '🚗'
   },
   {
@@ -44,10 +44,10 @@ const defaultState = {
   unlocked: [],
   travel: 0,
   clicks: 0,
-  visits: { '/about': 0, '/projects': 0, '/contact': 0 }
+  visits: { '/about': 0, '/stuff': 0, '/contact': 0 }
 };
 
-const store_key = '_achievements';
+const store_key = '_achievementsx';
 
 export function saveAll() {
   const state = {
