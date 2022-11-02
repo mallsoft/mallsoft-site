@@ -3,7 +3,7 @@ import { crossfade } from 'svelte/transition';
 import { messages } from '$lib/components/announcement/messages';
 
 export function getLeafNodes() {
-  const nodes = document.querySelectorAll('body :not(:is( body > *), canvas)');
+  const nodes = document.querySelectorAll('body :not(:is( body > *), canvas, svg, svg *)');
   const leafNodes = Array.from(nodes).filter(({ childNodes }) => {
     return (
       (childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE) || // contains single [ #text ]
@@ -12,6 +12,7 @@ export function getLeafNodes() {
         .every(({ nodeType }) => nodeType === Node.TEXT_NODE) // all is [ #text ]
     );
   });
+
   return leafNodes;
 }
 
@@ -39,12 +40,12 @@ export function toClipboard(text, announce = true) {
   }
 }
 
-export function saveLocal(key, value) {
+export function saveLocal(key: string, value) {
   if (!browser) return;
   localStorage.setItem(key, btoa(JSON.stringify(value)));
 }
 
-export function loadLocal(key) {
+export function loadLocal(key: string): object | null {
   if (!browser) return;
   const value = localStorage.getItem(key);
   return value ? JSON.parse(atob(value)) : null;
