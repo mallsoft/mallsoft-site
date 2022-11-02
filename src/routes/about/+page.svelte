@@ -1,5 +1,6 @@
 <script>
   import Words from '$lib/components/content/Words.svelte';
+  import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
 </script>
 
 <svelte:head>
@@ -18,4 +19,6 @@
   </p>
 
   <Words />
+
+  <SuggestionLoader />
 </article>

@@ -2,6 +2,7 @@
   import GRay from '$lib/components/visuals/GRay.svelte';
   import { me } from '$lib/content';
   import { unlocked } from '$lib/components/achievement/achievementStores';
+  import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
 </script>
 
 <svelte:head>
@@ -26,6 +27,8 @@
   {#if $unlocked.length}
     <a class="achievements" href="/achievements">Achievements</a>
   {/if}
+
+  <SuggestionLoader />
 </article>
 
 <GRay />
