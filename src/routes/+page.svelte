@@ -5,6 +5,7 @@
   import Aksel from 'aksel';
 
   import { onMount } from 'svelte';
+  import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
 
   let wiggle = false;
   onMount(() => {
@@ -49,6 +50,8 @@
       >
     {/each}
   </nav>
+
+  <SuggestionLoader />
 </article>
 
 <Aksel />

@@ -1,5 +1,6 @@
 <script>
   import Works from '$lib/components/content/Works.svelte';
+  import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
 </script>
 
 <svelte:head>
@@ -18,6 +19,8 @@
   <p class="diff-remove">
     Less is more and... bad software has probably killed more people than sharks
   </p>
+
+  <SuggestionLoader />
 </article>
 
 <style>
