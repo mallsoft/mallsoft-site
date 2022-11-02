@@ -45,6 +45,8 @@ body {
   min-height: 100vh;
   height: 100%;
   position: relative;
+
+  max-width: 2560px;
 }
 
 @supports (scrollbar-color: auto) and (scrollbar-width: thin) and (scrollbar-gutter: stable) {
