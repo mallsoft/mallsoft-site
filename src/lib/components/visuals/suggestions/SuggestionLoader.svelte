@@ -32,15 +32,16 @@
   div {
     display: contents;
   }
-  div > :global(svg) {
-    animation: intro 0.5s ease backwards;
+  div {
+    pointer-events: none;
+  }
 
-    z-index: -10;
+  div > :global(svg) {
+    animation: intro 0.3s ease backwards;
+
     position: absolute;
     left: 0;
     top: 0;
-
-    /* remove padding */
 
     width: 100%;
   }
@@ -55,7 +56,7 @@
   @keyframes intro {
     from {
       opacity: 0;
-      transform: rotate(3deg) scale(0.9);
+      transform: translateX(-10px);
     }
   }
 
