@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-  <title>mallsoft•dev - Projects</title>
+  <title>mallsoft•dev - Stuff</title>
 </svelte:head>
 
 <article class="default">

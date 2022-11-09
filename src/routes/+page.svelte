@@ -19,7 +19,7 @@
 </script>
 
 <svelte:head>
-  <title>mallsoft•dev</title>
+  <title>mallsoft•dev - Index</title>
 </svelte:head>
 
 <article class="default">

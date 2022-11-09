@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "melaafrontend",
+  "name": "mallsoft",
   "version": "0.0.1",
   "scripts": {
     "start": "node build/index.js",
