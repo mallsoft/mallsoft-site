@@ -11,29 +11,31 @@
 
     return () => clearInterval(msgTimer);
   });
+
+  function closeMsg(msg) {
+    messages.remove(msg);
+  }
 </script>
 
 <aside aria-live="polite" role="log">
   {#each $messages as msg, i (msg)}
-    <article on:click={() => messages.remove(msg)} transition:fade animate:flip={{ duration: 300 }}>
-      {#if msg.icon}
-        <div class="icon">
-          {msg.icon}
-        </div>
-      {/if}
+    <section
+      on:click={() => closeMsg(msg)}
+      on:keydown={() => closeMsg(msg)}
+      transition:fade
+      animate:flip={{ duration: 300 }}
+    >
+      <div class="icon">
+        <span>{msg.icon?.length ? msg.icon : '📎'}</span>
+      </div>
       <div class="content">
-        <h1>{msg.title}</h1>
+        <h1>
+          {msg.title}
+        </h1>
         <p>{msg.description}</p>
       </div>
-    </article>
+    </section>
   {/each}
-  <!-- <article>
-    <div class="icon">🛒</div>
-    <div class="content">
-      <h1>title title title title</h1>
-      <p>description description descriptiondes criptiondescr iptiondescription</p>
-    </div>
-  </article> -->
 </aside>
 
 <style>
@@ -48,61 +50,70 @@
     justify-content: center;
     align-items: center;
 
-    font-size: min(2rem, 8vw);
+    pointer-events: none;
+    user-select: none;
 
-    color: var(---c-bg);
-  }
-  article {
-    display: grid;
-    grid-template-columns: auto 1fr;
+    gap: 0.5em;
+    margin: 0.5em auto;
     max-width: var(---readwidth);
-
-    font-weight: bold;
-    padding: 0.8em 0.5em;
+  }
+  section {
+    pointer-events: initial;
     position: relative;
 
+    padding: 1em;
     width: 100%;
 
-    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+
+    color: var(---c-bg);
+    background-color: var(---c-b1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2), 0.8em 0.8em 0.7em rgba(0, 0, 0, 0.3);
+
+    transition: background-color 0.4s;
+  }
+  section:is(:hover, :focus, :focus-within) {
+    background-color: var(---c-b2);
+    transition: background-color 0.1s;
   }
 
-  article::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(---c-b2);
-    transition: background-color 0.2s ease;
-    box-shadow: 10px 10px 20px -5px rgba(0, 0, 0, 0.1), -10px -10px 20px -5px rgba(0, 0, 0, 0.1);
+  h1 {
+    font-weight: bold;
+    font-size: 1.2em;
   }
-
-  article:hover::after {
-    background: var(---c-b1);
-  }
-
   p {
     font-size: 0.8em;
   }
 
   .icon {
+    flex-shrink: 0;
     display: flex;
-    justify-content: center;
     align-items: center;
-    font-size: min(1.85em, 10vw);
-    margin-right: 0.25em;
-    line-height: 1.5;
+    justify-content: center;
+
+    width: 2.2em;
+    height: 2.2em;
+
+    border-radius: 999px;
+
+    line-height: 0;
+
+    color: var(---c-b1);
+    background-color: var(---c-bg);
+
+    transform: translateX(-0.25em);
   }
 
-  @media (max-width: 600px) {
-    article {
-      grid-auto-flow: column;
-      grid-template-rows: auto 1fr;
-    }
-    .icon {
-      margin-bottom: 0.5em;
-    }
+  .icon span {
+    display: block;
+    transform: scale(2) translateY(-0.1em);
+    filter: drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.4));
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
   }
 </style>
