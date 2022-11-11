@@ -6,7 +6,7 @@ let lastReq = null;
 export function GET(event) {
   const { getClientAddress, request } = event;
 
-  const last = lastReq;
+  const last = lastReq || new Date();
   lastReq = new Date();
 
   return json({

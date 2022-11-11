@@ -19,8 +19,8 @@
   :root {
     ---c-a1: hsl(240, 15%, 85%);
     ---c-a2: hsl(240, 10%, 50%);
-    ---c-b1: hsl(215, 80%, 60%);
-    ---c-b2: hsl(215, 80%, 50%);
+    ---c-b1: hsl(220, 80%, 60%);
+    ---c-b2: hsl(220, 80%, 50%);
     ---c-c1: hsl(20, 70%, 50%);
     ---c-bg: hsl(225, 6%, 13%);
 
@@ -167,8 +167,8 @@ p + p,
   width: 100%;
   margin: 8vh auto;
   flex: 1;
-  border-radius: 6px;
 }
+
 .default > h1 {
   font-size: 2.4em;
   letter-spacing: 0.04em;

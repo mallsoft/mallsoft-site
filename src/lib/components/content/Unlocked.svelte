@@ -3,9 +3,9 @@
   import { loadLocal, saveLocal } from '$lib/utils';
   import { onMount } from 'svelte';
 
-  let doesntLikeAward = false;
+  let doesntLikeAward = null;
   onMount(() => {
-    doesntLikeAward = loadLocal('asdasdasd');
+    doesntLikeAward = loadLocal('awwardtogle');
   });
 </script>
 
@@ -23,10 +23,12 @@
   <p>
     {#if $unlocked.length === achievements.length}
       You unlocked the achievements.<br /><em
-        >"Here's your award" <span
+        >"Here's your award"
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <span
           on:click={() => {
             doesntLikeAward = true;
-            saveLocal('asdasdasd', true);
+            saveLocal('awwardtogle', true);
           }}>{doesntLikeAward ? '🥈 ...yeah' : '🥇'}</span
         >
       </em>
