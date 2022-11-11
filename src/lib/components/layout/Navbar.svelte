@@ -6,7 +6,7 @@
 </script>
 
 <nav class:index>
-  <a aria-current={$page.url.pathname === '/' ? 'page' : null} href=".">mallsoft</a>
+  <a aria-current={$page.url.pathname === '/' ? 'page' : null} href=".">Index</a>
   {#each navRoutes as { href, name }}
     <a aria-current={$page.url.pathname === href ? 'page' : null} {href}>
       {name}
