@@ -25,7 +25,7 @@
 <article class="default">
   <h1>
     {#each navRoutes as _, i}
-      <span class:active={i === current}>.</span>
+      <span class:active={i === current}>•</span>
     {/each}
   </h1>
   <p>A developer based in Bergen<br />— mostly focused on web and UX</p>

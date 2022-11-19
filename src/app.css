@@ -19,10 +19,10 @@
   :root {
     ---c-a1: hsl(240, 15%, 85%);
     ---c-a2: hsl(240, 10%, 50%);
-    ---c-b1: hsl(220, 80%, 60%);
+    ---c-b1: hsl(220, 85%, 60%);
     ---c-b2: hsl(220, 80%, 50%);
     ---c-c1: hsl(20, 70%, 50%);
-    ---c-bg: hsl(225, 6%, 13%);
+    ---c-bg: hsl(225, 6%, 12%);
 
     ---err: hsl(0, 60%, 65%);
     ---ok: hsl(120, 60%, 65%);
@@ -165,7 +165,7 @@ p + p,
   padding: 1em;
   max-width: var(---readwidth);
   width: 100%;
-  margin: 8vh auto;
+  margin: 7vh auto;
   flex: 1;
 }
 

@@ -1,6 +1,7 @@
 <script>
   import { dev } from '$app/environment';
   import { onMount } from 'svelte';
+  import { messages } from '../announcement/messages';
 
   let ws;
   let cursors = [];
@@ -24,7 +25,7 @@
       this.ttk = setTimeout(() => {
         this.alive = false;
         cursors = cursors;
-      }, 5000);
+      }, 3000);
       cursors = cursors;
     }
   }
@@ -44,6 +45,8 @@
       if (dev) {
         console.info('socket opened');
       }
+
+      // messages.add('👨‍💻', 'Connected', 'websocket connection open', 1000);
     };
 
     socket.onmessage = (event) => {
@@ -184,22 +187,13 @@
     position: absolute;
     top: -1em;
     left: -1.5em;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
 
     border-radius: 100px;
-
-    background-color: var(---c-bg);
-    filter: blur(3px);
-    box-shadow: 5px 5px 4px 2px var(---c-a2);
+    border: 1px dashed var(---c-a2);
   }
 
-  @media (prefers-color-scheme: dark) {
-    li::after {
-      filter: brightness(0.8) blur(4px);
-      box-shadow: 5px 5px 0 2px var(---c-a2);
-    }
-  }
   @keyframes fadein {
     from {
       opacity: 0;
