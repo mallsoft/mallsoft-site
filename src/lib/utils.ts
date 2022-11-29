@@ -109,3 +109,35 @@ export function isLocalStorageAvailable() {
     return false;
   }
 }
+
+export function say(text, opts) {
+  const utterance = new SpeechSynthesisUtterance(text);
+
+  utterance.onend = opts?.cb;
+  utterance.rate = opts?.rate || 1;
+  utterance.pitch = opts?.pitch || 1;
+
+  const speaker = window.speechSynthesis;
+
+  speaker.speak(utterance);
+
+  return {
+    stop: () => speaker.cancel(),
+    pause: () => speaker.pause(),
+    resume: () => speaker.resume()
+  };
+}
+
+export function normalize(x, min, max) {
+  // 0,1
+  return (x - min) / (max - min);
+}
+
+export function rand(min, max) {
+  // max exclusive
+  return Math.random() * (max - min) + min;
+}
+
+export function clamp(x, min, max) {
+  return Math.min(Math.max(x, min), max);
+}

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Throttle } from '$lib/utils';
+  import { clamp, normalize, rand, Throttle } from '$lib/utils';
   import { onMount } from 'svelte';
   import { Vec } from '$lib/components/visuals/casting';
   let canvasElement: HTMLCanvasElement;
@@ -7,15 +7,19 @@
   let frame = null;
   let flakes: SnowFlake[] = [];
 
+  const flakeOpts = {
+    rmin: 2,
+    rmax: 9
+  };
+
   const throttledResize = new Throttle(() => {
     canvasElement.width = innerWidth;
     canvasElement.height = innerHeight;
 
     flakes = [];
-    const count = Math.max(10, Math.min(300, (innerHeight * innerWidth) / 6000));
-    // const count = 6;
+    const count = Math.max(clamp(innerWidth / 10, 10, 200));
     for (let i = count; i > 0; i--) {
-      flakes.push(new SnowFlake(1 + Math.random() * 3));
+      flakes.push(new SnowFlake(rand(flakeOpts.rmin, flakeOpts.rmax)));
     }
   }, 100);
 
@@ -24,13 +28,18 @@
       super(innerWidth * Math.random(), innerHeight * Math.random());
     }
     draw(ctx) {
+      ctx.fillStyle = `hsla(0,0%,100%,${Math.max(
+        0.01,
+        1 - normalize(this.r, flakeOpts.rmin, flakeOpts.rmax)
+      )})`;
+
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
       ctx.fill();
     }
     update(f, i) {
       this.x += (Math.sin(i + f / 1000) + Math.sin(i + f / 300)) * 0.1;
-      this.y += Math.sin(i + f / 1000) * 0.1 + this.r * 0.08;
+      this.y += Math.sin(i + f / 1000) * 0.1 + this.r * 0.05 + 0.1;
 
       // magic numbers are just padding
       if (this.y > innerHeight + 50) this.y = -50;
@@ -42,11 +51,11 @@
   onMount(() => {
     throttledResize.exec();
     const ctx = canvasElement.getContext('2d');
+
     (function loop() {
       frame = requestAnimationFrame(loop);
       ctx.clearRect(0, 0, innerWidth, innerHeight);
       // ...
-      ctx.fillStyle = 'white';
 
       flakes.forEach((f) => f.draw(ctx));
       flakes.forEach((f, i) => f.update(frame, i));
@@ -74,7 +83,7 @@
     pointer-events: none;
 
     position: fixed;
-    z-index: -1;
+    z-index: 5;
     top: 0;
     left: 0;
     width: 100%;
@@ -83,11 +92,11 @@
 
     animation: fadein 3s backwards ease-in-out;
 
-    filter: blur(1px) drop-shadow(7px 7px 3px var(---c-a2)) brightness(1.4);
+    filter: blur(2px) drop-shadow(5px 10px 2px rgba(0, 0, 0, 0.15));
   }
   @media (prefers-color-scheme: dark) {
     canvas {
-      filter: opacity(0.1) blur(1px);
+      filter: opacity(0.4) blur(2px);
     }
   }
 

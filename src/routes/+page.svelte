@@ -23,7 +23,7 @@
 </svelte:head>
 
 <article class="default">
-  <h1>
+  <h1 aria-label="three dots">
     {#each navRoutes as _, i}
       <span class:active={i === current}>•</span>
     {/each}
