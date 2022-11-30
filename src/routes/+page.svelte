@@ -92,6 +92,8 @@
 
   .egg {
     display: block;
+    margin-bottom: 0.1em;
+    font-size: 1.4em;
     animation: wiggle 1s infinite;
   }
 
