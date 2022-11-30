@@ -4,6 +4,8 @@
   import Snowy from '$lib/components/visuals/Snowy.svelte';
   import Aksel from 'aksel';
 
+  import { unlocked } from '$lib/components/achievement/achievementStores';
+
   import { onMount } from 'svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
 
@@ -54,7 +56,11 @@
   <SuggestionLoader />
 </article>
 
-<Aksel />
+{#each $unlocked as _, i}
+  <Aksel size={60 + i * 10} />
+{:else}
+  <div class="egg">🥚</div>
+{/each}
 
 {#if new Date().getMonth() === 11}
   <Snowy />
@@ -82,6 +88,11 @@
 
   .wiggle {
     animation: wiggle 0.6s 3s 2;
+  }
+
+  .egg {
+    display: block;
+    animation: wiggle 1s infinite;
   }
 
   @keyframes wiggle {
