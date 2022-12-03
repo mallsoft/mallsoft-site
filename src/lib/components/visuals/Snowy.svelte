@@ -30,7 +30,7 @@
     draw(ctx) {
       ctx.fillStyle = `hsla(0,0%,100%,${Math.max(
         0.01,
-        1 - normalize(this.r, flakeOpts.rmin, flakeOpts.rmax)
+        normalize(this.r, flakeOpts.rmin, flakeOpts.rmax)
       )})`;
 
       ctx.beginPath();
@@ -38,8 +38,15 @@
       ctx.fill();
     }
     update(f, i) {
-      this.x += (Math.sin(i + f / 1000) + Math.sin(i + f / 300)) * 0.1;
-      this.y += Math.sin(i + f / 1000) * 0.1 + this.r * 0.05 + 0.1;
+      const individual = Math.sin(i + f / 3000) * 0.15;
+      const wind_bias = Math.sin(f / 10_000) * 0.1;
+
+      this.x += individual + wind_bias;
+
+      const fall = this.r * 0.01 + 0.25;
+      const updrafts = Math.sin(i + f / 10_000) * 0.2;
+
+      this.y += updrafts + fall;
 
       // magic numbers are just padding
       if (this.y > innerHeight + 50) this.y = -50;
@@ -92,11 +99,11 @@
 
     animation: fadein 3s backwards ease-in-out;
 
-    filter: blur(2px) drop-shadow(5px 10px 2px rgba(0, 0, 0, 0.15));
+    filter: blur(3px) drop-shadow(5px 10px 2px rgba(0, 0, 0, 0.15));
   }
   @media (prefers-color-scheme: dark) {
     canvas {
-      filter: opacity(0.4) blur(2px);
+      filter: opacity(0.4) blur(3px);
     }
   }
 
