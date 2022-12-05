@@ -62,7 +62,8 @@
   <div class="egg">🥚</div>
 {/each}
 
-{#if new Date().getMonth() === 11}
+<!-- dec, jan, feb -->
+{#if [11, 0, 1].includes(new Date().getMonth())}
   <Snowy />
 {/if}
 
