@@ -1,6 +1,5 @@
 <script>
   import { navRoutes } from '$lib/content';
-  import Wscord from '$lib/components/content/Wscord.svelte';
   import Snowy from '$lib/components/visuals/Snowy.svelte';
   import Aksel from 'aksel';
 
@@ -66,8 +65,6 @@
 {#if [11, 0, 1].includes(new Date().getMonth())}
   <Snowy />
 {/if}
-
-<Wscord />
 
 <style>
   h1 span {
