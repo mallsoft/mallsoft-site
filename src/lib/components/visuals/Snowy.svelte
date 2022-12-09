@@ -9,7 +9,7 @@
 
   const flakeOpts = {
     rmin: 2,
-    rmax: 9
+    rmax: 6
   };
 
   const throttledResize = new Throttle(() => {
@@ -99,7 +99,7 @@
 
     animation: fadein 3s backwards ease-in-out;
 
-    filter: blur(3px) drop-shadow(5px 10px 2px rgba(0, 0, 0, 0.15));
+    filter: blur(2px) drop-shadow(5px 8px 2px rgba(0, 0, 0, 0.15));
   }
   @media (prefers-color-scheme: dark) {
     canvas {
