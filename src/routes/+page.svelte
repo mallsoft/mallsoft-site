@@ -1,19 +1,14 @@
 <script>
   import { navRoutes } from '$lib/content';
   import Snowy from '$lib/components/visuals/Snowy.svelte';
-  import Aksel from 'aksel';
-
-  import { unlocked } from '$lib/components/achievement/achievementStores';
 
   import { onMount } from 'svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
+  import AkselView from '$lib/components/visuals/AkselView.svelte';
 
   let wiggle = false;
-  let showEgg = false;
 
   onMount(() => {
-    showEgg = true; // only show if js and on client
-
     if (localStorage.getItem('hasWiggled') !== 'yeah!') {
       wiggle = true;
       localStorage.setItem('hasWiggled', 'yeah!');
@@ -59,13 +54,7 @@
   <SuggestionLoader />
 </article>
 
-{#each $unlocked as _, i}
-  <Aksel size={60 + i * 10} />
-{:else}
-  {#if showEgg}
-    <div class="egg">🥚</div>
-  {/if}
-{/each}
+<AkselView />
 
 <!-- dec, jan, feb -->
 {#if [11, 0, 1].includes(new Date().getMonth())}
