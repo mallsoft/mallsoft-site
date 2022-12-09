@@ -9,7 +9,11 @@
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
 
   let wiggle = false;
+  let showEgg = false;
+
   onMount(() => {
+    showEgg = true; // only show if js and on client
+
     if (localStorage.getItem('hasWiggled') !== 'yeah!') {
       wiggle = true;
       localStorage.setItem('hasWiggled', 'yeah!');
@@ -58,7 +62,9 @@
 {#each $unlocked as _, i}
   <Aksel size={60 + i * 10} />
 {:else}
-  <div class="egg">🥚</div>
+  {#if showEgg}
+    <div class="egg">🥚</div>
+  {/if}
 {/each}
 
 <!-- dec, jan, feb -->
