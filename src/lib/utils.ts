@@ -3,7 +3,9 @@ import { crossfade } from 'svelte/transition';
 import { messages } from '$lib/components/announcement/messages';
 
 export function getLeafNodes() {
-  const nodes = document.querySelectorAll('body :not(:is( body > *), canvas, svg, svg *)');
+  const nodes = document.querySelectorAll(
+    'body :not(:is( body > *, [role="log"]), canvas, svg, svg *)'
+  );
   const leafNodes = Array.from(nodes).filter(({ childNodes }) => {
     return (
       (childNodes.length === 1 && childNodes[0].nodeType === Node.TEXT_NODE) || // contains single [ #text ]
