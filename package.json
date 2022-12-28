@@ -35,6 +35,8 @@
   },
   "dependencies": {
     "@fontsource/space-grotesk": "^4.5.5",
-    "aksel": "^1.1.0"
+    "aksel": "^1.1.0",
+    "bowser": "^2.11.0",
+    "browser": "^0.2.6"
   }
 }

@@ -31,11 +31,8 @@
 <style>
   div {
     display: contents;
-  }
-  div {
     pointer-events: none;
   }
-
   div > :global(svg) {
     animation: intro 0.3s ease backwards;
 
@@ -45,7 +42,6 @@
 
     width: 100%;
   }
-
   div > :global(svg .s) {
     stroke: var(---c-c1);
   }

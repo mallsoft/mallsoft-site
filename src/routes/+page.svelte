@@ -1,10 +1,8 @@
 <script>
   import { navRoutes } from '$lib/content';
   import Snowy from '$lib/components/visuals/Snowy.svelte';
-
   import { onMount } from 'svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
-  import AkselView from '$lib/components/visuals/AkselView.svelte';
 
   let wiggle = false;
 
@@ -54,8 +52,6 @@
   <SuggestionLoader />
 </article>
 
-<AkselView />
-
 <!-- dec, jan, feb -->
 {#if [11, 0, 1].includes(new Date().getMonth())}
   <Snowy />
@@ -81,24 +77,5 @@
 
   .wiggle {
     animation: wiggle 0.6s 3s 2;
-  }
-
-  .egg {
-    display: block;
-    margin-bottom: 0.1em;
-    font-size: 1.4em;
-    animation: wiggle 1s infinite;
-  }
-
-  @keyframes wiggle {
-    10% {
-      transform: rotate(5deg);
-    }
-    30% {
-      transform: rotate(-5deg) scale(1.03);
-    }
-    60% {
-      transform: rotate(5deg);
-    }
   }
 </style>

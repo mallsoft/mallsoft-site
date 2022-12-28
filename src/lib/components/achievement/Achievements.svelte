@@ -10,15 +10,12 @@
   import Responsive from './Responsive.svelte';
   import Traveler from './Traveler.svelte';
 
-  function clearAchievements() {
-    resetAll();
-    saveAll();
-    messages.add('', 'Achievements cleared', '', 1000);
-  }
-
   onMount(() => {
     // @ts-ignore - add achievement clearing to the global window scope ...
-    window.clearAchievements = clearAchievements;
+    window.clearAchievements = () => {
+      resetAll();
+      messages.add('', 'Achievements cleared', '', 1000);
+    };
 
     loadAll();
 
@@ -50,6 +47,6 @@
   <Responsive />
 {/if}
 
-{#if !$unlocked?.includes('aksel') && $page.url.pathname === '/'}
+{#if !$unlocked?.includes('aksel') && $page.url.pathname === '/achievements'}
   <GreetAksel />
 {/if}

@@ -67,15 +67,12 @@ body {
   text-shadow: none;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 *,
 ::after,
 ::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
@@ -189,6 +186,17 @@ p + p,
 @keyframes h1in {
   from {
     transform: translateX(-0.25ch);
+  }
+}
+@keyframes wiggle {
+  10% {
+    transform: rotate(5deg);
+  }
+  30% {
+    transform: rotate(-5deg) scale(1.03);
+  }
+  60% {
+    transform: rotate(5deg);
   }
 }
 

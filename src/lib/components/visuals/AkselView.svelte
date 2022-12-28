@@ -13,6 +13,21 @@
   <Aksel size={60 + i * 10} />
 {:else}
   {#if showEgg}
-    <div class="egg">🥚</div>
+    <div class="egg" title="what could this be 🤯">
+      <span>🥚</span>
+    </div>
   {/if}
 {/each}
+
+<style>
+  .egg {
+    overflow: hidden;
+    height: 1.4em;
+
+    background-color: red;
+  }
+  .egg > span {
+    display: block;
+    animation: wiggle 1s infinite;
+  }
+</style>

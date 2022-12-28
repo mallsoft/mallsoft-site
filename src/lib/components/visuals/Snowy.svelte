@@ -2,15 +2,11 @@
   import { clamp, normalize, rand, Throttle } from '$lib/utils';
   import { onMount } from 'svelte';
   import { Vec } from '$lib/components/visuals/casting';
+
   let canvasElement: HTMLCanvasElement;
   let innerWidth, innerHeight;
   let frame = null;
   let flakes: SnowFlake[] = [];
-
-  const flakeOpts = {
-    rmin: 2,
-    rmax: 6
-  };
 
   const throttledResize = new Throttle(() => {
     canvasElement.width = innerWidth;
@@ -19,33 +15,36 @@
     flakes = [];
     const count = Math.max(clamp(innerWidth / 10, 10, 200));
     for (let i = count; i > 0; i--) {
-      flakes.push(new SnowFlake(rand(flakeOpts.rmin, flakeOpts.rmax)));
+      flakes.push(new SnowFlake(rand(SnowFlake.small, SnowFlake.large)));
     }
   }, 100);
 
   class SnowFlake extends Vec {
+    static small = 2;
+    static large = 6;
+
     constructor(private r: number) {
       super(innerWidth * Math.random(), innerHeight * Math.random());
     }
+
     draw(ctx) {
       ctx.fillStyle = `hsla(0,0%,100%,${Math.max(
         0.01,
-        normalize(this.r, flakeOpts.rmin, flakeOpts.rmax)
+        normalize(this.r, SnowFlake.small, SnowFlake.large)
       )})`;
 
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
       ctx.fill();
     }
+
     update(f, i) {
       const individual = Math.sin(i + f / 3000) * 0.15;
       const wind_bias = Math.sin(f / 10_000) * 0.1;
-
       this.x += individual + wind_bias;
 
       const fall = this.r * 0.01 + 0.25;
       const updrafts = Math.sin(i + f / 10_000) * 0.2;
-
       this.y += updrafts + fall;
 
       // magic numbers are just padding
