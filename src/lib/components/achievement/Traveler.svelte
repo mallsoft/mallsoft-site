@@ -18,7 +18,7 @@
 
     $travel += Math.floor(distance);
 
-    if ($travel >= 10_000_000) {
+    if ($travel >= 5_000_000) {
       const { id, icon, name, description } = achievements.find(
         (achievement) => achievement.id === 'traveler'
       );

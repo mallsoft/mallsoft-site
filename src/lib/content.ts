@@ -30,6 +30,7 @@ export const me = {
     'Sapper',
     'Relaxing',
     'DRY',
+    'WET',
     'Humor',
     'figma',
     'Squidex',
@@ -40,12 +41,7 @@ export const me = {
     'graphql',
     'firebase',
     'Affinity Designer',
-    'REST',
-    'CI/CD',
-    'Affinity Photo',
-    'Adobe XD',
     'Adobe Illustrator',
-    'Adobe Photoshop',
     'Docker',
     'Python',
     'Vscode',
@@ -53,7 +49,10 @@ export const me = {
     'Azure',
     'Copilot',
     'SQL',
-    '💾'
+    '💾',
+    'Tesseract',
+    'Jupyter',
+    'Fly'
   ],
   work: [
     {

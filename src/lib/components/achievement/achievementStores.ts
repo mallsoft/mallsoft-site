@@ -11,7 +11,7 @@ export const achievements = [
   {
     id: 'traveler',
     name: 'Traveler',
-    description: 'Move mouse 10 million pixels on the site',
+    description: 'Move mouse 5 million pixels on the site',
     icon: '🚗'
   },
   {
@@ -49,17 +49,6 @@ const defaultState = {
 
 const store_key = '_achievementsx';
 
-export function saveAll() {
-  const state = {
-    unlocked: get(unlocked),
-    travel: get(travel),
-    clicks: get(clicks),
-    visits: get(visits)
-  };
-
-  saveLocal(store_key, state);
-}
-
 export function loadAll() {
   const state = loadLocal(store_key);
   if (state) {
@@ -75,6 +64,19 @@ export function resetAll() {
   travel.set(defaultState.travel);
   clicks.set(defaultState.clicks);
   visits.set(defaultState.visits);
+
+  saveLocal(store_key, defaultState);
+}
+
+export function saveAll() {
+  const state = {
+    unlocked: get(unlocked),
+    travel: get(travel),
+    clicks: get(clicks),
+    visits: get(visits)
+  };
+
+  saveLocal(store_key, state);
 }
 
 export const unlocked = writable(defaultState.unlocked);

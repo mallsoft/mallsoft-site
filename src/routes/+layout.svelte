@@ -10,6 +10,7 @@
   import Loader from '$lib/components/layout/Loader.svelte';
 
   import { isLocalStorageAvailable } from '$lib/utils';
+  import Terminus from '$lib/components/visuals/terminus/Terminus.svelte';
 </script>
 
 <Meta />
@@ -27,3 +28,5 @@
 {#if isLocalStorageAvailable()}
   <Achievements />
 {/if}
+
+<Terminus />
