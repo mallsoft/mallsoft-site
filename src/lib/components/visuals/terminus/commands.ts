@@ -30,24 +30,23 @@ new Command(
         lines.write(`No commant matches "${p}"`);
       } else {
         const txt = command.help.long ? command.help.long : command.help.short;
-        lines.write('');
-        lines.write(p);
-        lines.write(txt);
-        lines.write('');
+        lines.write(['', p, txt, '']);
       }
     } else {
       const hlep = commands.find((c) => c.name === 'help');
-      lines.write(['--- HELP ---', ...hlep.help.long, '']);
+      lines.write(['--- HELP ---', ...hlep.help.long]);
 
-      commands.forEach((c) => {
-        lines.write(c.name + ' - ' + c.help.short);
-      });
+      commands
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .forEach((c) => {
+          lines.write(`${c.name.padEnd(10, ' ')} ${c.help.short}`);
+        });
     }
     return true;
   },
   {
     short: 'Prints this message',
-    long: ['To get specifics on a command', 'use help <command>']
+    long: ['help <command> for specifics']
   }
 );
 
@@ -105,4 +104,32 @@ new Command(
     return false;
   },
   { short: 'Shows command history', long: ['Show history', '-c Clears entries in history'] }
+);
+
+new Command(
+  'req',
+  (param) => {
+    const start = Date.now();
+    fetch('/api/info')
+      .then((res) => res.json())
+      .then((data) => {
+        lines.write([
+          '---',
+          `${data.agent.toLocaleLowerCase()} ${data.platform} ${data.os} [${data.ip}]`,
+          `client <-- ${Date.now() - data.now}ms (${Date.now() - start}ms) ${
+            data.now - start
+          }ms --> endpoint`,
+          '---'
+        ]);
+      })
+      .catch((e) => {
+        lines.write('error: Request failed failed');
+      });
+
+    return true;
+  },
+  {
+    short: 'Request info',
+    long: ['Request and network timing info (os/platform/client/adress)']
+  }
 );
