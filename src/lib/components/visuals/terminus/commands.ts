@@ -109,16 +109,18 @@ new Command(
 new Command(
   'req',
   (param) => {
-    const start = Date.now();
+    const timeSent = Date.now();
     fetch('/api/info')
       .then((res) => res.json())
       .then((data) => {
+        const timeTo = data.now - timeSent;
+        const timeBack = Date.now() - data.now;
+        const roundTrip = Date.now() - timeSent;
+
         lines.write([
           '---',
           `${data.agent.toLocaleLowerCase()} ${data.platform} ${data.os} [${data.ip}]`,
-          `client <-- ${Date.now() - data.now}ms (${Date.now() - start}ms) ${
-            data.now - start
-          }ms --> endpoint`,
+          `${timeTo}/${timeBack}/${roundTrip}ms`,
           '---'
         ]);
       })
@@ -130,6 +132,9 @@ new Command(
   },
   {
     short: 'Request info',
-    long: ['Request and network timing info (os/platform/client/adress)']
+    long: [
+      'Request and network timing info (os/platform/client/adress)',
+      'Tries to measure time to, time back and roundtrip in ms'
+    ]
   }
 );
