@@ -8,8 +8,8 @@ let lastReq = null;
 export function GET(event) {
   const { request } = event;
 
-  const last = lastReq || new Date();
-  lastReq = new Date();
+  const last = lastReq || Date.now();
+  lastReq = Date.now();
 
   const ua = request.headers.get('user-agent');
   const browser = b.getParser(ua);

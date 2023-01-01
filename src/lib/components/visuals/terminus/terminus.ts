@@ -29,7 +29,7 @@ const bad_lines = [
   (name) => `idk what "${name}" is supposed to do...`,
   (name) => `command "${name}" not recognized!!!`,
   (name) => `this is hard huh?`,
-  (name) => `migh as well give up fren...`,
+  (name) => `migh as well give up then...`,
   (name) => `imma be straight, your not doing great`,
   (name) => `*you're`,
   (name) => `Ok soo imma just say this...type HELP`,
@@ -52,7 +52,7 @@ function run(str: string) {
   const matches = input.match(/(^\w+)(?:$| )(.*)?/i);
   if (!matches || !matches.length) return lines.write([str, 'Invalid command!']);
 
-  const [full, NAME, rest] = matches;
+  const [_, NAME, rest] = matches;
   const name = NAME.toLocaleLowerCase();
 
   const command = commands.find((c) => c.name === name);

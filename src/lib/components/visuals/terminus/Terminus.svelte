@@ -2,6 +2,7 @@
   import { onMount, tick } from 'svelte';
   import { lines, history, run } from './terminus';
   import { fly } from 'svelte/transition';
+  import { browser } from '$app/environment';
 
   let available = false;
   let minimize = true;
@@ -27,6 +28,8 @@
     }
   }
 
+  $: if (browser && input && $lines) tick().then(() => input.scrollIntoView(false));
+
   onMount(async () => {
     info = await fetch('/api/info').then((res) => res.json());
     available = true;
@@ -47,18 +50,18 @@
         run(value);
         history_idx = -1;
         value = '';
-        await tick();
-        input.scrollIntoView(false);
       }}
     >
       <h1 on:click|stopPropagation={() => (minimize = !minimize)}>
         <span>•</span><span class="agent">{info?.agent || 'unknown'}@</span> mallsoft
       </h1>
-      <ol class="linecounter" bind:this={ol} on:click|stopPropagation>
+      <ol class="linecounter" bind:this={ol}>
         {#each $lines as line, i}
-          <li in:fly={{ duration: 150, x: -100 }}>{line}</li>
+          <li in:fly={{ duration: 150, x: -100 }}>
+            {line}
+          </li>
         {/each}
-        <li>
+        <li on:click|stopPropagation>
           <!-- svelte-ignore a11y-autofocus -->
           <input
             autofocus
@@ -147,7 +150,7 @@
     scrollbar-color: var(---c-a2) var(---c-bg);
 
     width: 100%;
-    flex: 1;
+    flex-basis: 100vh;
 
     background-color: var(---c-bg);
 
@@ -171,6 +174,8 @@
     width: 100%;
 
     padding: 0 4px;
+
+    white-space: pre-wrap;
   }
   li:last-of-type {
     padding-bottom: 4px;
