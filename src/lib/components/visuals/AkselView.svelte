@@ -23,8 +23,6 @@
   .egg {
     overflow: hidden;
     height: 1.4em;
-
-    background-color: red;
   }
   .egg > span {
     display: block;
