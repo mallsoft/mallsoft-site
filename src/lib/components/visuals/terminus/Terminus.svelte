@@ -28,7 +28,9 @@
     }
   }
 
-  $: if (browser && input && $lines) tick().then(() => input.scrollIntoView(false));
+  $: if (browser && input && $lines && !minimize) {
+    tick().then(() => input.scrollIntoView(false));
+  }
 
   onMount(async () => {
     info = await fetch('/api/info').then((res) => res.json());
