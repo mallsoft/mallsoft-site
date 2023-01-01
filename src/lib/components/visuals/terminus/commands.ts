@@ -113,15 +113,11 @@ new Command(
     fetch('/api/info')
       .then((res) => res.json())
       .then((data) => {
-        const timeTo = data.now - timeSent;
-        const timeBack = Date.now() - data.now;
         const roundTrip = Date.now() - timeSent;
-
         lines.write([
-          '---',
-          `${data.agent.toLocaleLowerCase()} ${data.platform} ${data.os} [${data.ip}]`,
-          `${timeTo}/${timeBack}/${roundTrip}ms`,
-          '---'
+          `${data.agent.toLocaleLowerCase()} ${data.platform} ${data.os} [${
+            data.ip
+          }] / ${roundTrip}ms`
         ]);
       })
       .catch((e) => {
@@ -132,9 +128,6 @@ new Command(
   },
   {
     short: 'Request info',
-    long: [
-      'Request and network timing info (os/platform/client/adress)',
-      'Tries to measure time to, time back and roundtrip in ms'
-    ]
+    long: ['Request timing and (os/platform/client/adress) info']
   }
 );
