@@ -4,8 +4,8 @@
   import { Vec } from '$lib/components/visuals/casting';
 
   let canvasElement: HTMLCanvasElement;
-  let innerWidth, innerHeight;
-  let frame = null;
+  let innerWidth: number, innerHeight: number;
+  let frame: number | null = null;
   let flakes: SnowFlake[] = [];
 
   const throttledResize = new Throttle(() => {

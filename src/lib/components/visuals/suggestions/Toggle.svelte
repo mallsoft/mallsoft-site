@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { messages } from '$lib/components/announcement/messages';
   import { scribblesEnabled } from './suggestionStore';
 </script>

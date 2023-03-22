@@ -2,6 +2,8 @@ import { goto } from '$app/navigation';
 import { get } from 'svelte/store';
 import { history, lines } from './terminus';
 
+import { confett } from '$lib/components/visuals/Confettu.svelte';
+
 class Command {
   constructor(
     public name: string,
@@ -13,7 +15,7 @@ class Command {
   ) {
     Command.commands.push(this);
   }
-  static commands = [];
+  static commands: Command[] = [];
 }
 
 export const commands = Command.commands;
@@ -128,6 +130,19 @@ new Command(
   },
   {
     short: 'Request info',
-    long: ['Request timing and (os/platform/client/adress) info']
+    long: ['Client request timing and (os/platform/client/adress) info']
+  }
+);
+
+new Command(
+  'confetti',
+  () => {
+    confett();
+    lines.write('Confetti time! 🎊');
+    return true;
+  },
+  {
+    short: 'confetti   ¯\\_(ツ)_/¯',
+    long: [`Sprinkles happy`]
   }
 );

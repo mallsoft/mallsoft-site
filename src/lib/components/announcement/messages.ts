@@ -1,4 +1,5 @@
 import { writable } from 'svelte/store';
+import { confett } from '../visuals/Confettu.svelte';
 
 function logToast(icon, title, description) {
   console.info(
@@ -14,6 +15,12 @@ function logToast(icon, title, description) {
   );
 }
 
+function confettiIfAchivement(title) {
+  if (title.startsWith('Achievement!')) {
+    confett();
+  }
+}
+
 function createAnnouncementsStore(maxLength = 4) {
   const { subscribe, set, update } = writable([]);
   return {
@@ -21,6 +28,7 @@ function createAnnouncementsStore(maxLength = 4) {
     subscribe,
     add: (icon, title, description, ttl = 3000) => {
       logToast(icon, title, description);
+      confettiIfAchivement(title);
       return update((m) => {
         m.length >= maxLength && m.shift();
         return [...m, { icon, title, description, ttl: ttl + Date.now() }];

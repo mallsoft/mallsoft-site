@@ -1,10 +1,10 @@
-<script>
+<script lang="ts">
   import GRay from '$lib/components/visuals/GRay.svelte';
   import { me } from '$lib/content';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
   import { onMount } from 'svelte';
 
-  let showAchievements;
+  let showAchievements = false;
   onMount(() => {
     showAchievements = true;
   });

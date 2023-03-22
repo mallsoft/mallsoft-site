@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import { browser } from '$app/environment';
   import { page } from '$app/stores';
   import { scribblesEnabled } from './suggestionStore';
@@ -11,7 +11,7 @@
     '/achievements': './svgs/achievements.svg'
   }[$page.url.pathname];
 
-  function formattedSvg(str) {
+  function formattedSvg(str: string) {
     return str
       .replaceAll(/fill=\"#\w+\"/g, 'class="f"')
       .replaceAll(/stroke=\"#\w+\"/g, 'class="s"');

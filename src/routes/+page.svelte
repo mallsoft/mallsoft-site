@@ -1,6 +1,5 @@
-<script>
+<script lang="ts">
   import { navRoutes } from '$lib/content';
-  import Snowy from '$lib/components/visuals/Snowy.svelte';
   import { onMount } from 'svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
 
@@ -13,7 +12,7 @@
     }
   });
 
-  let current = null;
+  let current: number | null = null;
 </script>
 
 <svelte:head>
@@ -51,11 +50,6 @@
 
   <SuggestionLoader />
 </article>
-
-<!-- dec, jan, feb -->
-{#if [11, 0, 1].includes(new Date().getMonth())}
-  <Snowy />
-{/if}
 
 <style>
   h1 span {

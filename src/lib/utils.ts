@@ -1,6 +1,8 @@
-import { browser } from '$app/environment';
+import { browser, dev } from '$app/environment';
 import { crossfade } from 'svelte/transition';
 import { messages } from '$lib/components/announcement/messages';
+import type { RequestEvent } from '@sveltejs/kit';
+import b from 'bowser';
 
 export function getLeafNodes() {
   const nodes = document.querySelectorAll(
@@ -112,7 +114,7 @@ export function isLocalStorageAvailable() {
   }
 }
 
-export function say(text, opts) {
+export function say(text: string, opts: { cb?: any; rate?: number; pitch?: number }) {
   const utterance = new SpeechSynthesisUtterance(text);
 
   utterance.onend = opts?.cb;
@@ -142,4 +144,21 @@ export function rand(min, max) {
 
 export function clamp(x, min, max) {
   return Math.min(Math.max(x, min), max);
+}
+
+export function getRequestInfos(event: RequestEvent) {
+  const ip = dev ? event.getClientAddress() : event.request.headers.get('Fly-Client-IP');
+
+  const ua = event.request.headers.get('user-agent');
+  const parsed = b.getParser(ua || '');
+  const agent = parsed.getBrowserName();
+  const os = parsed.getOSName();
+  const platform = parsed.getPlatformType();
+
+  return {
+    ip,
+    agent,
+    os,
+    platform
+  };
 }

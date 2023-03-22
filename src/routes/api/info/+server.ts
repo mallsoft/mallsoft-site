@@ -1,6 +1,5 @@
-import { dev } from '$app/environment';
 import { json } from '@sveltejs/kit';
-import b from 'bowser';
+import { getRequestInfos } from '$lib/utils';
 
 let lastReq = null;
 
@@ -11,14 +10,7 @@ export function GET(event) {
   const last = lastReq || Date.now();
   lastReq = Date.now();
 
-  const ua = request.headers.get('user-agent');
-  const browser = b.getParser(ua);
-
-  const agent = browser.getBrowserName();
-  const os = browser.getOSName();
-  const platform = browser.getPlatformType();
-
-  const ip = dev ? event.getClientAddress() : request.headers.get('Fly-Client-IP');
+  const { ip, agent, os, platform } = getRequestInfos(event);
 
   return json({
     ip,

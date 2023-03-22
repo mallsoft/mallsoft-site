@@ -11,6 +11,7 @@
 
   import { isLocalStorageAvailable } from '$lib/utils';
   import Terminus from '$lib/components/visuals/terminus/Terminus.svelte';
+  import Confettu from '$lib/components/visuals/Confettu.svelte';
 </script>
 
 <Meta />
@@ -30,3 +31,5 @@
 {/if}
 
 <Terminus />
+
+<Confettu />
