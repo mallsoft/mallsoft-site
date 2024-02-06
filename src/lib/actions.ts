@@ -1,12 +1,12 @@
 export function draggable(node, { target }) {
   const old_transform = getComputedStyle(node).transform;
-  let isDown = false,
-    startX,
-    startY,
-    dx,
-    dy,
-    tx = 0,
-    ty = 0;
+  let isDown: boolean = false;
+  let startX: number;
+  let startY: number;
+  let dx: number;
+  let dy: number;
+  let tx: number = 0;
+  let ty: number = 0;
 
   function handleDown({ x, y }) {
     isDown = true;

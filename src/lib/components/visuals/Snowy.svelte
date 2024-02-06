@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { clamp, normalize, rand, Throttle } from '$lib/utils';
+  import { clamp, Throttle } from '$lib/utils';
   import { onMount } from 'svelte';
-  import { Vec } from '$lib/components/visuals/casting';
+  import { SnowFlake } from '$lib/components/visuals/snow';
 
   let canvasElement: HTMLCanvasElement;
   let innerWidth: number, innerHeight: number;
-  let frame: number | null = null;
+  let frame: number;
   let flakes: SnowFlake[] = [];
 
   const throttledResize = new Throttle(() => {
@@ -13,50 +13,15 @@
     canvasElement.height = innerHeight;
 
     flakes = [];
-    const count = Math.max(clamp(innerWidth / 10, 10, 200));
+    const count = Math.max(clamp(innerWidth / 8, 10, 300));
     for (let i = count; i > 0; i--) {
-      flakes.push(new SnowFlake(rand(SnowFlake.small, SnowFlake.large)));
+      flakes.push(new SnowFlake());
     }
   }, 100);
 
-  class SnowFlake extends Vec {
-    static small = 2;
-    static large = 6;
-
-    constructor(private r: number) {
-      super(innerWidth * Math.random(), innerHeight * Math.random());
-    }
-
-    draw(ctx) {
-      ctx.fillStyle = `hsla(0,0%,100%,${Math.max(
-        0.01,
-        normalize(this.r, SnowFlake.small, SnowFlake.large)
-      )})`;
-
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI);
-      ctx.fill();
-    }
-
-    update(f, i) {
-      const individual = Math.sin(i + f / 3000) * 0.15;
-      const wind_bias = Math.sin(f / 10_000) * 0.1;
-      this.x += individual + wind_bias;
-
-      const fall = this.r * 0.01 + 0.25;
-      const updrafts = Math.sin(i + f / 10_000) * 0.2;
-      this.y += updrafts + fall;
-
-      // magic numbers are just padding
-      if (this.y > innerHeight + 50) this.y = -50;
-      if (this.x > innerWidth) this.x = 0;
-      if (this.x < 0) this.x = innerWidth;
-    }
-  }
-
   onMount(() => {
     throttledResize.exec();
-    const ctx = canvasElement.getContext('2d');
+    const ctx = canvasElement.getContext('2d') as CanvasRenderingContext2D;
 
     (function loop() {
       frame = requestAnimationFrame(loop);
@@ -98,11 +63,11 @@
 
     animation: fadein 3s backwards ease-in-out;
 
-    filter: blur(2px) drop-shadow(5px 8px 2px rgba(0, 0, 0, 0.15));
+    filter: opacity(0.6) drop-shadow(5px 8px 2px rgba(0, 0, 0, 0.05));
   }
   @media (prefers-color-scheme: dark) {
     canvas {
-      filter: opacity(0.4) blur(3px);
+      filter: opacity(0.3);
     }
   }
 
