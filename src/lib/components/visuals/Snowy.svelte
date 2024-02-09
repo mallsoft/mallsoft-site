@@ -7,15 +7,19 @@
   let innerWidth: number, innerHeight: number;
   let frame: number;
   let flakes: SnowFlake[] = [];
+  export let flakeCount: number = 0;
+  export let flakeMin: number = 0;
+  export let flakeMax: number = 0;
 
   const throttledResize = new Throttle(() => {
     canvasElement.width = innerWidth;
     canvasElement.height = innerHeight;
 
     flakes = [];
-    const count = Math.max(clamp(innerWidth / 8, 10, 300));
+    const count = flakeCount || Math.max(clamp(innerWidth / 8, 10, 300));
+
     for (let i = count; i > 0; i--) {
-      flakes.push(new SnowFlake());
+      flakes.push(new SnowFlake(flakeMin, flakeMax));
     }
   }, 100);
 
@@ -63,7 +67,7 @@
 
     animation: fadein 3s backwards ease-in-out;
 
-    filter: opacity(0.6) drop-shadow(5px 8px 2px rgba(0, 0, 0, 0.05));
+    filter: opacity(0.7) drop-shadow(5px 8px 2px rgba(0, 0, 0, 0.05));
   }
   @media (prefers-color-scheme: dark) {
     canvas {
