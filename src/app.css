@@ -180,14 +180,15 @@ p + p,
   width: max-content;
   margin-bottom: 0.14em;
 
-  animation: h1in 0.3s backwards;
+  animation: h1in 0.3s cubic-bezier(0.2, 0.7, 0.1, 1.6) backwards;
 }
 
 @keyframes h1in {
   from {
-    transform: translateX(-0.25ch);
+    transform: translateY(0.5ch) rotate(4deg);
   }
 }
+
 @keyframes wiggle {
   10% {
     transform: rotate(5deg);

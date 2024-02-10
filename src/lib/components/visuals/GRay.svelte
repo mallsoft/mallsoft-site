@@ -3,10 +3,10 @@
   import { onMount } from 'svelte';
   import { Line, Ray, Vec } from '$lib/components/visuals/casting';
   let canvasElement: HTMLCanvasElement;
-  let innerWidth, innerHeight;
+  let innerWidth: number, innerHeight: number;
 
   let scrolling = false;
-  let pointer: Vec = null;
+  let pointer: Vec | null;
   let lines: Line[];
 
   const throttledResize = new Throttle(() => {
@@ -45,9 +45,9 @@
       subtree: true
     });
 
-    const ctx = canvasElement.getContext('2d');
+    const ctx: CanvasRenderingContext2D = canvasElement.getContext('2d')!;
 
-    let frame;
+    let frame: number;
 
     (function loop(t?: number) {
       frame = requestAnimationFrame(loop);
@@ -60,9 +60,8 @@
 
       ctx.strokeStyle = color;
       ctx.lineWidth = 2;
-      ctx.setLineDash([8, 2]);
 
-      const rays = [];
+      const rays: Ray[] = [];
       for (const line of lines) {
         const v = new Vec(line.start.x, line.start.y);
         const d1 = v.clone().rotate(0.0001);
@@ -70,7 +69,7 @@
         rays.push(new Ray(pointer, d1), new Ray(pointer, d2));
       }
 
-      const hits = [];
+      const hits: Vec[] = [];
       rays.forEach((ray) => {
         const hit = ray.castAllNearest(lines);
         if (hit) hits.push(hit);
@@ -78,8 +77,8 @@
 
       // sort hits by angle from pointer and draw
       hits.sort((a, b) => {
-        const aAngle = Math.atan2(a.y - pointer.y, a.x - pointer.x);
-        const bAngle = Math.atan2(b.y - pointer.y, b.x - pointer.x);
+        const aAngle = Math.atan2(a.y - pointer!.y, a.x - pointer!.x);
+        const bAngle = Math.atan2(b.y - pointer!.y, b.x - pointer!.x);
         return aAngle - bAngle;
       });
 
