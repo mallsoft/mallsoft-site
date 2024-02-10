@@ -1,7 +1,6 @@
 <script>
   import Unlocked from '$lib/components/content/Unlocked.svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
-  import AkselView from '$lib/components/visuals/AkselView.svelte';
 </script>
 
 <svelte:head>
@@ -14,5 +13,3 @@
 
   <SuggestionLoader />
 </article>
-
-<AkselView />

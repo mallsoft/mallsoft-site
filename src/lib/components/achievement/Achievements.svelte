@@ -47,6 +47,6 @@
   <Responsive />
 {/if}
 
-{#if !$unlocked?.includes('aksel') && $page.url.pathname === '/achievements'}
+{#if !$unlocked?.includes('aksel') && $page.url.pathname === '/stuff'}
   <GreetAksel />
 {/if}
