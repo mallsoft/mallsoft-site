@@ -1,8 +1,10 @@
 <script>
   import { me } from '$lib/content';
   import { getAbsoluteRect, Throttle } from '$lib/utils';
-  import { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse, Body } from 'matter-js';
+  import matter from 'matter-js';
   import { onMount } from 'svelte';
+
+  const { Engine, Runner, Composite, Bodies, MouseConstraint, Mouse, Body } = matter;
 
   let frame, wordBox, engine, runner;
   const elements = [];
@@ -204,7 +206,9 @@
     user-select: none;
     cursor: grab;
 
-    transition: transform 0.05s, background-color 0.2s;
+    transition:
+      transform 0.05s,
+      background-color 0.2s;
 
     background-color: var(---c-b1);
     color: var(---c-bg);
