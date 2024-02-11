@@ -50,6 +50,9 @@ devDependencies:
   matter-js:
     specifier: ^0.19.0
     version: 0.19.0
+  pocketbase:
+    specifier: ^0.21.1
+    version: 0.21.1
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -1832,6 +1835,10 @@ packages:
   /picomatch@2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+    dev: true
+
+  /pocketbase@0.21.1:
+    resolution: {integrity: sha512-0PvCP4pKtxsV9kwldEGyibEvhwOcx9jSCrz3WN5CgPILJfM0z76f1op9WE8/8UgikDsMdRsc5iBLfKintrJS1g==}
     dev: true
 
   /postcss-load-config@3.1.4(postcss@8.4.34):

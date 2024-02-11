@@ -14,6 +14,7 @@
   import { isLocalStorageAvailable } from '$lib/utils';
   import Snowy from '$lib/components/visuals/Snowy.svelte';
   import { page } from '$app/stores';
+  import Bacon from '$lib/components/Bacon.svelte';
 </script>
 
 <Meta />
@@ -30,6 +31,7 @@
 
 {#if isLocalStorageAvailable()}
   <Achievements />
+  <Bacon />
 {/if}
 
 <Terminus />
