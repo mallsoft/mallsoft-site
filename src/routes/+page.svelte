@@ -54,10 +54,14 @@
 <style>
   h1 span {
     display: inline-block;
-    transition: color 0.2s, transform 0.6s;
+    transition:
+      color 0.2s,
+      transform 0.6s;
   }
   h1 span.active {
-    transition: color 0.2s, transform 0.2s;
+    transition:
+      color 0.2s,
+      transform 0.2s;
     color: var(---c-c1);
     transform: translateY(-0.25ch);
   }

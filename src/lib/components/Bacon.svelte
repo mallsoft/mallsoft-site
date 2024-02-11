@@ -5,7 +5,7 @@
   let time = Date.now();
   let navigations = 0;
 
-  $: if ($navigating) navigations++;
+  $: if ($navigating && ['goto', 'link'].includes($navigating.type)) navigations++;
 
   const handleSessionChange = () => {
     if (document.visibilityState === 'hidden') {
