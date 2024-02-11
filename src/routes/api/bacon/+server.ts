@@ -1,9 +1,10 @@
 import { env } from '$env/dynamic/private';
+import { env as pub } from '$env/dynamic/public';
 import { getRequestInfos } from '$lib/utils';
 import type { RequestHandler } from './$types';
 import PocketBase from 'pocketbase';
 
-const pb = new PocketBase(env.SECRET_URL);
+const pb = new PocketBase(pub.PUBLIC_URL);
 
 function validateInput({
   timeSpent,
