@@ -5,9 +5,34 @@ import PocketBase from 'pocketbase';
 
 const pb = new PocketBase(env.SECRET_URL);
 
+function validateInput({
+  timeSpent,
+  window,
+  achievements,
+  navigations
+}: {
+  timeSpent: any;
+  window: any;
+  achievements: any;
+  navigations: any;
+}) {
+  const timeSpentIsValid = typeof timeSpent === 'number' && timeSpent >= 0;
+  const windowIsValid = /^\d+x\d+$/.test(window);
+  const achievementsIsValid = typeof achievements === 'number' && achievements >= 0;
+  const navigationsIsValid = typeof navigations === 'number' && navigations >= 0;
+
+  return timeSpentIsValid && windowIsValid && achievementsIsValid && navigationsIsValid;
+}
+
 export const POST: RequestHandler = async (event) => {
   const { agent, os, platform } = getRequestInfos(event);
   const { timeSpent, window, achievements, navigations } = await event.request.json();
+  const isValid = validateInput({ timeSpent, window, achievements, navigations });
+
+  if (!isValid) {
+    console.log('bacon error, invalid data');
+    return new Response();
+  }
 
   const id = event.cookies.get('baconx');
   await pb.collection('machine').authWithPassword('mallx', env.SECRET_MALLX);
