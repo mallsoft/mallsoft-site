@@ -7,14 +7,28 @@ const pb = new PocketBase(env.SECRET_URL);
 
 export const POST: RequestHandler = async (event) => {
   const { agent, os, platform } = getRequestInfos(event);
-  let uid = event.cookies.get('baconx');
-  if (!uid) uid = crypto.randomUUID();
-  event.cookies.set('baconx', uid, { path: '/', maxAge: 7200 });
+  const { timeSpent, window, achievements, navigations } = await event.request.json();
 
-  const resp = await event.request.json();
-
+  const id = event.cookies.get('baconx');
   await pb.collection('machine').authWithPassword('mallx', env.SECRET_MALLX);
-  await pb.collection('stats').create({ timeSpent: resp.timeSpent, agent, os, platform, uid });
+
+  if (id) {
+    await pb.collection('stats').update(id, {
+      'timeSpent+': timeSpent,
+      'navigations+': navigations,
+      agent,
+      os,
+      platform,
+      window,
+      achievements
+    });
+    event.cookies.set('baconx', id, { path: '/', maxAge: 7200 });
+  } else {
+    const entry = await pb
+      .collection('stats')
+      .create({ timeSpent, navigations, agent, os, platform, window, achievements });
+    event.cookies.set('baconx', entry.id, { path: '/', maxAge: 7200 });
+  }
 
   return new Response();
 };
