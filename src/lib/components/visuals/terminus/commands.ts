@@ -146,3 +146,23 @@ new Command(
     long: [`Sprinkles happy`]
   }
 );
+
+new Command(
+  'stats',
+  () => {
+    fetch('/api/stats')
+      .then((res) => res.json())
+      .then((data) => {
+        JSON.stringify(data, null, 2)
+          .split('\n')
+          .forEach((line, idx) => {
+            setTimeout(() => lines.write(line), 10 * idx);
+          });
+      });
+    return true;
+  },
+  {
+    short: 'achivementlytics',
+    long: ['Shows stats', 'Achivements, navigations, etc..']
+  }
+);

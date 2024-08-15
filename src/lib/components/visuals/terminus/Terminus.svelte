@@ -216,11 +216,16 @@
   }
 
   .terminal ol {
-    box-shadow: 0 -2px 2px -2px var(---c-a2), 0 2px 2px -2px var(---c-a2);
+    box-shadow:
+      0 -2px 2px -2px var(---c-a2),
+      0 2px 2px -2px var(---c-a2);
   }
   .terminal form {
-    box-shadow: inset 0 2px 4px -4px var(---c-a2), inset 0 -2px 4px -4px var(---c-a2),
-      0 0 1px 0px var(---c-a2), 1px 1px 1px 0 var(---c-a2);
+    box-shadow:
+      inset 0 2px 4px -4px var(---c-a2),
+      inset 0 -2px 4px -4px var(---c-a2),
+      0 0 1px 0px var(---c-a2),
+      1px 1px 1px 0 var(---c-a2);
   }
 
   .terminal.minimize > form :is(p, ol, h1 >) {
