@@ -153,11 +153,33 @@ new Command(
     fetch('/api/stats')
       .then((res) => res.json())
       .then((data) => {
-        JSON.stringify(data, null, 2)
-          .split('\n')
-          .forEach((line, idx) => {
-            setTimeout(() => lines.write(line), 10 * idx);
+        const keys = Object.keys(data[0]);
+        const values = Object.values(data);
+
+        const columnIsFinite = keys.map((k) => values.every((v) => isFinite(v[k])));
+        const columnWidths = keys.map((k) =>
+          Math.max(k.length, ...values.map((row) => String(row[k]).length))
+        );
+
+        const head = keys.map((key, idx) => key.padEnd(columnWidths[idx])).join(' | ');
+        const middleLine = columnWidths.map((w) => '-'.repeat(w)).join('-|-');
+        const body = values.flatMap((row) =>
+          keys
+            .map((k, idx) =>
+              columnIsFinite[idx]
+                ? String(row[k]).padStart(columnWidths[idx], ' ')
+                : String(row[k]).padEnd(columnWidths[idx], ' ')
+            )
+            .join(' | ')
+        );
+
+        lines.write(head);
+        setTimeout(() => {
+          lines.write(middleLine);
+          body.forEach((line, idx) => {
+            setTimeout(() => lines.write(line), 20 * idx);
           });
+        }, 150);
       });
     return true;
   },
