@@ -10,15 +10,17 @@ export async function GET() {
   await pb.collection('machine').authWithPassword('mallx', env.SECRET_MALLX);
   const res = await pb.collection('stats').getFullList();
 
-  const stats = res.map(({ achivements, agent, navigations, os, platform, timeSpent, window }) => ({
-    achivements,
-    agent,
-    navigations,
-    os,
-    platform,
-    timeSpent,
-    window
-  }));
+  const stats = res.map(
+    ({ achievements, agent, navigations, os, platform, timeSpent, window }) => ({
+      agent,
+      os,
+      platform,
+      window,
+      navigations,
+      timeSpent,
+      achievements
+    })
+  );
 
   return json(stats);
 }

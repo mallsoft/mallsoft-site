@@ -154,6 +154,8 @@ new Command(
       .then((res) => res.json())
       .then((data) => {
         const keys = Object.keys(data[0]);
+        console.log(keys);
+
         const values = Object.values(data);
 
         const columnIsFinite = keys.map((k) => values.every((v) => isFinite(v[k])));
@@ -184,7 +186,7 @@ new Command(
     return true;
   },
   {
-    short: 'achivementlytics',
+    short: 'Achivementlytics',
     long: ['Shows stats', 'Achivements, navigations, etc..']
   }
 );
