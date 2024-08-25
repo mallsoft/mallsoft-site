@@ -154,7 +154,6 @@ new Command(
       .then((res) => res.json())
       .then((data) => {
         const keys = Object.keys(data[0]);
-        console.log(keys);
 
         const values = Object.values(data);
 

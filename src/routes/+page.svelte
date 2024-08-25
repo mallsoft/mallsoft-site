@@ -2,6 +2,8 @@
   import { navRoutes } from '$lib/content';
   import { onMount } from 'svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
+  import FeedbackBar from '$lib/components/visuals/FeedbackBar.svelte';
+  import { achievements, unlocked } from '$lib/components/achievement/achievementStores';
 
   let wiggle = false;
 
@@ -47,6 +49,10 @@
       >
     {/each}
   </nav>
+
+  {#if $unlocked.length === achievements.length}
+    <FeedbackBar />
+  {/if}
 
   <SuggestionLoader />
 </article>
