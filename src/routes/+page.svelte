@@ -50,7 +50,7 @@
     {/each}
   </nav>
 
-  {#if $unlocked.length === achievements.length}
+  {#if $unlocked.length === 1}
     <FeedbackBar />
   {/if}
 
