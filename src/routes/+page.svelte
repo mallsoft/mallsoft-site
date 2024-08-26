@@ -3,7 +3,7 @@
   import { onMount } from 'svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
   import FeedbackBar from '$lib/components/visuals/FeedbackBar.svelte';
-  import { achievements, unlocked } from '$lib/components/achievement/achievementStores';
+  import { unlocked } from '$lib/components/achievement/achievementStores';
 
   let wiggle = false;
 
@@ -50,7 +50,7 @@
     {/each}
   </nav>
 
-  {#if $unlocked.length === 1}
+  {#if $unlocked.length > 0}
     <FeedbackBar />
   {/if}
 
