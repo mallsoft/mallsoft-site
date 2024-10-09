@@ -15,7 +15,19 @@
   import Snowy from '$lib/components/visuals/Snowy.svelte';
   import { page } from '$app/stores';
   import Bacon from '$lib/components/Bacon.svelte';
+  import { onMount } from 'svelte';
 </script>
+
+<!-- <svelte:window
+  on:pointerup={() => {
+    // why can we do this!? ...WHY
+    const textBlob = new Blob(['mallsoft.dev'], { type: 'text/plain' });
+    const clipItem = new ClipboardItem({
+      [textBlob.type]: textBlob
+    });
+    navigator.clipboard.write([clipItem]);
+  }}
+/> -->
 
 <Meta />
 
