@@ -9,6 +9,7 @@
   let color_light = '#ffffff00';
 
   $: canvas &&
+    code &&
     toCanvas(
       canvas,
       code,
