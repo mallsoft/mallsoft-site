@@ -102,7 +102,7 @@ a::after {
 /* set defaults */
 input,
 button {
-  color: inherit;
+  color: var(---c-a2);
   font: inherit;
 }
 

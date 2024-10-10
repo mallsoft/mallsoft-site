@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import { navRoutes } from '$lib/content';
 
-  $: index = $page.url.pathname === '/';
+  $: index = $page.url.pathname === '/' || $page.url.pathname === '/qrgen';
 </script>
 
 <nav class:index>
@@ -24,7 +24,9 @@
     justify-content: end;
     gap: 1em;
 
-    transition: opacity 0.4s ease-out, transform 0.3s ease-out;
+    transition:
+      opacity 0.4s ease-out,
+      transform 0.3s ease-out;
   }
   nav:not(:is(:hover, :focus-within)).index {
     transform: translate(0, -110%);

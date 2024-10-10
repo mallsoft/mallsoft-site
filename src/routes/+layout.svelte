@@ -15,7 +15,7 @@
   import Snowy from '$lib/components/visuals/Snowy.svelte';
   import { page } from '$app/stores';
   import Bacon from '$lib/components/Bacon.svelte';
-  import { onMount } from 'svelte';
+  // import { onMount } from 'svelte';
 </script>
 
 <!-- <svelte:window
@@ -46,7 +46,9 @@
   <Bacon />
 {/if}
 
-<Terminus />
+{#if $page.url.pathname !== '/qrgen'}
+  <Terminus />
+{/if}
 
 <Confettu />
 
