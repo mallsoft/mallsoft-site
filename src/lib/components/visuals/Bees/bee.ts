@@ -4,16 +4,25 @@ export class Bee {
   pos: Vec;
   dir: Vec;
   speed: number;
+  paths: Path2D[];
+  tailLength: number;
+  pathIndex: number;
+  hunting: Bee | null;
+
   constructor() {
+    this.hunting = null;
+    this.pathIndex = 0;
+    this.paths = [];
     this.speed = 0;
+    this.tailLength = 20;
     this.pos = new Vec(0, 0);
     this.dir = new Vec(0, 0);
   }
 
   randSpeed() {
     this.speed = Math.random() + 1;
-    if (Math.random() > 0.6) {
-      this.speed = Math.random() * 10;
+    if (Math.random() < 0.3) {
+      this.speed = Math.random() * 5;
     }
   }
 
@@ -28,15 +37,23 @@ export class Bee {
     return this;
   }
 
-  getPath() {
+  genPath() {
     const path = new Path2D();
-    const tailFactor = 10;
+    const tailFactor = 5;
     path.moveTo(this.pos.x, this.pos.y);
     path.lineTo(
       this.pos.x + this.dir.x * (this.speed * tailFactor),
       this.pos.y + this.dir.y * (this.speed * tailFactor)
     );
     return path;
+  }
+
+  draw(ctx: CanvasRenderingContext2D) {
+    this.paths[this.pathIndex++ % this.tailLength] = this.genPath();
+
+    this.paths.forEach((p) => ctx.stroke(p));
+
+    return this.paths;
   }
 
   private turn(target: Vec, factor: number) {
@@ -53,12 +70,23 @@ export class Bee {
     else if (this.pos.y < 0) this.pos.y = window.innerHeight;
   }
 
-  step({ avgHeading, avgCenter }: { avgHeading: Vec; avgCenter: Vec }) {
+  step({ avgHeading, avgCenter, flock }: { avgHeading: Vec; avgCenter: Vec; flock: Bee[] }) {
     this.pos.add(this.dir.clone().mult(this.speed));
 
     this.wrap();
 
-    this.turn(avgHeading, 0.03).turn(avgCenter, 0.09).turn(new Vec());
+    if (this.hunting) {
+      this.turn(this.hunting.pos, 0.05);
+
+      if (this.pos.dist(this.hunting.pos) < 100) {
+        this.hunting = null;
+      }
+    } else if (Math.random() < 0.1) {
+      this.randSpeed();
+      this.hunting = flock[Math.floor(Math.random() * flock.length)];
+    }
+
+    this.turn(avgHeading, 0.01).turn(avgCenter, 0.01);
 
     this.dir.normalize();
 

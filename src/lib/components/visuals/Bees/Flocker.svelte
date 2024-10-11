@@ -6,17 +6,12 @@
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
 
-  const handleMouseMove = ({ clientX, clientY }: MouseEvent) => {
-    x = clientX;
-    y = clientY;
-  };
-
   const fitCanvas = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
   };
 
-  let resizeTimeout: number | null = null;
+  let resizeTimeout: ReturnType<typeof setTimeout> | null = null;
   const handleResize = () => {
     if (resizeTimeout === null) {
       fitCanvas();

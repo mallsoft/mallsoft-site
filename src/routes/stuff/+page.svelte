@@ -1,6 +1,6 @@
 <script>
   import Works from '$lib/components/content/Works.svelte';
-  // import Flocker from '$lib/components/visuals/Bees/Flocker.svelte';
+  import Flocker from '$lib/components/visuals/Bees/Flocker.svelte';
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
   import Aksel from 'aksel';
 </script>
@@ -26,7 +26,7 @@
 
   <SuggestionLoader />
 </article>
-<!-- <Flocker /> -->
+<Flocker />
 
 <style>
   h1 {
