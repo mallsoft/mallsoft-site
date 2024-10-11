@@ -47,16 +47,18 @@
     <canvas bind:this={canvas} />
   {/if}
 
-  <input type="text" bind:value={code} placeholder="code" />
-  <div>
-    <label>
-      <span>FG: {color_dark}</span>
-      <input type="color" bind:value={color_dark} />
-    </label>
-    <label>
-      <span>BG: {color_light}</span>
-      <input type="color" bind:value={color_light} />
-    </label>
+  <div class="io">
+    <input type="text" bind:value={code} placeholder="code" />
+    <div class="colors">
+      <label>
+        <span>FG: {color_dark}</span>
+        <input type="color" bind:value={color_dark} />
+      </label>
+      <label>
+        <span>BG: {color_light}</span>
+        <input type="color" bind:value={color_light} />
+      </label>
+    </div>
   </div>
   <input type="range" min="4" max="100" bind:value={scale} />
 </section>
@@ -80,7 +82,7 @@
     margin-bottom: 2rem;
   }
 
-  div {
+  .colors {
     background-color: gainsboro;
     color: rgb(85, 85, 85);
     display: flex;
@@ -89,6 +91,12 @@
     align-items: flex-end;
     width: 100%;
     margin-top: 0.25rem;
+    padding: 0.25rem;
+  }
+
+  .io {
+    display: flex;
+    gap: 1rem;
   }
 
   label {
