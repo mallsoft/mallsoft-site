@@ -1,7 +1,7 @@
 import { Vec } from './vec';
 import { Bee } from './bee';
 
-const FLOCK_SIZE = 20;
+const FLOCK_SIZE = 10;
 let flock: Array<Bee> = [];
 
 const flockStep = () => {
@@ -20,9 +20,9 @@ const flockStep = () => {
 };
 
 const flockDraw = (ctx: CanvasRenderingContext2D) => {
-  // ctx.lineWidth = 1;
+  ctx.lineWidth = 1.5;
   // ctx.lineCap = 'round';
-  ctx.globalAlpha = 0.05;
+  ctx.globalAlpha = 0.1;
   ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('---c-c1');
   ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
 
