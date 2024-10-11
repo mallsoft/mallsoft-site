@@ -25,19 +25,6 @@
         qrError = err;
       }
     );
-
-  $: x = JSON.stringify({
-    canvas,
-    code: code || 'https://mallsoft.dev/',
-    hmm: {
-      scale,
-      margin: color_light === '#ffffff00' ? 0 : 4,
-      color: {
-        dark: color_dark,
-        light: color_light
-      }
-    }
-  });
 </script>
 
 <section>
@@ -60,7 +47,10 @@
       </label>
     </div>
   </div>
-  <input type="range" min="4" max="100" bind:value={scale} />
+  <div class="io">
+    <input type="range" min="4" max="100" bind:value={scale} />
+    <span>x{scale}</span>
+  </div>
 </section>
 
 <style>
@@ -97,6 +87,15 @@
   .io {
     display: flex;
     gap: 1rem;
+  }
+
+  .io [type='text'] {
+    color: rgb(85, 85, 85);
+    background-color: inherit;
+  }
+
+  .io span {
+    color: rgb(85, 85, 85);
   }
 
   label {
