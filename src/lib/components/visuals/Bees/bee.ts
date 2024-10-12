@@ -14,7 +14,7 @@ export class Bee {
     this.pathIndex = 0;
     this.paths = [];
     this.speed = 0;
-    this.tailLength = Math.ceil(20 * Math.random()) + 5;
+    this.tailLength = Math.ceil(60 * Math.random() * Math.random()) + 5;
     this.pos = new Vec(0, 0);
     this.dir = new Vec(0, 0);
   }
@@ -23,6 +23,9 @@ export class Bee {
     this.speed = Math.random() + 1;
     if (Math.random() < 0.3) {
       this.speed = Math.random() * 5;
+      if (Math.random() < 0.1) {
+        this.speed = Math.random() * 10;
+      }
     }
   }
 
@@ -39,7 +42,7 @@ export class Bee {
 
   private genPath() {
     const path = new Path2D();
-    const tailFactor = 5;
+    const tailFactor = 2;
     path.moveTo(this.pos.x, this.pos.y);
     path.lineTo(
       this.pos.x + this.dir.x * (this.speed * tailFactor),
@@ -62,10 +65,27 @@ export class Bee {
     else if (this.pos.y < 0) this.pos.y = window.innerHeight;
   }
 
+  private hunt(flock: Bee[]) {
+    if (this.hunting) {
+      this.turn(this.hunting.pos, 0.09 * Math.random());
+
+      if (this.pos.dist(this.hunting.pos) < 100) {
+        this.hunting = null;
+      }
+    } else if (Math.random() < 0.02) {
+      this.randSpeed();
+      this.hunting = flock[Math.floor(Math.random() * flock.length)];
+    }
+  }
+
   draw(ctx: CanvasRenderingContext2D) {
     this.paths[this.pathIndex++ % this.tailLength] = this.genPath();
 
     this.paths.forEach((p) => ctx.stroke(p));
+
+    // ctx.beginPath();
+    // ctx.arc(this.pos.x + this.dir.x, this.pos.y + this.dir.y, this.speed * 2, 0, Math.PI * 2);
+    // ctx.stroke();
 
     return this.paths;
   }
@@ -75,18 +95,9 @@ export class Bee {
 
     this.wrap();
 
-    if (this.hunting) {
-      this.turn(this.hunting.pos, 0.1 * Math.random());
+    this.hunt(flock);
 
-      if (this.pos.dist(this.hunting.pos) < 100) {
-        this.hunting = null;
-      }
-    } else if (Math.random() < 0.04) {
-      this.randSpeed();
-      this.hunting = flock[Math.floor(Math.random() * flock.length)];
-    }
-
-    this.turn(avgHeading, 0.01).turn(avgCenter, 0.01);
+    this.turn(avgHeading, 0.08).turn(avgCenter, 0.08);
 
     this.dir.normalize();
 
