@@ -10,7 +10,7 @@
 <article>
   <h1>{$page.status === 404 ? 'Nothing here' : $page.status}</h1>
   {#if dev}
-    <pre>{$page.error.message}</pre>
+    <pre>{$page.error?.message}</pre>
   {/if}
   {#if $page.status !== 404}
     <img src="error.webp" alt="bleerp cat" />

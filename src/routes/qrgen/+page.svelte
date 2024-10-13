@@ -27,7 +27,11 @@
     );
 </script>
 
-<section>
+<svelte:head>
+  <title>Qrcode in a pinch</title>
+</svelte:head>
+
+<main>
   {#if qrError}
     <pre>qrcode error: {qrError.message}</pre>
   {:else}
@@ -35,7 +39,7 @@
   {/if}
 
   <div class="io">
-    <input type="text" bind:value={code} placeholder="code" />
+    <input type="text" bind:value={code} placeholder="write stuff here" />
     <div class="colors">
       <label>
         <span>FG: {color_dark}</span>
@@ -51,36 +55,44 @@
     <input type="range" min="4" max="100" bind:value={scale} />
     <span>x{scale}</span>
   </div>
-</section>
+</main>
 
 <style>
-  section {
+  main {
+    --checker1: #aaaaaa;
+    --checker2: #e9e9e9;
+
+    --text: rgb(46, 46, 46);
+    --bg: white;
+
+    color: var(--text);
+
     display: flex;
     flex-direction: column;
-
     align-items: center;
+
+    flex-grow: 1;
+    gap: 1rem;
 
     padding: 1rem;
 
     border-radius: 0.25rem;
-
-    background: repeating-conic-gradient(#aaaaaa 0% 25%, #e9e9e9 0% 50%) 50% / 4px 4px;
+    background: repeating-conic-gradient(var(--checker1) 0% 25%, var(--checker2) 0% 50%) 50% / 6px
+      6px;
   }
 
   canvas {
-    margin: 1rem;
-    margin-bottom: 2rem;
+    margin: auto 0;
   }
 
   .colors {
-    background-color: gainsboro;
-    color: rgb(85, 85, 85);
+    background-color: var(--bg);
+    color: var(--text);
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
     width: 100%;
-    margin-top: 0.25rem;
     padding: 0.25rem;
   }
 
@@ -90,12 +102,15 @@
   }
 
   .io [type='text'] {
-    color: rgb(85, 85, 85);
-    background-color: inherit;
+    color: var(--text);
+    background-color: var(--bg);
+
+    border: 0.25rem solid currentColor;
+    padding: 0 0.25rem;
   }
 
   .io span {
-    color: rgb(85, 85, 85);
+    color: var(--text);
   }
 
   label {
