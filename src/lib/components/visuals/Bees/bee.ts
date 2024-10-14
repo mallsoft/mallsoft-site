@@ -65,14 +65,14 @@ export class Bee {
     else if (this.pos.y < 0) this.pos.y = window.innerHeight;
   }
 
-  private hunt(flock: Bee[]) {
+  private hunt(flock: Bee[], factor = 1) {
     if (this.hunting) {
-      this.turn(this.hunting.pos, 0.09 * Math.random());
+      this.turn(this.hunting.pos, factor);
 
       if (this.pos.dist(this.hunting.pos) < 100) {
         this.hunting = null;
       }
-    } else if (Math.random() < 0.02) {
+    } else if (Math.random() < 0.05) {
       this.randSpeed();
       this.hunting = flock[Math.floor(Math.random() * flock.length)];
     }
@@ -95,9 +95,13 @@ export class Bee {
 
     this.wrap();
 
-    this.hunt(flock);
+    this.hunt(flock, 0.05);
 
-    this.turn(avgHeading, 0.08).turn(avgCenter, 0.08);
+    this.dir.add(avgHeading, 0.05);
+
+    this.turn(avgCenter, 0.02);
+
+    // randomize to avoid circular chase?
 
     this.dir.normalize();
 

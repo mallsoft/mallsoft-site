@@ -11,8 +11,8 @@ const flockStep = () => {
     avgHeading.add(b.dir);
     avgCenter.add(b.pos);
   }
-  // avgHeading.mult(1 / flock.length);
-  // avgCenter.mult(1 / flock.length);
+  avgHeading.mult(1 / flock.length);
+  avgCenter.mult(1 / flock.length);
 
   for (const b of flock) {
     b.step({ avgHeading, avgCenter, flock });
