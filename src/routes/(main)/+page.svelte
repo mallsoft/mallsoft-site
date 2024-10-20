@@ -4,6 +4,7 @@
   import SuggestionLoader from '$lib/components/visuals/suggestions/SuggestionLoader.svelte';
   import FeedbackBar from '$lib/components/visuals/FeedbackBar.svelte';
   import { unlocked } from '$lib/components/achievement/achievementStores';
+  import Snowy from '$lib/components/visuals/Snowy.svelte';
 
   let wiggle = false;
 
@@ -56,6 +57,10 @@
 
   <SuggestionLoader />
 </article>
+
+{#if [11, 12, 1, 2].includes(new Date().getMonth() + 1)}
+  <Snowy />
+{/if}
 
 <style>
   h1 span {

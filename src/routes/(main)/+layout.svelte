@@ -8,8 +8,6 @@
   import Confettu from '$lib/components/visuals/Confettu.svelte';
   import Terminus from '$lib/components/visuals/terminus/Terminus.svelte';
   import { isLocalStorageAvailable } from '$lib/utils';
-  import Snowy from '$lib/components/visuals/Snowy.svelte';
-  import { page } from '$app/stores';
   import Bacon from '$lib/components/Bacon.svelte';
   // import { onMount } from 'svelte';
 </script>
@@ -43,7 +41,3 @@
 <Terminus />
 
 <Confettu />
-
-{#if [11, 12, 1, 2].includes(new Date().getMonth() + 1) && $page.url.pathname === '/'}
-  <Snowy />
-{/if}

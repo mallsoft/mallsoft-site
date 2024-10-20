@@ -19,8 +19,8 @@ export class Bee {
   }
 
   respawn() {
-    const x = window.innerWidth * Math.random();
-    const y = window.innerHeight * Math.random();
+    const x = window.innerWidth / 2 + (Math.random() - Math.random() * 100);
+    const y = window.innerHeight / 2 + (Math.random() - Math.random() * 100);
 
     this.randSpeed();
     this.pos.set(x, y);
