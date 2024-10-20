@@ -1,12 +1,10 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { flocInit, flockDraw, flockStep } from './flock';
-  import { Vec } from './vec';
 
   let frame: number = 0;
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D;
-  let pointer: Vec;
 
   const fitCanvas = () => {
     canvas.width = window.innerWidth;
@@ -27,7 +25,7 @@
   };
 
   const animationLoop = () => {
-    flockStep({ pointer });
+    flockStep();
     flockDraw(ctx);
 
     frame = requestAnimationFrame(animationLoop);
@@ -37,7 +35,7 @@
     ctx = canvas.getContext('2d')!;
     console.assert(!!ctx, 'No canvas 2d context');
     fitCanvas();
-    flocInit();
+    flocInit({ initialFlockSize: 20 });
 
     frame = requestAnimationFrame(animationLoop);
     return () => {
@@ -46,12 +44,7 @@
   });
 </script>
 
-<svelte:window
-  on:resize={handleResize}
-  on:mousemove={({ clientX, clientY }) => {
-    pointer = new Vec(clientX, clientY);
-  }}
-/>
+<svelte:window on:resize={handleResize} />
 
 <div>
   <canvas bind:this={canvas} />

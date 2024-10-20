@@ -4,17 +4,16 @@ import { Vec } from './vec';
 export class Bee {
   pos: Vec = new Vec(0, 0);
   dir: Vec = new Vec(0, 0);
-  debug: boolean = false;
   private hunting: Bee | null = null;
   private speed: number = 0;
-  private historic: CircularBuffer<Vec> = new CircularBuffer(Math.floor(Math.random() * 100) + 5);
+  private historic: CircularBuffer<Vec> = new CircularBuffer(Math.floor(Math.random() * 300) + 5);
 
   private randSpeed() {
     this.speed = Math.random() + 1;
     if (Math.random() < 0.25) {
       this.speed = Math.random() * 3 + 1;
-      if (Math.random() < 0.5) {
-        this.speed = Math.random() * 6 + 1;
+      if (Math.random() < 0.03) {
+        this.speed = Math.random() * 8 + 1;
       }
     }
   }
@@ -32,8 +31,7 @@ export class Bee {
 
   private turn(target: Vec, factor: number) {
     const dir = this.pos.clone().setDir(this.pos.dirTo(target)).mult(factor);
-    this.dir.add(dir).normalize();
-    return this;
+    return this.dir.add(dir);
   }
 
   // private transpose(x: number, y: number) {
@@ -76,23 +74,6 @@ export class Bee {
 
     const max = Math.min(window.innerWidth / 2, window.innerHeight / 2);
 
-    if (this.debug) {
-      const lines = JSON.stringify(
-        {
-          position: { x: this.pos.x.toFixed(3), y: this.pos.y.toFixed(3) },
-          direction: { x: this.dir.x.toFixed(3), y: this.dir.y.toFixed(3) },
-          chasing: { x: this.hunting?.pos.x.toFixed(3), y: this.hunting?.pos.y.toFixed(3) },
-          speed: this.speed.toFixed(3)
-        },
-        null,
-        2
-      ).split('\n');
-
-      lines.forEach((line, i) => {
-        ctx.fillText(line, this.pos.x, this.pos.y + i * 15);
-      });
-    }
-
     if (this.historic.length > 1) {
       ctx.beginPath();
       for (let i = 1; i < this.historic.length - 1; i++) {
@@ -111,32 +92,11 @@ export class Bee {
     }
   }
 
-  step({
-    avgHeading,
-    avgCenter,
-    flock,
-    pointer
-  }: {
-    avgHeading: Vec;
-    avgCenter: Vec;
-    flock: Bee[];
-    pointer: Vec;
-  }) {
+  step({ avgHeading, avgCenter, flock }: { avgHeading: Vec; avgCenter: Vec; flock: Bee[] }) {
     this.pos.add(this.dir.clone().mult(this.speed));
-
+    this.hunt(flock, 0.09);
+    this.dir.add(avgHeading, 0.03).normalize();
+    this.turn(avgCenter, 0.05);
     this.wrap();
-
-    this.hunt(flock, 0.05);
-
-    this.dir.add(avgHeading, 0.06);
-
-    this.turn(avgCenter, 0.04);
-
-    if (pointer?.magnitude > 1) {
-      this.turn(pointer, 10 / (this.pos.dist(pointer) + 1));
-      pointer.mult(0.99);
-    }
-
-    this.dir.normalize();
   }
 }
