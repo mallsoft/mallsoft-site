@@ -32,7 +32,8 @@ new Command(
         lines.write(`No commant matches "${p}"`);
       } else {
         const txt = command.help.long ? command.help.long : command.help.short;
-        lines.write(['', p, txt, '']);
+        lines.write(['', p, '']);
+        lines.write(txt);
       }
     } else {
       const hlep = commands.find((c) => c.name === 'help');
@@ -60,7 +61,7 @@ new Command(
       return;
     }
 
-    const validRoute = ['about', 'stuff', 'contact'];
+    const validRoute = ['about', 'stuff', 'contact', 'qrgen'];
     const r = param.trim();
     if (validRoute.includes(r)) {
       lines.write(`navigatig to => "${r}".`);
@@ -186,6 +187,6 @@ new Command(
   },
   {
     short: 'Achivementlytics',
-    long: ['Shows stats', 'Achivements, navigations, etc..']
+    long: ['Shows stats', 'Achivements, navigations, etc..', 'For the last 7 days']
   }
 );
