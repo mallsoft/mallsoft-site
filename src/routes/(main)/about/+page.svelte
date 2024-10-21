@@ -13,11 +13,8 @@
   <p>
     A developer based in Bergen<br />— mostly focused on web and UX
   </p>
-  <p class="diff-remove">I like creating cool and functional stuff...</p>
 
-  <p class="diff-add">
-    Ideas with inclusive and accessible <strong>story first</strong> solutions
-  </p>
+  <p class="diff-add">Human-centered concepts featuring inclusive and accessible storytelling</p>
 
   <Words />
 
