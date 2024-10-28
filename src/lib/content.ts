@@ -56,6 +56,10 @@ export const me = {
   ],
   work: [
     {
+      who: 'DNB',
+      what: 'Work in bank, doing bank code stuff'
+    },
+    {
       who: 'Nicode',
       what: 'Prototypes, sites and landing pages for both Nicode, Lyll and Wove'
     },
